@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.EmployeeApi;
 import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
-import ru.kovrochist.platform.mono.type.EmployeeRole;
+import ru.kovrochist.platform.mono.type.Role;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,7 +25,7 @@ public class EmployeeController implements EmployeeApi {
 	}
 
 	@Override
-	public ResponseEntity<List<EmployeeDto>> get(String name, String phone, EmployeeRole role) {
+	public ResponseEntity<List<EmployeeDto>> get(String name, String phone, Role role) {
 		return null;
 	}
 

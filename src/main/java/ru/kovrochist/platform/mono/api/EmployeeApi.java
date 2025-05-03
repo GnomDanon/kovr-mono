@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
-import ru.kovrochist.platform.mono.type.EmployeeRole;
+import ru.kovrochist.platform.mono.type.Role;
 
 import java.util.List;
 import java.util.UUID;
@@ -34,7 +34,7 @@ public interface EmployeeApi {
 	ResponseEntity<List<EmployeeDto>> get(
 			@RequestParam(name = "name", required = false) String name,
 			@RequestParam(name = "phone", required = false) String phone,
-			@RequestParam(name = "role", required = false) EmployeeRole role
+			@RequestParam(name = "role", required = false) Role role
 	);
 
 	@Operation(summary = "Получение информации о сотруднике")

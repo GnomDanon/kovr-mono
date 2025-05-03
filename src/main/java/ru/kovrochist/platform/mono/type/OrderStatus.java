@@ -1,14 +1,26 @@
 package ru.kovrochist.platform.mono.type;
 
+import lombok.Getter;
+
+@Getter
 public enum OrderStatus {
-	CREATED,
-	APPROVED,
-	PICKING_UP,
-	PICKED_UP,
-	IN_WORK,
-	READY,
-	DELIVERING,
-	COMPLETED;
+	REJECTED("rejected", "Отклонен"),
+	CREATED("created", "Заявка"),
+	APPROVED("approved", "Одобрено"),
+	PICKING_UP("pickingUp", "Забирается"),
+	PICKED_UP("pickedUp", "Доставлено в цех"),
+	IN_WORK("inWork", "В работе"),
+	READY("ready", "Готово"),
+	DELIVERING("delivering", "Доставляется"),
+	COMPLETED("completed", "Завершен");
+
+	private final String value;
+	private final String label;
+
+	OrderStatus(String value, String label) {
+		this.value = value;
+		this.label = label;
+	}
 
 	public OrderStatus getNextStatus() {
 		int index = this.ordinal() + 1;

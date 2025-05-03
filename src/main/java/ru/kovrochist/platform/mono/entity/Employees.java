@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import ru.kovrochist.platform.mono.type.EmployeeRole;
+import ru.kovrochist.platform.mono.type.Role;
 
 import java.util.Date;
 import java.util.UUID;
@@ -49,5 +49,5 @@ public class Employees {
 
 	@Column(name = "role")
 	@Enumerated(EnumType.ORDINAL)
-	private EmployeeRole role;
+	private Role role;
 }
