@@ -6,12 +6,9 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-@Schema(description = "Запрос на верификацию")
-public class VerifyDto {
+@Schema(description = "Запрос на авторизацию")
+public class AuthResponseDto {
 
 	@Schema(description = "Номер телефона")
 	private String tempPhone;
-
-	@Schema(description = "Код")
-	private String code;
 }

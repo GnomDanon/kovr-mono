@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.AuthApi;
 import ru.kovrochist.platform.mono.dto.auth.AuthDto;
+import ru.kovrochist.platform.mono.dto.auth.AuthResponseDto;
 import ru.kovrochist.platform.mono.dto.auth.VerifyDto;
 import ru.kovrochist.platform.mono.dto.user.RoleDto;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
@@ -24,8 +25,8 @@ public class AuthController implements AuthApi {
 	private final String DEFAULT_AVATAR = "https://camo.githubusercontent.com/ca27c35c7402af6e6215e257b5f97b934aeb7b47a3aa5622b28ec88989037220/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f616c6f68652f617661746172732f706e672f76696272656e745f372e706e67";
 
 	@Override
-	public ResponseEntity<AuthDto> auth(AuthDto authDto) {
-		return ResponseEntity.ok(authDto);
+	public ResponseEntity<AuthResponseDto> auth(AuthDto authDto) {
+		return ResponseEntity.ok(new AuthResponseDto().setTempPhone(authDto.getPhone()));
 	}
 
 	@Override
