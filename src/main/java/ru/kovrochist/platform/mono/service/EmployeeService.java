@@ -2,17 +2,15 @@ package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.kovrochist.platform.mono.dto.employee.CreateEmployeeDto;
-import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
-import ru.kovrochist.platform.mono.dto.employee.UpdateEmployeeDto;
-import ru.kovrochist.platform.mono.dto.employee.role.RoleDto;
-import ru.kovrochist.platform.mono.entity.Employee;
-import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.entity.Employees;
+import ru.kovrochist.platform.mono.exception.employee.EmployeeAlreadyExistsException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
-import ru.kovrochist.platform.mono.mapper.employee.EmployeeMapper;
+import ru.kovrochist.platform.mono.repository.EmployeeOrderItemRepository;
 import ru.kovrochist.platform.mono.repository.EmployeeRepository;
+import ru.kovrochist.platform.mono.type.EmployeeRole;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,48 +19,52 @@ import java.util.UUID;
 public class EmployeeService {
 
 	private final EmployeeRepository employeeRepository;
-	private final RoleService roleService;
 
-	public EmployeeDto create(CreateEmployeeDto employeeDto) throws DoesNotExistException {
-		RoleDto role = roleService.getById(employeeDto.getRoleId());
+	private final EmployeeOrderItemService employeeOrderItemService;
 
-		Employee employee = employeeRepository.save(EmployeeMapper.map(employeeDto).setRole(EmployeeMapper.map(role)));
-		return EmployeeMapper.map(employee);
-	}
+	public List<Employees> get() {
+		List<Employees> result = new ArrayList<>();
+		Iterable<Employees> employees = employeeRepository.findAll();
 
-	public EmployeeDto update(UpdateEmployeeDto employeeDto) throws DoesNotExistException {
-		RoleDto role = roleService.getById(employeeDto.getRoleId());
-
-		Employee employee = employeeRepository.findById(employeeDto.getId()).orElseThrow(() -> new EmployeeDoesNotExistException(employeeDto.getId()));
-		employeeRepository.save(employee.setName(employeeDto.getName()).setSurname(employeeDto.getSurname()).setRole(EmployeeMapper.map(role)));
-
-		return EmployeeMapper.map(employee);
-	}
-
-	public EmployeeDto getById(UUID id) throws DoesNotExistException {
-		Employee employee = employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
-		return EmployeeMapper.map(employee);
-	}
-
-	public List<EmployeeDto> getByRoleId(UUID roleId) {
-		Iterable<Employee> employees = employeeRepository.findAllByRoleId(roleId);
-		List<EmployeeDto> result = new ArrayList<>();
-
-		for (Employee employee : employees) {
-			result.add(EmployeeMapper.map(employee));
+		for (Employees employee : employees) {
+			result.add(employee);
 		}
 
 		return result;
 	}
 
-	public List<EmployeeDto> get() {
-		Iterable<Employee> employees = employeeRepository.findAll();
-		List<EmployeeDto> result = new ArrayList<>();
+	public List<Employees> get(String filter) {
+		List<Employees> result = new ArrayList<>();
+		Iterable<Employees> employees = employeeRepository.find(filter);
 
-		for (Employee employee : employees) {
-			result.add(EmployeeMapper.map(employee));
+		for (Employees employee : employees) {
+			result.add(employee);
 		}
 
 		return result;
+	}
+
+	public Employees getById(UUID id) throws EmployeeDoesNotExistException {
+		return employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
+	}
+
+	public List<Employees> getByOrderId(UUID orderId) {
+		return employeeOrderItemService.getEmployeesByOrderId(orderId);
+	}
+
+	public Employees create(String firstName, String middleName, String lastName, Date birthday, String phone, EmployeeRole role) throws EmployeeAlreadyExistsException {
+		Employees employee = employeeRepository.findByPhone(phone).orElse(null);
+
+		if (employee != null) {
+			throw new EmployeeAlreadyExistsException(phone);
+		}
+
+		employee = new Employees().setFirstName(firstName).setMiddleName(middleName).setLastName(lastName).setBirthday(birthday).setPhone(phone).setRole(role);
+		return employeeRepository.save(employee);
+	}
+
+	public Employees update(UUID id, String firstName, String middleName, String lastName, Date birthday, EmployeeRole role) throws EmployeeDoesNotExistException {
+		Employees employee = employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
+		return employeeRepository.save(employee.setFirstName(firstName).setMiddleName(middleName).setLastName(lastName).setBirthday(birthday).setRole(role));
 	}
 }

@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.kovrochist.platform.mono.dto.employee.CreateEmployeeDto;
 import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
-import ru.kovrochist.platform.mono.dto.employee.UpdateEmployeeDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.type.EmployeeRole;
 
 import java.util.List;
 import java.util.UUID;
@@ -23,22 +22,22 @@ import java.util.UUID;
 public interface EmployeeApi {
 
 	@Operation(summary = "Регистрация нового сотрудника в системе")
-	@PostMapping("/create")
-	ResponseEntity<EmployeeDto> create(@RequestBody CreateEmployeeDto employee) throws DoesNotExistException;
+	@PostMapping
+	ResponseEntity<EmployeeDto> create(@RequestBody EmployeeDto employee) throws DoesNotExistException;
 
 	@Operation(summary = "Обновление информации о сотруднике")
-	@PutMapping("/update")
-	ResponseEntity<EmployeeDto> update(@RequestBody UpdateEmployeeDto employee) throws DoesNotExistException;
+	@PutMapping
+	ResponseEntity<EmployeeDto> update(@RequestBody EmployeeDto employee) throws DoesNotExistException;
+
+	@Operation(summary = "Получение информации о сотрудниках")
+	@GetMapping
+	ResponseEntity<List<EmployeeDto>> get(
+			@RequestParam(name = "name", required = false) String name,
+			@RequestParam(name = "phone", required = false) String phone,
+			@RequestParam(name = "role", required = false) EmployeeRole role
+	);
 
 	@Operation(summary = "Получение информации о сотруднике")
 	@GetMapping("/get/{id}")
 	ResponseEntity<EmployeeDto> get(@PathVariable UUID id) throws DoesNotExistException;
-
-	@Operation(summary = "Получение информации о сотрудниках по идентификатору роли")
-	@GetMapping("/get/byRole")
-	ResponseEntity<List<EmployeeDto>> getByRoleId(@RequestParam UUID id);
-
-	@Operation(summary = "Получение информации о сотрудниках")
-	@GetMapping("/get")
-	ResponseEntity<List<EmployeeDto>> get();
 }

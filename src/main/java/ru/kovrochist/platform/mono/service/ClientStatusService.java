@@ -2,14 +2,13 @@ package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.kovrochist.platform.mono.dto.client.status.ClientStatusDto;
-import ru.kovrochist.platform.mono.dto.client.status.CreateClientStatusDto;
-import ru.kovrochist.platform.mono.entity.ClientStatus;
-import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.entity.ClientStatuses;
+import ru.kovrochist.platform.mono.exception.client.ClientStatusAlreadyExistsException;
 import ru.kovrochist.platform.mono.exception.client.ClientStatusDoesNotExistException;
-import ru.kovrochist.platform.mono.mapper.client.ClientMapper;
 import ru.kovrochist.platform.mono.repository.ClientStatusRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -18,19 +17,27 @@ public class ClientStatusService {
 
 	private final ClientStatusRepository clientStatusRepository;
 
-	public ClientStatusDto create(CreateClientStatusDto clientStatusDto) {
-		ClientStatus clientStatus = clientStatusRepository.findByName(clientStatusDto.getName()).orElse(null);
+	public ClientStatuses create(String name) throws ClientStatusAlreadyExistsException {
+		ClientStatuses status = clientStatusRepository.findByName(name).orElse(null);
 
-		if (clientStatus != null) {
-			return ClientMapper.map(clientStatus);
-		}
+		if (status != null)
+			throw new ClientStatusAlreadyExistsException(name);
 
-		clientStatus = clientStatusRepository.save(ClientMapper.map(clientStatusDto));
-		return ClientMapper.map(clientStatus);
+		return clientStatusRepository.save(new ClientStatuses().setName(name));
 	}
 
-	public ClientStatusDto getById(UUID id) throws DoesNotExistException {
-		ClientStatus clientStatus = clientStatusRepository.findById(id).orElseThrow(() -> new ClientStatusDoesNotExistException(id));
-		return ClientMapper.map(clientStatus);
+	public List<ClientStatuses> get() {
+		List<ClientStatuses> result = new ArrayList<>();
+		Iterable<ClientStatuses> statuses = clientStatusRepository.findAll();
+
+		for (ClientStatuses status : statuses) {
+			result.add(status);
+		}
+
+		return result;
+	}
+
+	public ClientStatuses getById(UUID id) throws ClientStatusDoesNotExistException {
+		return clientStatusRepository.findById(id).orElseThrow(() -> new ClientStatusDoesNotExistException(id));
 	}
 }

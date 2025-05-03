@@ -10,6 +10,20 @@ public class Advice {
 
 	@ExceptionHandler(DoesNotExistException.class)
 	public ResponseEntity<String> doesNotExistException(DoesNotExistException exception) {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+		return process(HttpStatus.NOT_FOUND, exception);
+	}
+
+	@ExceptionHandler(ResourceConflictException.class)
+	public ResponseEntity<String> alreadyExistException(ResourceConflictException exception) {
+		return process(HttpStatus.CONFLICT, exception);
+	}
+
+	@ExceptionHandler(IncorrectRequestException.class)
+	public ResponseEntity<String> incorrectRequestException(IncorrectRequestException exception) {
+		return process(HttpStatus.BAD_REQUEST, exception);
+	}
+
+	private ResponseEntity<String> process(HttpStatus status, Exception exception) {
+		return ResponseEntity.status(status).body(exception.getMessage());
 	}
 }

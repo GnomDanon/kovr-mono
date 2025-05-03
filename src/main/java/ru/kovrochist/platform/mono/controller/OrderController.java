@@ -4,11 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.OrderApi;
-import ru.kovrochist.platform.mono.dto.order.CreateOrderDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
-import ru.kovrochist.platform.mono.dto.order.UpdateOrderDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
-import ru.kovrochist.platform.mono.service.OrderService;
+import ru.kovrochist.platform.mono.exception.ResourceConflictException;
+import ru.kovrochist.platform.mono.type.OrderStatus;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,41 +15,33 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 public class OrderController implements OrderApi {
-
-	private final OrderService orderService;
-
 	@Override
-	public ResponseEntity<OrderDto> create(CreateOrderDto orderDto) throws DoesNotExistException {
-		return ResponseEntity.ok(orderService.create(orderDto));
+	public ResponseEntity<OrderDto> create(OrderDto order) throws DoesNotExistException {
+		return null;
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> update(UpdateOrderDto orderDto) throws DoesNotExistException {
-		return ResponseEntity.ok(orderService.update(orderDto));
+	public ResponseEntity<OrderDto> update(OrderDto order) throws DoesNotExistException {
+		return null;
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> changeExecutor(UUID orderId, UUID employeeId) throws DoesNotExistException {
-		return ResponseEntity.ok(orderService.changeExecutor(orderId, employeeId));
-	}
-
-	@Override
-	public ResponseEntity<List<OrderDto>> get() {
-		return ResponseEntity.ok(orderService.get());
+	public ResponseEntity<List<OrderDto>> get(String name, OrderStatus status, UUID employeeId, UUID clientId) {
+		return null;
 	}
 
 	@Override
 	public ResponseEntity<OrderDto> get(UUID id) throws DoesNotExistException {
-		return ResponseEntity.ok(orderService.get(id));
+		return null;
 	}
 
 	@Override
-	public ResponseEntity<List<OrderDto>> getByEmployeeId(UUID employeeId) {
-		return ResponseEntity.ok(orderService.getByEmployeeId(employeeId));
+	public ResponseEntity<OrderDto> addEmployee(UUID orderId, UUID employeeId) throws DoesNotExistException {
+		return null;
 	}
 
 	@Override
-	public ResponseEntity<List<OrderDto>> getByClientId(UUID clientId) {
-		return ResponseEntity.ok(orderService.getByClientId(clientId));
+	public ResponseEntity<OrderDto> reject(UUID orderId) throws DoesNotExistException, ResourceConflictException {
+		return null;
 	}
 }

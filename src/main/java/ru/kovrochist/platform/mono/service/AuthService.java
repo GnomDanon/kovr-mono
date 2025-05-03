@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthService {
 
-	public String signUp() {
+	public String auth(String phone) {
 		return "ok";
 	}
 
-	public String signIn() {
+	public String verify(String phone, String code) {
 		return "ok";
 	}
 

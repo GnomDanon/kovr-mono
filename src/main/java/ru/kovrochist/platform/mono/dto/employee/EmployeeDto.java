@@ -16,14 +16,23 @@ public class EmployeeDto {
 	private UUID id;
 
 	@Schema(description = "Имя сотрудника")
-	private String name;
+	private String firstName;
+
+	@Schema(description = "Отчество сотрудника")
+	private String middleName;
 
 	@Schema(description = "Фамилия сотрудника")
-	private String surname;
+	private String lastName;
 
-	@Schema(description = "Дата трудоустройства")
-	private Date employmentDate;
+	@Schema(description = "Роль сотрудника")
+	private String role;
 
-	@Schema(description = "Идентификатор роли сотрудника")
-	private UUID roleId;
+	@Schema(description = "Дата рождения")
+	private Date birthday;
+
+	@Schema(description = "Номер телефона")
+	private String phone;
+
+	@Schema(description = "Почта")
+	private String email;
 }

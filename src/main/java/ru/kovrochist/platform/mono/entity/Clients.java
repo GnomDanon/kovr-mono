@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import ru.kovrochist.platform.mono.type.OrderStatus;
+import ru.kovrochist.platform.mono.type.Gender;
 
 import java.util.Date;
 import java.util.UUID;
@@ -26,13 +26,22 @@ import java.util.UUID;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "orders")
-public class Orders {
+@Table(name = "clients")
+public class Clients {
 
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
+
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "phone")
+	private String phone;
 
 	@Column(name = "city")
 	private String city;
@@ -40,35 +49,14 @@ public class Orders {
 	@Column(name = "address")
 	private String address;
 
-	@Column(name = "comment")
-	private String comment;
-
-	@Column(name = "approved")
-	private Boolean approved;
-
-	@Column(name = "created_at")
-	private Date createdAt;
-
-	@Column(name = "updated_at")
-	private Date updatedAt;
-
-	@Column(name = "delivery_type")
-	private String deliveryType;
-
-	@Column(name = "delivery_days")
-	private String deliveryDays;
-
-	@Column(name = "delivery_time_start")
-	private Date deliveryTimeStart;
-
-	@Column(name = "delivery_time_end")
-	private Date deliveryTimeEnd;
-
-	@Column(name = "status")
+	@Column(name = "gender")
 	@Enumerated(EnumType.ORDINAL)
-	private OrderStatus status;
+	private Gender gender;
+
+	@Column(name = "birthday")
+	private Date birthday;
 
 	@ManyToOne
-	@JoinColumn(name = "client_id")
-	private Clients client;
+	@JoinColumn(name = "status_id")
+	private ClientStatuses status;
 }

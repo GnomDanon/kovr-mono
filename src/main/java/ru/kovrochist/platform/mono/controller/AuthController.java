@@ -13,13 +13,13 @@ public class AuthController implements AuthApi {
 	private final AuthService authService;
 
 	@Override
-	public ResponseEntity<String> signUp() {
-		return ResponseEntity.ok(authService.signUp());
+	public ResponseEntity<String> auth(String phone) {
+		return ResponseEntity.ok(authService.auth(phone));
 	}
 
 	@Override
-	public ResponseEntity<String> signIn() {
-		return ResponseEntity.ok(authService.signIn());
+	public ResponseEntity<String> verify(String phone, String code) {
+		return ResponseEntity.ok(authService.logout());
 	}
 
 	@Override

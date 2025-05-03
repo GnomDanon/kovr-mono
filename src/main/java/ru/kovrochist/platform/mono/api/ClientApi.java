@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
-import ru.kovrochist.platform.mono.dto.client.CreateClientDto;
-import ru.kovrochist.platform.mono.dto.client.UpdateClientDto;
+import ru.kovrochist.platform.mono.dto.client.ClientStatusDto;
+import ru.kovrochist.platform.mono.exception.ResourceConflictException;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 
 import java.util.List;
@@ -23,22 +23,34 @@ import java.util.UUID;
 public interface ClientApi {
 
 	@Operation(summary = "Регистрация нового клиента в системе")
-	@PostMapping("/create")
-	ResponseEntity<ClientDto> create(@RequestBody CreateClientDto client) throws DoesNotExistException;
+	@PostMapping
+	ResponseEntity<ClientDto> create(@RequestBody ClientDto client) throws DoesNotExistException;
 
 	@Operation(summary = "Обновление информации о клиенте")
-	@PutMapping("/update")
-	ResponseEntity<ClientDto> update(@RequestBody UpdateClientDto client) throws DoesNotExistException;
-
-	@Operation(summary = "Получение информации о клиенте")
-	@GetMapping("/get/{id}")
-	ResponseEntity<ClientDto> get(@PathVariable UUID id) throws DoesNotExistException;
-
-	@Operation(summary = "Получение информации о клиентах по статусу")
-	@GetMapping("/get/byStatus")
-	ResponseEntity<List<ClientDto>> getByStatusId(@RequestParam UUID status);
+	@PutMapping
+	ResponseEntity<ClientDto> update(@RequestBody ClientDto client) throws DoesNotExistException;
 
 	@Operation(summary = "Получение информации о клиентах")
-	@GetMapping("/get")
-	ResponseEntity<List<ClientDto>> get();
+	@GetMapping
+	ResponseEntity<List<ClientDto>> get(
+			@RequestParam(name = "name", required = false) String name,
+			@RequestParam(name = "phone", required = false) String phone,
+			@RequestParam(name = "status", required = false) UUID statusId
+	);
+
+	@Operation(summary = "Получение информации о клиенте")
+	@GetMapping("/{id}")
+	ResponseEntity<ClientDto> get(@PathVariable UUID id) throws DoesNotExistException;
+
+	@Operation(summary = "Создание нового статуса клиента")
+	@PostMapping("/status")
+	ResponseEntity<ClientStatusDto> createStatus(@RequestBody String status) throws ResourceConflictException;
+
+	@Operation(summary = "Получение статусов клиентов")
+	@GetMapping("/status")
+	ResponseEntity<List<ClientStatusDto>> getStatuses();
+
+	@Operation(summary = "Получение статуса клиента по идентификатору")
+	@GetMapping("/status/{id}")
+	ResponseEntity<ClientStatusDto> getStatus(@PathVariable UUID id) throws DoesNotExistException;
 }

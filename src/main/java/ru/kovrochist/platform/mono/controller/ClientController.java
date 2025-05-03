@@ -5,10 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.ClientApi;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
-import ru.kovrochist.platform.mono.dto.client.CreateClientDto;
-import ru.kovrochist.platform.mono.dto.client.UpdateClientDto;
+import ru.kovrochist.platform.mono.dto.client.ClientStatusDto;
+import ru.kovrochist.platform.mono.exception.ResourceConflictException;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
-import ru.kovrochist.platform.mono.service.ClientService;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,31 +15,38 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 public class ClientController implements ClientApi {
-
-	private final ClientService clientService;
-
 	@Override
-	public ResponseEntity<ClientDto> create(CreateClientDto client) throws DoesNotExistException {
-		return ResponseEntity.ok(clientService.create(client));
+	public ResponseEntity<ClientDto> create(ClientDto client) throws DoesNotExistException {
+		return null;
 	}
 
 	@Override
-	public ResponseEntity<ClientDto> update(UpdateClientDto client) throws DoesNotExistException {
-		return ResponseEntity.ok(clientService.update(client));
+	public ResponseEntity<ClientDto> update(ClientDto client) throws DoesNotExistException {
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<List<ClientDto>> get(String name, String phone, UUID statusId) {
+		return null;
 	}
 
 	@Override
 	public ResponseEntity<ClientDto> get(UUID id) throws DoesNotExistException {
-		return ResponseEntity.ok(clientService.getById(id));
+		return null;
 	}
 
 	@Override
-	public ResponseEntity<List<ClientDto>> get() {
-		return ResponseEntity.ok(clientService.get());
+	public ResponseEntity<ClientStatusDto> createStatus(String status) throws ResourceConflictException {
+		return null;
 	}
 
 	@Override
-	public ResponseEntity<List<ClientDto>> getByStatusId(UUID status) {
-		return ResponseEntity.ok(clientService.getByClientStatusId(status));
+	public ResponseEntity<List<ClientStatusDto>> getStatuses() {
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<ClientStatusDto> getStatus(UUID id) throws DoesNotExistException {
+		return null;
 	}
 }
