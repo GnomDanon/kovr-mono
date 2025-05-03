@@ -11,19 +11,22 @@ import java.util.UUID;
 @Schema(description = "Элемент заказа")
 public class OrderItemDto {
 
-	@Schema(description = "Идентификатор элемента заказа")
+	@Schema(description = "Идентификатор")
 	private Long id;
 
-	@Schema(description = "Вид элемента")
+	@Schema(description = "Вид")
 	private String productType;
 
-	@Schema(description = "Высота ворса")
-	private String pileHeight;
+	@Schema(description = "Площадь")
+	private Double area;
 
 	@Schema(description = "Комментарий")
 	private String comment;
 
-	@Schema(description = "Список услуг")
-	private OrderItemServiceDto[] services;
+	@Schema(description = "Услуги")
+	private String[] services;
+
+	@Schema(description = "Загрязнения")
+	private String[] contaminations;
 }
 

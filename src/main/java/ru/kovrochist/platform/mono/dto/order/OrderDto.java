@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
+import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
 import ru.kovrochist.platform.mono.type.DeliveryDay;
 import ru.kovrochist.platform.mono.type.DeliveryType;
 import ru.kovrochist.platform.mono.type.OrderStatus;
@@ -16,26 +17,32 @@ import java.util.UUID;
 @Schema(description = "Заказ")
 public class OrderDto {
 
-	@Schema(description = "Идентификатор заказа")
+	@Schema(description = "Идентификатор")
 	private Long id;
+
+	@Schema(description = "Номер заказа")
+	private String orderNumber;
 
 	@Schema(description = "Клиент")
 	private ClientDto client;
 
-	@Schema(description = "Статус заказа")
-	private OrderStatus status;
+	@Schema(description = "Статус")
+	private String status;
 
-	@Schema(description = "Элементы заказа")
+	@Schema(description = "Элементы")
 	private OrderItemDto[] items;
 
-	@Schema(description = "Тип доставки")
-	private DeliveryType deliveryType;
+	@Schema(description = "Комментарий")
+	private String comment;
 
-	@Schema(description = "Дата регистрации заказа")
+	@Schema(description = "Тип доставки")
+	private String deliveryType;
+
+	@Schema(description = "Дата взятия заказа в работу")
 	private Date createdAt;
 
-	@Schema(description = "Дата последнего обновления заказа")
-	private Date updatedAt;
+	@Schema(description = "Номер телефона")
+	private String phone;
 
 	@Schema(description = "Город")
 	private String city;
@@ -43,12 +50,21 @@ public class OrderDto {
 	@Schema(description = "Адрес")
 	private String address;
 
+	@Schema(description = "Район")
+	private String district;
+
 	@Schema(description = "Дни доставки")
-	private DeliveryDay[] deliveryDays;
+	private String[] deliveryDays;
 
 	@Schema(description = "Дата начала доставки")
 	private Date deliveryTimeStart;
 
-	@Schema(description = "Дата завершения доставки")
+	@Schema(description = "Дата окончания доставки")
 	private Date deliveryTimeEnd;
+
+	@Schema(description = "Размер скидки")
+	private Double discount;
+
+	@Schema(description = "Назначенные сотрудники")
+	private AssignedEmployeeDto[] assignees;
 }

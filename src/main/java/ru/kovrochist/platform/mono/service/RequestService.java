@@ -21,19 +21,16 @@ public class RequestService {
 	private final OrderService orderService;
 	private final ClientService clientService;
 
-	public RequestDto create(RequestDto request) {
-		Clients client = clientService.getByPhone(request.getPhone());
+	public Orders create(String phone, String firstName, String lastName, String city, String address, String comment) {
+		Clients client = clientService.getByPhone(phone);
 
 		if (client == null)
-			client = clientService.create(request.getPhone(), request.getFirstName(), request.getLastName(),
-					request.getCity(), request.getAddress());
+			client = clientService.create(phone, firstName, lastName, city, address);
 
-		Orders order = orderService.create(client, request.getCity(), request.getAddress(), request.getComment());
-		return RequestMapper.map(order);
+		return orderService.create(client, city, address, comment);
 	}
 
-	public RequestDto update(RequestDto request) throws OrderDoesNotExistException {
-		Orders order = orderService.update(request.getId(), request.getCity(), request.getAddress(), request.getComment());
-		return RequestMapper.map(order);
+	public Orders update(RequestDto request) throws OrderDoesNotExistException {
+		return orderService.update(request.getId(), request.getCity(), request.getAddress(), request.getComment());
 	}
 }
