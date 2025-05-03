@@ -4,19 +4,23 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.kovrochist.platform.mono.dto.auth.AuthDto;
+import ru.kovrochist.platform.mono.dto.auth.VerifyDto;
+import ru.kovrochist.platform.mono.dto.user.UserDto;
 
 @RequestMapping("/auth")
 @Tag(name = "Авторизация")
 public interface AuthApi {
 
 	@Operation(summary = "Авторизация")
-	@PostMapping
-	ResponseEntity<String> auth(String phone);
+	@PostMapping("/login")
+	ResponseEntity<AuthDto> auth(@RequestBody AuthDto authDto);
 
 	@Operation(summary = "Проверка кода")
-	@PostMapping("/verify")
-	ResponseEntity<String> verify(String phone, String code);
+	@PostMapping("/confirm")
+	ResponseEntity<UserDto> verify(@RequestBody VerifyDto verifyDto);
 
 	@Operation(summary = "Выход")
 	@PostMapping("/logout")

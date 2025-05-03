@@ -12,12 +12,12 @@ public enum Role {
 	MASTER(Role._MASTER_),
 	ADMIN(Role._ADMIN_);
 
-	private static final String _GUEST_ = "Гость";
-	private static final String _CLIENT_ = "Клиент";
-	private static final String _OPERATOR_ = "Оператор";
-	private static final String _COURIER_ = "Курьер";
-	private static final String _MASTER_ = "Мастер";
-	private static final String _ADMIN_ = "Администратор";
+	private static final String _GUEST_ = "guest";
+	private static final String _CLIENT_ = "client";
+	private static final String _OPERATOR_ = "operator";
+	private static final String _COURIER_ = "courier";
+	private static final String _MASTER_ = "master";
+	private static final String _ADMIN_ = "admin";
 
 
 	private final String label;

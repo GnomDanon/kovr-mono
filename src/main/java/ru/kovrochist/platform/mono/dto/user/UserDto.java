@@ -37,5 +37,8 @@ public class UserDto {
 	private String gender;
 
 	@Schema(description = "Роль")
-	private Role role;
+	private RoleDto role;
+
+	@Schema(description = "Аватар")
+	private String avatar;
 }
