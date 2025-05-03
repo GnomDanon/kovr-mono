@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface ClientRepository extends CrudRepository<Clients, UUID> {
+public interface ClientRepository extends CrudRepository<Clients, Long> {
 
 	Optional<Clients> findByPhone(String phone);
 

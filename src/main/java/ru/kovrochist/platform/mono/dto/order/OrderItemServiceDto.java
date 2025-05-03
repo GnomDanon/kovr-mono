@@ -12,7 +12,7 @@ import java.util.UUID;
 public class OrderItemServiceDto {
 
 	@Schema(description = "Идентификатор вида работы для элемента заказа")
-	private UUID id;
+	private Long id;
 
 	@Schema(description = "Вид работы")
 	private String service;

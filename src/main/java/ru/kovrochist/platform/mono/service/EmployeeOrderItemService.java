@@ -24,11 +24,11 @@ public class EmployeeOrderItemService {
 		return employeeOrderItemRepository.save(new EmployeeOrderItems().setOrder(order).setEmployee(employee));
 	}
 
-	public EmployeeOrderItems get(UUID employeeId, UUID orderId) throws DoesNotExistException {
+	public EmployeeOrderItems get(Long employeeId, Long orderId) throws DoesNotExistException {
 		return employeeOrderItemRepository.find(employeeId, orderId).orElseThrow(() -> new EmployeeOrderItemDoesNotExistsException(employeeId, orderId));
 	}
 
-	public List<Orders> getOrdersByEmployeeId(UUID employeeId) {
+	public List<Orders> getOrdersByEmployeeId(Long employeeId) {
 		List<Orders> result = new ArrayList<>();
 		Iterable<EmployeeOrderItems> items = employeeOrderItemRepository.findByEmployeeId(employeeId);
 
@@ -39,7 +39,7 @@ public class EmployeeOrderItemService {
 		return result;
 	}
 
-	public List<Employees> getEmployeesByOrderId(UUID orderId) {
+	public List<Employees> getEmployeesByOrderId(Long orderId) {
 		List<Employees> result = new ArrayList<>();
 		Iterable<EmployeeOrderItems> items = employeeOrderItemRepository.findByOrderId(orderId);
 

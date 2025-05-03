@@ -12,7 +12,7 @@ import java.util.UUID;
 public class OrderItemDto {
 
 	@Schema(description = "Идентификатор элемента заказа")
-	private UUID id;
+	private Long id;
 
 	@Schema(description = "Вид элемента")
 	private String productType;

@@ -43,11 +43,11 @@ public class EmployeeService {
 		return result;
 	}
 
-	public Employees getById(UUID id) throws EmployeeDoesNotExistException {
+	public Employees getById(Long id) throws EmployeeDoesNotExistException {
 		return employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
 	}
 
-	public List<Employees> getByOrderId(UUID orderId) {
+	public List<Employees> getByOrderId(Long orderId) {
 		return employeeOrderItemService.getEmployeesByOrderId(orderId);
 	}
 
@@ -62,7 +62,7 @@ public class EmployeeService {
 		return employeeRepository.save(employee);
 	}
 
-	public Employees update(UUID id, String firstName, String middleName, String lastName, Date birthday, Role role) throws EmployeeDoesNotExistException {
+	public Employees update(Long id, String firstName, String middleName, String lastName, Date birthday, Role role) throws EmployeeDoesNotExistException {
 		Employees employee = employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
 		return employeeRepository.save(employee.setFirstName(firstName).setMiddleName(middleName).setLastName(lastName).setBirthday(birthday).setRole(role));
 	}

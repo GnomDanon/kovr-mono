@@ -27,8 +27,8 @@ public class OrderItems {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
 
 	@Column(name = "product_type")
 	private String productType;

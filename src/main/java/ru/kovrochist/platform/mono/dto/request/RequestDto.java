@@ -12,7 +12,7 @@ import java.util.UUID;
 public class RequestDto {
 
 	@Schema(description = "Идентификатор заявки")
-	private UUID id;
+	private Long id;
 
 	@Schema(description = "Номер телефона")
 	private String phone;

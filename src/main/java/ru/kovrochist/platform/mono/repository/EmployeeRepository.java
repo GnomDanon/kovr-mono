@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface EmployeeRepository extends CrudRepository<Employees, UUID> {
+public interface EmployeeRepository extends CrudRepository<Employees, Long> {
 
 	@Query("select e from Employees e " +
 			"where concat(e.phone, ' ', e.firstName, ' ', e.lastName) like :filter ")

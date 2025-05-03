@@ -36,19 +36,19 @@ public interface OrderApi {
 	ResponseEntity<List<OrderDto>> get(
 			@RequestParam(name = "name", required = false) String name,
 			@RequestParam(name = "status", required = false) OrderStatus status,
-			@RequestParam(name = "employee", required = false) UUID employeeId,
-			@RequestParam(name = "client", required = false) UUID clientId
+			@RequestParam(name = "employee", required = false) Long employeeId,
+			@RequestParam(name = "client", required = false) Long clientId
 	);
 
 	@Operation(summary = "Получение информации о заказе по идентификатору")
 	@GetMapping("/{id}")
-	ResponseEntity<OrderDto> get(@PathVariable UUID id) throws DoesNotExistException;
+	ResponseEntity<OrderDto> get(@PathVariable Long id) throws DoesNotExistException;
 
 	@Operation(summary = "Назначение заказа сотруднику")
 	@PutMapping("/employee")
-	ResponseEntity<OrderDto> addEmployee(UUID orderId, UUID employeeId) throws DoesNotExistException;
+	ResponseEntity<OrderDto> addEmployee(Long orderId, Long employeeId) throws DoesNotExistException;
 
 	@Operation(summary = "Отмена заказа")
 	@DeleteMapping
-	ResponseEntity<OrderDto> reject(UUID orderId) throws DoesNotExistException, ResourceConflictException;
+	ResponseEntity<OrderDto> reject(Long orderId) throws DoesNotExistException, ResourceConflictException;
 }

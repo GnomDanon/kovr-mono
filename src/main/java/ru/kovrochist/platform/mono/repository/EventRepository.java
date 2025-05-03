@@ -7,5 +7,5 @@ import ru.kovrochist.platform.mono.entity.Events;
 import java.util.UUID;
 
 @Repository
-public interface EventRepository extends CrudRepository<Events, UUID> {
+public interface EventRepository extends CrudRepository<Events, Long> {
 }

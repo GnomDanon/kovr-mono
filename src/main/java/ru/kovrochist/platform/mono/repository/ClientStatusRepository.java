@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface ClientStatusRepository extends CrudRepository<ClientStatuses, UUID> {
+public interface ClientStatusRepository extends CrudRepository<ClientStatuses, Long> {
 
 	@Query("select c from ClientStatuses c " +
 			"where lower(c.name) = lower(:name) ")

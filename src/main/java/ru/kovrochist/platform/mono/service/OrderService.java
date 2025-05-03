@@ -50,11 +50,11 @@ public class OrderService {
 		return result;
 	}
 
-	public Orders getById(UUID id) throws OrderDoesNotExistException {
+	public Orders getById(Long id) throws OrderDoesNotExistException {
 		return orderRepository.findById(id).orElseThrow(() -> new OrderDoesNotExistException(id));
 	}
 
-	public List<Orders> getByEmployeeId(UUID employeeId) {
+	public List<Orders> getByEmployeeId(Long employeeId) {
 		return employeeOrderItemService.getOrdersByEmployeeId(employeeId);
 	}
 
@@ -78,12 +78,12 @@ public class OrderService {
 		return orderRepository.save(order.setUpdatedAt(new Date()));
 	}
 
-	public Orders update(UUID id, String city, String address, String comment) throws OrderDoesNotExistException {
+	public Orders update(Long id, String city, String address, String comment) throws OrderDoesNotExistException {
 		Orders order = getById(id);
 		return update(order.setCity(city).setAddress(address).setComment(comment));
 	}
 
-	public Orders updateStatus(UUID id) throws OrderDoesNotExistException {
+	public Orders updateStatus(Long id) throws OrderDoesNotExistException {
 		Orders order = getById(id);
 		OrderStatus nextStatus = order.getStatus().getNextStatus();
 
@@ -96,14 +96,14 @@ public class OrderService {
 		return update(order.setStatus(nextStatus));
 	}
 
-	public Orders addEmployee(UUID orderId, UUID employeeId) throws DoesNotExistException {
+	public Orders addEmployee(Long orderId, Long employeeId) throws DoesNotExistException {
 		Orders order = getById(orderId);
 		Employees employee = employeeService.getById(employeeId);
 		employeeOrderItemService.create(order, employee);
 		return update(order);
 	}
 
-	public Orders reject(UUID id) throws DoesNotExistException, ResourceConflictException {
+	public Orders reject(Long id) throws DoesNotExistException, ResourceConflictException {
 		Orders order = getById(id);
 		OrderStatus status = order.getStatus();
 

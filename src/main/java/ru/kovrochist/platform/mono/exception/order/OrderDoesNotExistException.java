@@ -5,7 +5,7 @@ import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import java.util.UUID;
 
 public class OrderDoesNotExistException extends DoesNotExistException {
-	public OrderDoesNotExistException(UUID id) {
-		super(String.format("Заказ с идентификатором %s не найден", id.toString()));
+	public OrderDoesNotExistException(Long id) {
+		super(String.format("Заказ с идентификатором %d не найден", id));
 	}
 }

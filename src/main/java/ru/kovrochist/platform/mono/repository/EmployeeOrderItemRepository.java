@@ -10,13 +10,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface EmployeeOrderItemRepository extends JpaRepository<EmployeeOrderItems, UUID> {
+public interface EmployeeOrderItemRepository extends JpaRepository<EmployeeOrderItems, Long> {
 
 	@Query("select e from EmployeeOrderItems e " +
 			"where e.employee.id = :employeeId " +
 			"and e.order.id = :orderId")
-	Optional<EmployeeOrderItems> find(@Param("orderId") UUID employeeId, @Param("employeeId") UUID orderId);
+	Optional<EmployeeOrderItems> find(@Param("orderId") Long employeeId, @Param("employeeId") Long orderId);
 
-	Iterable<EmployeeOrderItems> findByEmployeeId(UUID employeeId);
-	Iterable<EmployeeOrderItems> findByOrderId(UUID orderId);
+	Iterable<EmployeeOrderItems> findByEmployeeId(Long employeeId);
+	Iterable<EmployeeOrderItems> findByOrderId(Long orderId);
 }

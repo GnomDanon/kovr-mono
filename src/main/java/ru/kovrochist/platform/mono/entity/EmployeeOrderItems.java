@@ -27,8 +27,8 @@ public class EmployeeOrderItems {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
 
 	@ManyToOne
 	@JoinColumn(name = "employee_id")

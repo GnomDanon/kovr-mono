@@ -39,5 +39,5 @@ public interface EmployeeApi {
 
 	@Operation(summary = "Получение информации о сотруднике")
 	@GetMapping("/get/{id}")
-	ResponseEntity<EmployeeDto> get(@PathVariable UUID id) throws DoesNotExistException;
+	ResponseEntity<EmployeeDto> get(@PathVariable Long id) throws DoesNotExistException;
 }

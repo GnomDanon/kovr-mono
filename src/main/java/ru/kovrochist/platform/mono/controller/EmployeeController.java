@@ -30,7 +30,7 @@ public class EmployeeController implements EmployeeApi {
 	}
 
 	@Override
-	public ResponseEntity<EmployeeDto> get(UUID id) throws DoesNotExistException {
+	public ResponseEntity<EmployeeDto> get(Long id) throws DoesNotExistException {
 		return null;
 	}
 }

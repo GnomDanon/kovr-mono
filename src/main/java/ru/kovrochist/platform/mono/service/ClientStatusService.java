@@ -37,7 +37,7 @@ public class ClientStatusService {
 		return result;
 	}
 
-	public ClientStatuses getById(UUID id) throws ClientStatusDoesNotExistException {
+	public ClientStatuses getById(Long id) throws ClientStatusDoesNotExistException {
 		return clientStatusRepository.findById(id).orElseThrow(() -> new ClientStatusDoesNotExistException(id));
 	}
 }

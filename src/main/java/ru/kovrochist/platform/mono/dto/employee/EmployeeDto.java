@@ -13,7 +13,7 @@ import java.util.UUID;
 public class EmployeeDto {
 
 	@Schema(description = "Идентификатор сотрудника")
-	private UUID id;
+	private Long id;
 
 	@Schema(description = "Имя сотрудника")
 	private String firstName;

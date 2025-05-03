@@ -7,5 +7,5 @@ import ru.kovrochist.platform.mono.entity.OrderStatuses;
 import java.util.UUID;
 
 @Repository
-public interface OrderStatusRepository extends CrudRepository<OrderStatuses, UUID> {
+public interface OrderStatusRepository extends CrudRepository<OrderStatuses, Long> {
 }

@@ -17,7 +17,7 @@ import java.util.UUID;
 public class OrderDto {
 
 	@Schema(description = "Идентификатор заказа")
-	private UUID id;
+	private Long id;
 
 	@Schema(description = "Клиент")
 	private ClientDto client;

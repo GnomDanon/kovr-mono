@@ -35,12 +35,12 @@ public interface ClientApi {
 	ResponseEntity<List<ClientDto>> get(
 			@RequestParam(name = "name", required = false) String name,
 			@RequestParam(name = "phone", required = false) String phone,
-			@RequestParam(name = "status", required = false) UUID statusId
+			@RequestParam(name = "status", required = false) Long statusId
 	);
 
 	@Operation(summary = "Получение информации о клиенте")
 	@GetMapping("/{id}")
-	ResponseEntity<ClientDto> get(@PathVariable UUID id) throws DoesNotExistException;
+	ResponseEntity<ClientDto> get(@PathVariable Long id) throws DoesNotExistException;
 
 	@Operation(summary = "Создание нового статуса клиента")
 	@PostMapping("/status")
@@ -52,5 +52,5 @@ public interface ClientApi {
 
 	@Operation(summary = "Получение статуса клиента по идентификатору")
 	@GetMapping("/status/{id}")
-	ResponseEntity<ClientStatusDto> getStatus(@PathVariable UUID id) throws DoesNotExistException;
+	ResponseEntity<ClientStatusDto> getStatus(@PathVariable Long id) throws DoesNotExistException;
 }

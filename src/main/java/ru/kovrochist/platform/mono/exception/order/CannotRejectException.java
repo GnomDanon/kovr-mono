@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class CannotRejectException extends ResourceConflictException {
 
-	public CannotRejectException(UUID id, OrderStatus status) {
-		super(String.format("Невозможно отменить заказ %s в статусе %s", id, status.toString()));
+	public CannotRejectException(Long id, OrderStatus status) {
+		super(String.format("Невозможно отменить заказ %d в статусе %s", id, status.toString()));
 	}
 }

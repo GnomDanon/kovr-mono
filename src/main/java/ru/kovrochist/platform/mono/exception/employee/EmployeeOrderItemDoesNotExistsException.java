@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class EmployeeOrderItemDoesNotExistsException extends DoesNotExistException {
 
-	public EmployeeOrderItemDoesNotExistsException(UUID employeeId, UUID orderId) {
-		super(String.format("Сотрудник с идентификатором %s не назначен на заказ с идентификатором %s", employeeId.toString(), orderId.toString()));
+	public EmployeeOrderItemDoesNotExistsException(Long employeeId, Long orderId) {
+		super(String.format("Сотрудник с идентификатором %d не назначен на заказ с идентификатором %d", employeeId, orderId));
 	}
 }

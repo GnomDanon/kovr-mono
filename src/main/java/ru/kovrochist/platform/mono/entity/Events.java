@@ -25,8 +25,8 @@ public class Events {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
 
 	@Column(name = "name")
 	private String name;

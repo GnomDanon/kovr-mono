@@ -31,8 +31,8 @@ public class Orders {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
 
 	@Column(name = "city")
 	private String city;

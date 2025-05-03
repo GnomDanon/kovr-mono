@@ -26,22 +26,22 @@ public class OrderController implements OrderApi {
 	}
 
 	@Override
-	public ResponseEntity<List<OrderDto>> get(String name, OrderStatus status, UUID employeeId, UUID clientId) {
+	public ResponseEntity<List<OrderDto>> get(String name, OrderStatus status, Long employeeId, Long clientId) {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> get(UUID id) throws DoesNotExistException {
+	public ResponseEntity<OrderDto> get(Long id) throws DoesNotExistException {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> addEmployee(UUID orderId, UUID employeeId) throws DoesNotExistException {
+	public ResponseEntity<OrderDto> addEmployee(Long orderId, Long employeeId) throws DoesNotExistException {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> reject(UUID orderId) throws DoesNotExistException, ResourceConflictException {
+	public ResponseEntity<OrderDto> reject(Long orderId) throws DoesNotExistException, ResourceConflictException {
 		return null;
 	}
 }

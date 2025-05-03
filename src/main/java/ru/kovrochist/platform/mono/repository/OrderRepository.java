@@ -9,7 +9,7 @@ import ru.kovrochist.platform.mono.entity.Orders;
 import java.util.UUID;
 
 @Repository
-public interface OrderRepository extends CrudRepository<Orders, UUID> {
+public interface OrderRepository extends CrudRepository<Orders, Long> {
 
 	@Query("select o from Orders o " +
 			"where concat(o.id, ' ', o.client.firstName, ' ', o.client.lastName, ' ', o.client.phone) " +

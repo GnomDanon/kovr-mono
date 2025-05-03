@@ -14,7 +14,7 @@ import java.util.UUID;
 public class ClientDto {
 
 	@Schema(description = "Идентификатор клиента")
-	private UUID id;
+	private Long id;
 
 	@Schema(description = "Имя клиента")
 	private String firstName;

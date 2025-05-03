@@ -26,12 +26,12 @@ public class ClientController implements ClientApi {
 	}
 
 	@Override
-	public ResponseEntity<List<ClientDto>> get(String name, String phone, UUID statusId) {
+	public ResponseEntity<List<ClientDto>> get(String name, String phone, Long statusId) {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<ClientDto> get(UUID id) throws DoesNotExistException {
+	public ResponseEntity<ClientDto> get(Long id) throws DoesNotExistException {
 		return null;
 	}
 
@@ -46,7 +46,7 @@ public class ClientController implements ClientApi {
 	}
 
 	@Override
-	public ResponseEntity<ClientStatusDto> getStatus(UUID id) throws DoesNotExistException {
+	public ResponseEntity<ClientStatusDto> getStatus(Long id) throws DoesNotExistException {
 		return null;
 	}
 }
