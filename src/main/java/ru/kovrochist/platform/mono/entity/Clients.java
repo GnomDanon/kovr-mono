@@ -18,7 +18,6 @@ import lombok.experimental.Accessors;
 import ru.kovrochist.platform.mono.type.Gender;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -27,7 +26,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "clients")
-public class Clients {
+public class Clients implements User {
 
 	@Id
 	@Column(name = "id")
@@ -42,6 +41,9 @@ public class Clients {
 
 	@Column(name = "phone")
 	private String phone;
+
+	@Column(name = "code")
+	private String code;
 
 	@Column(name = "city")
 	private String city;

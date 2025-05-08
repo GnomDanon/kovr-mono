@@ -8,7 +8,6 @@ import ru.kovrochist.platform.mono.repository.ClientRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -46,6 +45,11 @@ public class ClientService {
 		return clientRepository.findByPhone(phone).orElse(null);
 	}
 
+	public Clients create(String phone, String code) {
+		Clients client = new Clients().setPhone(phone).setCode(code);
+		return clientRepository.save(client);
+	}
+
 	public Clients create(String phone, String firstName, String lastName, String city, String address) {
 		Clients client = new Clients()
 				.setPhone(phone)
@@ -55,5 +59,9 @@ public class ClientService {
 				.setAddress(address);
 
 		return clientRepository.save(client);
+	}
+
+	public Clients setCode(Clients client, String code) {
+		return clientRepository.save(client.setCode(code));
 	}
 }

@@ -11,7 +11,6 @@ import ru.kovrochist.platform.mono.type.Role;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -47,6 +46,10 @@ public class EmployeeService {
 		return employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
 	}
 
+	public Employees getByPhone(String phone) {
+		return employeeRepository.findByPhone(phone).orElse(null);
+	}
+
 	public List<Employees> getByOrderId(Long orderId) {
 		return employeeOrderItemService.getEmployeesByOrderId(orderId);
 	}
@@ -65,5 +68,9 @@ public class EmployeeService {
 	public Employees update(Long id, String firstName, String middleName, String lastName, Date birthday, Role role) throws EmployeeDoesNotExistException {
 		Employees employee = employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
 		return employeeRepository.save(employee.setFirstName(firstName).setMiddleName(middleName).setLastName(lastName).setBirthday(birthday).setRole(role));
+	}
+
+	public Employees setCode(Employees employee, String code) {
+		return employeeRepository.save(employee.setCode(code));
 	}
 }

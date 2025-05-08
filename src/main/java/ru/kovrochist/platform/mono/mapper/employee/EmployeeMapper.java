@@ -1,4 +1,17 @@
 package ru.kovrochist.platform.mono.mapper.employee;
 
+import ru.kovrochist.platform.mono.dto.user.UserDto;
+import ru.kovrochist.platform.mono.entity.Employees;
+
 public class EmployeeMapper {
+
+	public static UserDto map(Employees employee) {
+		return new UserDto()
+				.setId(employee.getId())
+				.setFirstName(employee.getFirstName())
+				.setLastName(employee.getLastName())
+				.setBirthday(employee.getBirthday())
+				.setPhone(employee.getPhone())
+				.setRole(employee.getRole());
+	}
 }
