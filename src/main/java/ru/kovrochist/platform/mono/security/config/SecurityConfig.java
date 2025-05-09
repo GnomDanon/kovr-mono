@@ -12,10 +12,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 import ru.kovrochist.platform.mono.api.AuthApi;
 import ru.kovrochist.platform.mono.security.code.CodeGenerator;
 import ru.kovrochist.platform.mono.security.code.MockCodeGenerator;
 import ru.kovrochist.platform.mono.security.jwt.JwtFilter;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -39,6 +42,14 @@ public class SecurityConfig {
 		http
 				.httpBasic(AbstractHttpConfigurer::disable)
 				.csrf(AbstractHttpConfigurer::disable)
+				.cors(cors -> cors.configurationSource(request -> {
+					CorsConfiguration corsConfiguration = new CorsConfiguration();
+					corsConfiguration.setAllowedOriginPatterns(List.of("*"));
+					corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+					corsConfiguration.setAllowedHeaders(List.of("*"));
+					corsConfiguration.setAllowCredentials(true);
+					return corsConfiguration;
+				}))
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(SWAGGER_UI_ENTRY_POINT, SWAGGER_RESOURCES_ENTRY_POINT, API_DOCS_ENTRY_POINT, LOGIN_ENTRY_POINT, CONFIRM_ENTRY_POINT, REFRESH_ENTRY_POINT).permitAll()
 						.anyRequest().authenticated()
