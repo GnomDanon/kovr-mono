@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: schema/schema-init.xml
+      relativeToChangelogFile: true
+  - include:
+      file: data/metadata-init.xml
+      relativeToChangelogFile: true

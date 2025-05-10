@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="insert-cities" author="Daniil">
+        <insert tableName="cities">
+            <column name="name" value="Киров"/>
+        </insert>
+        <insert tableName="cities">
+            <column name="name" value="Кирово-Чепецк"/>
+        </insert>
+        <insert tableName="cities">
+            <column name="name" value="Слободской"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-client_statuses" author="Daniil">
+        <insert tableName="client_statuses">
+            <column name="name" value="Новый"/>
+        </insert>
+        <insert tableName="client_statuses">
+            <column name="name" value="Постоянный"/>
+        </insert>
+        <insert tableName="client_statuses">
+            <column name="name" value="Непостоянный"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-contaminations" author="Daniil">
+        <insert tableName="contaminations">
+            <column name="name" value="Урина/запах"/>
+        </insert>
+        <insert tableName="contaminations">
+            <column name="name" value="Пластилин"/>
+        </insert>
+        <insert tableName="contaminations">
+            <column name="name" value="Краска/лак/клей"/>
+        </insert>
+        <insert tableName="contaminations">
+            <column name="name" value="Вино/варенье"/>
+        </insert>
+        <insert tableName="contaminations">
+            <column name="name" value="Не знаем, но пятно есть"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-districts" author="Daniil">
+        <insert tableName="districts">
+            <column name="name" value="Юго-Запад"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Центр"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Филейка"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Дружба"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Коминтерн"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Лепсе"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Зональный"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Чистые пруды"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Нововятск"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Радужный"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Кирово-Чепецк"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Котельнич"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Европейские улочки"/>
+        </insert>
+        <insert tableName="districts">
+            <column name="name" value="Оричи"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-products" author="Daniil">
+        <insert tableName="products">
+            <column name="name" value="Шерстяной"/>
+        </insert>
+        <insert tableName="products">
+            <column name="name" value="Синтетический"/>
+        </insert>
+        <insert tableName="products">
+            <column name="name" value="Ковролин"/>
+        </insert>
+        <insert tableName="products">
+            <column name="name" value="Ковровая плитка"/>
+        </insert>
+        <insert tableName="products">
+            <column name="name" value="Вискоза"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-services" author="Daniil">
+        <insert tableName="services">
+            <column name="name" value="Химчистка"/>
+        </insert>
+        <insert tableName="services">
+            <column name="name" value="Оверлок"/>
+        </insert>
+        <insert tableName="services">
+            <column name="name" value="Антибактериальная обработка"/>
+        </insert>
+        <insert tableName="services">
+            <column name="name" value="Дезинфекция"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-sources" author="Daniil">
+        <insert tableName="sources">
+            <column name="name" value="Сайт (Яндекс директ, Яндекс бизнес)"/>
+        </insert>
+        <insert tableName="sources">
+            <column name="name" value="Авито"/>
+        </insert>
+        <insert tableName="sources">
+            <column name="name" value="Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+        </insert>
+        <insert tableName="sources">
+            <column name="name" value="Карты (Яндекс и 2GIS)"/>
+        </insert>
+        <insert tableName="sources">
+            <column name="name" value="Мессенджеры (WhatsApp)"/>
+        </insert>
+        <insert tableName="sources">
+            <column name="name" value="Рекомендации знакомых"/>
+        </insert>
+        <insert tableName="sources">
+            <column name="name" value="Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="create-table-clients" author="Daniil">
+        <createTable tableName="clients">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(16)"/>
+            <column name="code" type="VARCHAR(50)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="gender" type="VARCHAR(8)"/>
+            <column name="birthday" type="TIMESTAMP"/>
+            <column name="avatar" type="BYTEA"/>
+            <column name="status" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-employees" author="Daniil">
+        <createTable tableName="employees">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="birthday" type="TIMESTAMP"/>
+            <column name="phone" type="VARCHAR(16)"/>
+            <column name="code" type="VARCHAR(50)"/>
+            <column name="role" type="VARCHAR(50)"/>
+            <column name="gender" type="VARCHAR(8)"/>
+            <column name="avatar" type="BYTEA"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-orders" author="Daniil">
+        <createTable tableName="orders">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="phone" type="VARCHAR(16)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="district" type="VARCHAR(255)"/>
+            <column name="comment" type="TEXT"/>
+            <column name="approved" type="BOOLEAN"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="delivery_type" type="VARCHAR(50)"/>
+            <column name="delivery_days" type="TEXT"/>
+            <column name="delivery_time_start" type="TIMESTAMP"/>
+            <column name="delivery_time_end" type="TIMESTAMP"/>
+            <column name="status" type="VARCHAR(50)"/>
+            <column name="discount" type="DOUBLE"/>
+            <column name="client_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="orders"
+                                 baseColumnNames="client_id"
+                                 constraintName="fk_orders_clients"
+                                 referencedTableName="clients"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create-table-order_items" author="Daniil">
+        <createTable tableName="order_items">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="services" type="TEXT"/>
+            <column name="product_type" type="VARCHAR(255)"/>
+            <column name="contaminations" type="TEXT"/>
+            <column name="area" type="DOUBLE"/>
+            <column name="comment" type="TEXT"/>
+            <column name="order_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="order_items"
+                                 baseColumnNames="order_id"
+                                 constraintName="fk_order_items_orders"
+                                 referencedTableName="orders"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create-table-assigned_employees" author="Daniil">
+        <createTable tableName="assigned_employees">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="employee_id" type="BIGINT"/>
+            <column name="order_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="assigned_employees"
+                                 baseColumnNames="employee_id"
+                                 constraintName="fk_assigned_employees_employees"
+                                 referencedTableName="employees"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="assigned_employees"
+                                 baseColumnNames="order_id"
+                                 constraintName="fk_assigned_employees_orders"
+                                 referencedTableName="orders"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create-tables-metadata" author="you">
+        <createTable tableName="client_statuses">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="cities">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="contaminations">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="districts">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="products">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="services">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="sources">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

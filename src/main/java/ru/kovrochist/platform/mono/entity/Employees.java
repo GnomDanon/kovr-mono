@@ -30,7 +30,7 @@ public class Employees implements User{
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "first_name")
@@ -52,11 +52,10 @@ public class Employees implements User{
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
-	@Column(name = "getnder")
+	@Column(name = "gender")
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
 	@Column(name = "avatar")
-	@Lob
 	private byte[] avatar;
 }
