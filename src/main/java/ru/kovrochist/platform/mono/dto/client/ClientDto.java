@@ -5,10 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
-import ru.kovrochist.platform.mono.type.Gender;
-
-import java.util.Date;
-import java.util.UUID;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

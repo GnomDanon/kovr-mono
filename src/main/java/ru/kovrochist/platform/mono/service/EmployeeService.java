@@ -18,7 +18,7 @@ public class EmployeeService {
 
 	private final EmployeeRepository employeeRepository;
 
-	private final EmployeeOrderItemService employeeOrderItemService;
+	private final AssignedEmployeeService assignedEmployeeService;
 
 	public List<Employees> get() {
 		List<Employees> result = new ArrayList<>();
@@ -51,23 +51,23 @@ public class EmployeeService {
 	}
 
 	public List<Employees> getByOrderId(Long orderId) {
-		return employeeOrderItemService.getEmployeesByOrderId(orderId);
+		return assignedEmployeeService.getEmployeesByOrderId(orderId);
 	}
 
-	public Employees create(String firstName, String middleName, String lastName, Date birthday, String phone, Role role) throws EmployeeAlreadyExistsException {
+	public Employees create(String firstName, String lastName, Date birthday, String phone, Role role) throws EmployeeAlreadyExistsException {
 		Employees employee = employeeRepository.findByPhone(phone).orElse(null);
 
 		if (employee != null) {
 			throw new EmployeeAlreadyExistsException(phone);
 		}
 
-		employee = new Employees().setFirstName(firstName).setMiddleName(middleName).setLastName(lastName).setBirthday(birthday).setPhone(phone).setRole(role);
+		employee = new Employees().setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setPhone(phone).setRole(role);
 		return employeeRepository.save(employee);
 	}
 
-	public Employees update(Long id, String firstName, String middleName, String lastName, Date birthday, Role role) throws EmployeeDoesNotExistException {
+	public Employees update(Long id, String firstName, String lastName, Date birthday, Role role) throws EmployeeDoesNotExistException {
 		Employees employee = employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
-		return employeeRepository.save(employee.setFirstName(firstName).setMiddleName(middleName).setLastName(lastName).setBirthday(birthday).setRole(role));
+		return employeeRepository.save(employee.setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setRole(role));
 	}
 
 	public Employees setCode(Employees employee, String code) {

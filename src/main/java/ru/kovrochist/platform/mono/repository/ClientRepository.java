@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import ru.kovrochist.platform.mono.entity.Clients;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Repository
 public interface ClientRepository extends CrudRepository<Clients, Long> {

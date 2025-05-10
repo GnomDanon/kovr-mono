@@ -4,44 +4,72 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.OrderApi;
+import ru.kovrochist.platform.mono.dto.metadata.TypeWrapper;
+import ru.kovrochist.platform.mono.dto.order.AssignEmployeeDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
-import ru.kovrochist.platform.mono.exception.DoesNotExistException;
-import ru.kovrochist.platform.mono.exception.ResourceConflictException;
-import ru.kovrochist.platform.mono.type.OrderStatus;
+import ru.kovrochist.platform.mono.dto.order.RescheduleDto;
+import ru.kovrochist.platform.mono.dto.order.UpdateCommentDto;
+import ru.kovrochist.platform.mono.dto.order.UpdateOrderItemDto;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
 public class OrderController implements OrderApi {
+
 	@Override
-	public ResponseEntity<OrderDto> create(OrderDto order) throws DoesNotExistException {
+	public ResponseEntity<List<OrderDto>> fetchOrders() {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> update(OrderDto order) throws DoesNotExistException {
+	public ResponseEntity<List<OrderDto>> fetchFilteredOrders(Map<String, String> allParams) {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<List<OrderDto>> get(String name, OrderStatus status, Long employeeId, Long clientId) {
+	public ResponseEntity<OrderDto> updateOrderStatus(Long orderId, TypeWrapper type) {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> get(Long id) throws DoesNotExistException {
+	public ResponseEntity<OrderDto> getOrderDto(Long id) {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> addEmployee(Long orderId, Long employeeId) throws DoesNotExistException {
+	public ResponseEntity<String> deleteOrder(Long id) {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> reject(Long orderId) throws DoesNotExistException, ResourceConflictException {
+	public ResponseEntity<OrderDto> updateOrderItemServices(Long orderId, UpdateOrderItemDto updateDto) {
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<OrderDto> assignEmployeeToOrder(Long orderId, AssignEmployeeDto assignDto) {
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<String> deAssignEmployee(Long orderId, Long employeeId) {
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<AssignEmployeeDto> updateEmployeeComment(Long orderId, UpdateCommentDto updateDto) {
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<OrderDto> rescheduleOrder(Long orderId, RescheduleDto rescheduleDto) {
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<List<OrderDto>> getClientOrders(Long clientId) {
 		return null;
 	}
 }

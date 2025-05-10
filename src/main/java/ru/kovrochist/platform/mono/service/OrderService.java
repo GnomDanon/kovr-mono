@@ -1,10 +1,8 @@
 package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
-import org.hibernate.query.Order;
 import org.springframework.stereotype.Service;
 import ru.kovrochist.platform.mono.entity.Clients;
-import ru.kovrochist.platform.mono.entity.EmployeeOrderItems;
 import ru.kovrochist.platform.mono.entity.Employees;
 import ru.kovrochist.platform.mono.entity.Orders;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
@@ -17,7 +15,6 @@ import ru.kovrochist.platform.mono.type.OrderStatus;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +23,7 @@ public class OrderService {
 	private final OrderRepository orderRepository;
 
 	private final EmployeeService employeeService;
-	private final EmployeeOrderItemService employeeOrderItemService;
+	private final AssignedEmployeeService assignedEmployeeService;
 
 	public List<Orders> get() {
 		List<Orders> result = new ArrayList<>();
@@ -55,7 +52,7 @@ public class OrderService {
 	}
 
 	public List<Orders> getByEmployeeId(Long employeeId) {
-		return employeeOrderItemService.getOrdersByEmployeeId(employeeId);
+		return assignedEmployeeService.getOrdersByEmployeeId(employeeId);
 	}
 
 	public Orders create(Clients client, String city, String address, String comment) {
@@ -99,7 +96,7 @@ public class OrderService {
 	public Orders addEmployee(Long orderId, Long employeeId) throws DoesNotExistException {
 		Orders order = getById(orderId);
 		Employees employee = employeeService.getById(employeeId);
-		employeeOrderItemService.create(order, employee);
+		assignedEmployeeService.create(order, employee);
 		return update(order);
 	}
 

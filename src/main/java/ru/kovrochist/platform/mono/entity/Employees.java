@@ -7,12 +7,14 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import ru.kovrochist.platform.mono.type.Gender;
 import ru.kovrochist.platform.mono.type.Role;
 
 import java.util.Date;
@@ -34,9 +36,6 @@ public class Employees implements User{
 	@Column(name = "first_name")
 	private String firstName;
 
-	@Column(name = "middle_name")
-	private String middleName;
-
 	@Column(name = "last_name")
 	private String lastName;
 
@@ -50,6 +49,14 @@ public class Employees implements User{
 	private String code;
 
 	@Column(name = "role")
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private Role role;
+
+	@Column(name = "getnder")
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
+
+	@Column(name = "avatar")
+	@Lob
+	private byte[] avatar;
 }

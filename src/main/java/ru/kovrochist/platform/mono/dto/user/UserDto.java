@@ -3,7 +3,6 @@ package ru.kovrochist.platform.mono.dto.user;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import ru.kovrochist.platform.mono.type.Role;
 
 import java.util.Date;
 
@@ -18,7 +17,7 @@ public class UserDto {
 	private String phone;
 
 	@Schema(description = "Роль")
-	private Role role;
+	private RoleWrapper role;
 
 	@Schema(description = "Имя")
 	private String firstName;

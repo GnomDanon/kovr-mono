@@ -1,4 +1,4 @@
-package ru.kovrochist.platform.mono.entity;
+package ru.kovrochist.platform.mono.entity.type;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,8 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
-import java.util.UUID;
+import ru.kovrochist.platform.mono.entity.Metadata;
 
 @Entity
 @Getter
@@ -20,8 +19,8 @@ import java.util.UUID;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "client_statuses")
-public class ClientStatuses {
+@Table(name = "products")
+public class Products implements Metadata {
 
 	@Id
 	@Column(name = "id")
@@ -30,5 +29,8 @@ public class ClientStatuses {
 
 	@Column(name = "name")
 	private String name;
-}
 
+	public Products(String name) {
+		this.name = name;
+	}
+}

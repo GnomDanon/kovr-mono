@@ -5,12 +5,8 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
-import ru.kovrochist.platform.mono.type.DeliveryDay;
-import ru.kovrochist.platform.mono.type.DeliveryType;
-import ru.kovrochist.platform.mono.type.OrderStatus;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Data
 @Accessors(chain = true)

@@ -1,4 +1,4 @@
-package ru.kovrochist.platform.mono.exception.client;
+package ru.kovrochist.platform.mono.exception.metadata;
 
 import ru.kovrochist.platform.mono.exception.ResourceConflictException;
 

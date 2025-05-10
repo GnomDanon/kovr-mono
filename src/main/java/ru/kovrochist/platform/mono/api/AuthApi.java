@@ -24,14 +24,14 @@ public interface AuthApi {
 	String REFRESH_ENTRY_POINT = "/refresh";
 
 	@Operation(summary = "Авторизация")
-	@PostMapping("/login")
+	@PostMapping(LOGIN_ENTRY_POINT)
 	ResponseEntity<LoginDto> login(@RequestBody LoginDto login);
 
 	@Operation(summary = "Проверка кода")
-	@PostMapping("/confirm")
+	@PostMapping(CONFIRM_ENTRY_POINT)
 	ResponseEntity<ConfirmResponse> confirm(@RequestBody UserCredentialsDto credentials) throws AuthenticationException;
 
 	@Operation(summary = "Обновление токена")
-	@PostMapping("/refresh")
+	@PostMapping(REFRESH_ENTRY_POINT)
 	ResponseEntity<JwtAuthenticationDto> refresh(@RequestBody RefreshTokenDto refresh) throws AuthenticationException;
 }

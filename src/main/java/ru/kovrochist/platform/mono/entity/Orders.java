@@ -15,10 +15,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import ru.kovrochist.platform.mono.type.DeliveryType;
 import ru.kovrochist.platform.mono.type.OrderStatus;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -34,11 +34,17 @@ public class Orders {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
+	@Column(name = "phone")
+	private String phone;
+
 	@Column(name = "city")
 	private String city;
 
 	@Column(name = "address")
 	private String address;
+
+	@Column(name = "district")
+	private String district;
 
 	@Column(name = "comment")
 	private String comment;
@@ -53,7 +59,8 @@ public class Orders {
 	private Date updatedAt;
 
 	@Column(name = "delivery_type")
-	private String deliveryType;
+	@Enumerated(EnumType.STRING)
+	private DeliveryType deliveryType;
 
 	@Column(name = "delivery_days")
 	private String deliveryDays;
@@ -65,8 +72,11 @@ public class Orders {
 	private Date deliveryTimeEnd;
 
 	@Column(name = "status")
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
+
+	@Column(name = "discount")
+	private Double discount;
 
 	@ManyToOne
 	@JoinColumn(name = "client_id")

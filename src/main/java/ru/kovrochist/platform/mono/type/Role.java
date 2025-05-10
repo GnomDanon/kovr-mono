@@ -12,18 +12,17 @@ public enum Role {
 	MASTER(Role._MASTER_),
 	ADMIN(Role._ADMIN_);
 
-	private static final String _GUEST_ = "Гость";
-	private static final String _CLIENT_ = "Клиент";
-	private static final String _OPERATOR_ = "Оператор";
-	private static final String _COURIER_ = "Курьер";
-	private static final String _MASTER_ = "Мастер";
-	private static final String _ADMIN_ = "Администратор";
+	private static final String _GUEST_ = "guest";
+	private static final String _CLIENT_ = "client";
+	private static final String _OPERATOR_ = "operator";
+	private static final String _COURIER_ = "courier";
+	private static final String _MASTER_ = "master";
+	private static final String _ADMIN_ = "admin";
 
-
-	private final String label;
+	private final String value;
 
 	Role(String label) {
-		this.label = label;
+		this.value = label;
 	}
 
 	public static Role[] getEmployeeRoles() {
@@ -34,15 +33,15 @@ public enum Role {
 		return new Role[] { GUEST, CLIENT };
 	}
 
-	public static Role byLabel(String label) throws DoesNotExistException{
-		return switch (label) {
+	public static Role byLabel(String value) throws DoesNotExistException{
+		return switch (value) {
 			case _GUEST_ -> GUEST;
 			case _CLIENT_ -> CLIENT;
 			case _OPERATOR_ -> OPERATOR;
 			case _COURIER_ -> COURIER;
 			case _MASTER_ -> MASTER;
 			case _ADMIN_ -> ADMIN;
-			default -> throw new DoesNotExistException("Не существует роли " + label);
+			default -> throw new DoesNotExistException("Не существует роли " + value);
 		};
 	}
 }

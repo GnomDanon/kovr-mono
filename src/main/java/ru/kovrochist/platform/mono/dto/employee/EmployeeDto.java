@@ -6,9 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 
-import java.util.Date;
-import java.util.UUID;
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)

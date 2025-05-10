@@ -3,7 +3,7 @@ package ru.kovrochist.platform.mono.dto.employee;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import ru.kovrochist.platform.mono.type.Role;
+import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 
 @Data
 @Accessors(chain = true)
@@ -14,7 +14,7 @@ public class AssignedEmployeeDto {
 	private Long id;
 
 	@Schema(description = "Роль")
-	private Role role;
+	private RoleWrapper role;
 
 	@Schema(description = "Полное имя")
 	private String fullName;

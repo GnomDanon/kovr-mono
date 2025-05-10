@@ -14,8 +14,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import java.util.UUID;
-
 @Entity
 @Getter
 @Setter
@@ -30,11 +28,17 @@ public class OrderItems {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
+	@Column(name = "services")
+	private String services;
+
 	@Column(name = "product_type")
 	private String productType;
 
-	@Column(name = "pile_height")
-	private String pileHeight;
+	@Column(name = "contaminations")
+	private String contaminations;
+
+	@Column(name = "area")
+	private Double area;
 
 	@Column(name = "comment")
 	private String comment;
