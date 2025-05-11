@@ -20,6 +20,7 @@ public class Advice {
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseEntity<String> unknownException(Exception exception) {
+		exception.printStackTrace();
 		return process(HttpStatus.INTERNAL_SERVER_ERROR, exception);
 	}
 

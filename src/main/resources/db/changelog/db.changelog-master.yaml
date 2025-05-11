@@ -5,3 +5,6 @@ databaseChangeLog:
   - include:
       file: data/metadata-init.xml
       relativeToChangelogFile: true
+  - include:
+      file: data/admin-init.xml
+      relativeToChangelogFile: true
