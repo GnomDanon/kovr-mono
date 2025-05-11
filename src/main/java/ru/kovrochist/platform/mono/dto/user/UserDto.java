@@ -28,12 +28,6 @@ public class UserDto {
 	@Schema(description = "Дата рождения")
 	private Date birthday;
 
-	@Schema(description = "Город")
-	private String city;
-
-	@Schema(description = "Адрес")
-	private String address;
-
 	@Schema(description = "Пол")
 	private String gender;
 }

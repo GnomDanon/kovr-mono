@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ru.kovrochist.platform.mono.dto.user.ProfileFormData;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
+import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
+import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
 
 @RequestMapping("/user")
 @Tag(name = "Пользователь")
@@ -20,11 +23,11 @@ public interface UserApi {
 
 	@Operation(summary = "Получение профиля")
 	@GetMapping("/me")
-	ResponseEntity<UserDto> getProfile();
+	ResponseEntity<UserDto> getProfile() throws EmployeeDoesNotExistException, ClientDoesNotExistException;
 
 	@Operation(summary = "Обновление профиля")
 	@PatchMapping("/profile")
-	ResponseEntity<UserDto> updateProfile(@RequestBody ProfileFormData profile);
+	ResponseEntity<UserDto> updateProfile(@RequestBody ProfileFormData profile) throws DoesNotExistException;
 
 	@Operation(summary = "Получение аватара")
 	@GetMapping("/avatar")

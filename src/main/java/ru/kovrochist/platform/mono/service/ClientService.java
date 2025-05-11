@@ -82,11 +82,26 @@ public class ClientService {
 		return clientRepository.save(client);
 	}
 
-	public Clients update(Long id, String phone, String firstName, String lastName, Date birthday, String city, String address, String gender, String status) throws DoesNotExistException {
+	public Clients update(Long id, String phone, String firstName, String lastName, Date birthday, String city, String address, String gender) throws DoesNotExistException {
 		Clients client = getById(id);
-		if (client.getBirthday() != null)
-			client.setBirthday(birthday);
-		return clientRepository.save(client.setPhone(phone).setFirstName(firstName).setLastName(lastName).setCity(city).setAddress(address).setGender(Gender.byLabel(gender)).setStatus(status));
+		return update(client, phone, firstName, lastName, birthday, city, address, gender, client.getStatus());
+	}
+
+	public Clients update(Long id, String phone, String firstName, String lastName, Date birthday, String city, String address, String genderLabel, String status) throws DoesNotExistException {
+		Clients client = getById(id);
+		return update(client, phone, firstName, lastName, birthday, city, address, genderLabel, status);
+	}
+
+	public Clients update(Clients client, String phone, String firstName, String lastName, Date birthday, String city, String address, String genderLabel, String status) throws DoesNotExistException {
+		Gender gender = genderLabel == null ? null : Gender.byLabel(genderLabel);
+		Date clientBirthday = client.getBirthday();
+		if (clientBirthday != null)
+			birthday = clientBirthday;
+		return update(client, phone, firstName, lastName, birthday, city, address, gender, status);
+	}
+
+	public Clients update(Clients client, String phone, String firstName, String lastName, Date birthday, String city, String address, Gender gender, String status) {
+		return clientRepository.save(client.setPhone(phone).setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setCity(city).setAddress(address).setGender(gender).setStatus(status));
 	}
 
 	public Clients setCode(Clients client, String code) {

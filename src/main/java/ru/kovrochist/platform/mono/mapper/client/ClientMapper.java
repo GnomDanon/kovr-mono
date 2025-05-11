@@ -21,8 +21,6 @@ public class ClientMapper {
 				.setFirstName(client.getFirstName())
 				.setLastName(client.getLastName())
 				.setBirthday(client.getBirthday())
-				.setCity(client.getCity())
-				.setAddress(client.getAddress())
 				.setGender(client.getGender() == null ? "" : client.getGender().getLabel())
 				.setRole(new RoleWrapper().setValue(Role.CLIENT.getValue()));
 	}
@@ -33,14 +31,14 @@ public class ClientMapper {
 				.setDaysWithoutOrders(getDaysWithoutOrders(client.getOrders()))
 				.setStatus(client.getStatus());
 
-		clientDto.setId(client.getId())
+		clientDto.setCity(client.getCity())
+				.setAddress(client.getAddress())
+				.setId(client.getId())
 				.setPhone(client.getPhone())
 				.setRole(new RoleWrapper().setValue(client.getRole().getValue()))
 				.setFirstName(client.getFirstName())
 				.setLastName(client.getLastName())
 				.setBirthday(client.getBirthday())
-				.setCity(client.getCity())
-				.setAddress(client.getAddress())
 				.setGender(client.getGender() == null ? "" : client.getGender().getLabel());
 
 		return clientDto;

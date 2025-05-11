@@ -87,9 +87,27 @@ public class EmployeeService {
 		return employeeRepository.save(employee);
 	}
 
-	public Employees update(Long id, String firstName, String lastName, Date birthday, Role role) throws EmployeeDoesNotExistException {
-		Employees employee = employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
-		return employeeRepository.save(employee.setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setRole(role));
+	public Employees update(Long id, String firstName, String lastName, Date birthday, String phone, String gender) throws DoesNotExistException {
+		Employees employee = getById(id);
+		return update(employee, firstName, lastName, birthday, phone, employee.getRole().getValue(), gender);
+	}
+
+	public Employees update(Long id, String firstName, String lastName, Date birthday, String roleValue) throws DoesNotExistException {
+		Employees employee = getById(id);
+		return update(employee, firstName, lastName, birthday, employee.getPhone(), roleValue, employee.getGender() == null ? null : employee.getGender().getLabel());
+	}
+
+	public Employees update(Employees employee, String firstName, String lastName, Date birthday, String phone, String roleValue, String genderLabel) throws DoesNotExistException {
+		Role role = Role.byLabel(roleValue);
+		Gender gender = genderLabel == null ? null : Gender.byLabel(genderLabel);
+		Date employeeBirthday = employee.getBirthday();
+		if (employeeBirthday != null)
+			birthday = employeeBirthday;
+		return update(employee, firstName, lastName, birthday, phone, role, gender);
+	}
+
+	public Employees update(Employees employees, String firstName, String lastName, Date birthday, String phone, Role role, Gender gender) {
+		return employeeRepository.save(employees.setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setPhone(phone).setRole(role).setGender(gender));
 	}
 
 	public Employees setCode(Employees employee, String code) {
