@@ -5,6 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.kovrochist.platform.mono.entity.Clients;
+import ru.kovrochist.platform.mono.type.DeliveryType;
+import ru.kovrochist.platform.mono.type.OrderStatus;
 
 import java.util.Optional;
 
@@ -14,6 +16,12 @@ public interface ClientRepository extends CrudRepository<Clients, Long> {
 	Optional<Clients> findByPhone(String phone);
 
 	@Query("select c from Clients c " +
-			"where concat(c.phone, ' ', c.firstName, ' ', c.lastName) like :filter ")
+			"where lower(concat(coalesce(c.phone, '') , ' ', coalesce(c.firstName, '') , ' ', coalesce(c.lastName, ''))) like lower(:filter) ")
 	Iterable<Clients> find(@Param("filter") String filter);
+
+	@Query("select c from Clients c " +
+			"where lower(concat(coalesce(c.phone, ''), ' ', coalesce(c.firstName, ''), ' ', coalesce(c.lastName, ''))) like lower(:search) " +
+			"and lower(c.status) like lower(:status) " +
+			"and lower(c.district) like lower(:status) ")
+	Iterable<Clients> find(@Param("search") String search, @Param("status") String status, @Param("district") String district);
 }

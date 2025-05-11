@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.ClientApi;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.filter.ClientFilter;
 import ru.kovrochist.platform.mono.service.ClientService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +21,11 @@ public class ClientController implements ClientApi {
 	@Override
 	public ResponseEntity<List<ClientDto>> getClients() {
 		return ResponseEntity.ok(clientService.getClients());
+	}
+
+	@Override
+	public ResponseEntity<List<ClientDto>> fetchFilteredClients(Map<String, String> allParams) {
+		return ResponseEntity.ok(clientService.getClients(new ClientFilter(allParams)));
 	}
 
 	@Override

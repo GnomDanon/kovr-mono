@@ -52,6 +52,9 @@ public class Clients implements User {
 	@Column(name = "address")
 	private String address;
 
+	@Column(name = "district")
+	private String district;
+
 	@Column(name = "gender")
 	@Enumerated(EnumType.STRING)
 	private Gender gender;

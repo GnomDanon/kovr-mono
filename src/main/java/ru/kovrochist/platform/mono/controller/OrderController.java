@@ -16,6 +16,7 @@ import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
 import ru.kovrochist.platform.mono.exception.order.OrderDoesNotExistException;
 import ru.kovrochist.platform.mono.exception.order.OrderItemDoesNotExistsException;
+import ru.kovrochist.platform.mono.filter.OrderFilter;
 import ru.kovrochist.platform.mono.service.OrderService;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class OrderController implements OrderApi {
 
 	@Override
 	public ResponseEntity<List<OrderDto>> fetchFilteredOrders(Map<String, String> allParams) {
-		return ResponseEntity.ok(orderService.fetchOrder());
+		return ResponseEntity.ok(orderService.getOrders(new OrderFilter(allParams)));
 	}
 
 	@Override

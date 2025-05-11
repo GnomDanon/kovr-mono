@@ -58,4 +58,10 @@ public class Employees implements User{
 
 	@Column(name = "avatar")
 	private byte[] avatar;
+
+	@Column(name = "on_shift")
+	private Boolean onShift;
+
+	@Column(name = "status")
+	private String status;
 }

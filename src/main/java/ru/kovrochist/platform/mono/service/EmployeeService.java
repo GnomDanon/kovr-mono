@@ -8,6 +8,7 @@ import ru.kovrochist.platform.mono.entity.Employees;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeAlreadyExistsException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
+import ru.kovrochist.platform.mono.filter.EmployeeFilter;
 import ru.kovrochist.platform.mono.mapper.employee.EmployeeMapper;
 import ru.kovrochist.platform.mono.repository.EmployeeRepository;
 import ru.kovrochist.platform.mono.type.Gender;
@@ -28,6 +29,11 @@ public class EmployeeService {
 
 	public List<UserDto> getEmployees() {
 		List<Employees> employees = get();
+		return employees.stream().map(EmployeeMapper::map).collect(Collectors.toList());
+	}
+
+	public List<UserDto> getEmployees(EmployeeFilter filter) {
+		List<Employees> employees = get(filter);
 		return employees.stream().map(EmployeeMapper::map).collect(Collectors.toList());
 	}
 
@@ -56,6 +62,17 @@ public class EmployeeService {
 	public List<Employees> get(String filter) {
 		List<Employees> result = new ArrayList<>();
 		Iterable<Employees> employees = employeeRepository.find(filter);
+
+		for (Employees employee : employees) {
+			result.add(employee);
+		}
+
+		return result;
+	}
+
+	public List<Employees> get(EmployeeFilter filter) {
+		List<Employees> result = new ArrayList<>();
+		Iterable<Employees> employees = employeeRepository.find(filter.getSearch(), filter.getStatus(), filter.getOnShift(), filter.getRole());
 
 		for (Employees employee : employees) {
 			result.add(employee);

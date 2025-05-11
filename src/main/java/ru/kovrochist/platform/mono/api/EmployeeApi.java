@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeAlreadyExistsException;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/staff")
 @Tag(name = "Сотрудник")
@@ -24,6 +26,10 @@ public interface EmployeeApi {
 	@Operation(summary = "Получение сотрудников")
 	@GetMapping
 	ResponseEntity<List<UserDto>> getEmployees();
+
+	@Operation(summary = "Получение отфильтрованных сотрудников")
+	@GetMapping("/filter")
+	ResponseEntity<List<UserDto>> fetchFilteredEmployees(@RequestParam Map<String, String> allParams);
 
 	@Operation(summary = "Создание сотрудника")
 	@PostMapping

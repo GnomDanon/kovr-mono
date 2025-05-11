@@ -18,6 +18,7 @@ import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistExcept
 import ru.kovrochist.platform.mono.exception.order.CannotRejectException;
 import ru.kovrochist.platform.mono.exception.order.OrderDoesNotExistException;
 import ru.kovrochist.platform.mono.exception.order.OrderItemDoesNotExistsException;
+import ru.kovrochist.platform.mono.filter.OrderFilter;
 import ru.kovrochist.platform.mono.mapper.employee.EmployeeMapper;
 import ru.kovrochist.platform.mono.mapper.order.OrderMapper;
 import ru.kovrochist.platform.mono.repository.OrderRepository;
@@ -46,6 +47,11 @@ public class OrderService {
 
 	public List<OrderDto> fetchOrder() {
 		List<Orders> orders = get();
+		return orders.stream().map(OrderMapper::map).collect(Collectors.toList());
+	}
+
+	public List<OrderDto> getOrders(OrderFilter filter) {
+		List<Orders> orders = get(filter);
 		return orders.stream().map(OrderMapper::map).collect(Collectors.toList());
 	}
 
@@ -123,6 +129,17 @@ public class OrderService {
 	public List<Orders> get(String filter) {
 		List<Orders> result = new ArrayList<>();
 		Iterable<Orders> orders = orderRepository.find(filter);
+
+		for (Orders order : orders) {
+			result.add(order);
+		}
+
+		return result;
+	}
+
+	public List<Orders> get(OrderFilter filter) {
+		List<Orders> result = new ArrayList<>();
+		Iterable<Orders> orders = orderRepository.find(filter.getSearch(), filter.getStatus(), filter.getDeliveryType(), filter.getDistrict());
 
 		for (Orders order : orders) {
 			result.add(order);

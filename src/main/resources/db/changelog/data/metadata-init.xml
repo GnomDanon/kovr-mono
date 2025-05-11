@@ -149,4 +149,22 @@
         </insert>
     </changeSet>
 
+    <changeSet id="insert-employee_statuses" author="Daniil">
+        <insert tableName="employee_statuses">
+            <column name="name" value="Работает"/>
+        </insert>
+        <insert tableName="employee_statuses">
+            <column name="name" value="В отпуске"/>
+        </insert>
+        <insert tableName="employee_statuses">
+            <column name="name" value="На больничном"/>
+        </insert>
+        <insert tableName="employee_statuses">
+            <column name="name" value="Отгул"/>
+        </insert>
+        <insert tableName="employee_statuses">
+            <column name="name" value="Уволен"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

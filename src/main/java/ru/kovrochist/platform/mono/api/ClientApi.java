@@ -12,6 +12,7 @@ import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/client")
 @Tag(name = "Клиент")
@@ -20,6 +21,10 @@ public interface ClientApi {
 	@Operation(summary = "Получение клиентов")
 	@GetMapping
 	ResponseEntity<List<ClientDto>> getClients();
+
+	@Operation(summary = "Получение отфильтрованных клиентов")
+	@GetMapping("/filter")
+	ResponseEntity<List<ClientDto>> fetchFilteredClients(@RequestParam Map<String, String> allParams);
 
 	@Operation(summary = "Получение отфильтрованных клиентов")
 	@GetMapping("/search")

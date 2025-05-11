@@ -6,6 +6,7 @@ import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.entity.Clients;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
+import ru.kovrochist.platform.mono.filter.ClientFilter;
 import ru.kovrochist.platform.mono.mapper.client.ClientMapper;
 import ru.kovrochist.platform.mono.repository.ClientRepository;
 import ru.kovrochist.platform.mono.type.Gender;
@@ -31,6 +32,11 @@ public class ClientService {
 		return clients.stream().map(ClientMapper::map).collect(Collectors.toList());
 	}
 
+	public List<ClientDto> getClients(ClientFilter clientFilter) {
+		List<Clients> clients = get(clientFilter);
+		return clients.stream().map(ClientMapper::map).collect(Collectors.toList());
+	}
+
 	public ClientDto update(Long id, ClientDto profile) throws DoesNotExistException {
 		Clients client = update(id, profile.getPhone(), profile.getFirstName(), profile.getLastName(), profile.getBirthday(), profile.getCity(), profile.getAddress(), profile.getGender(), profile.getStatus());
 		return ClientMapper.map(client);
@@ -49,7 +55,18 @@ public class ClientService {
 
 	public List<Clients> get(String filter) {
 		List<Clients> result = new ArrayList<>();
-		Iterable<Clients> clients = clientRepository.find(filter);
+		Iterable<Clients> clients = clientRepository.find("%" + filter + "%");
+
+		for (Clients client : clients) {
+			result.add(client);
+		}
+
+		return result;
+	}
+
+	public List<Clients> get(ClientFilter filter) {
+		List<Clients> result = new ArrayList<>();
+		Iterable<Clients> clients = clientRepository.find(filter.getSearch(), filter.getStatus(), filter.getDistrict());
 
 		for (Clients client : clients) {
 			result.add(client);
