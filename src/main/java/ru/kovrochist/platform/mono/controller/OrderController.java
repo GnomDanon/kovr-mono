@@ -33,7 +33,7 @@ public class OrderController implements OrderApi {
 
 	@Override
 	public ResponseEntity<List<OrderDto>> fetchFilteredOrders(Map<String, String> allParams) {
-		return null;
+		return ResponseEntity.ok(orderService.fetchOrder());
 	}
 
 	@Override
