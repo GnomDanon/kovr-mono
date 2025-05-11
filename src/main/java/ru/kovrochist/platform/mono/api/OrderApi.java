@@ -16,6 +16,7 @@ import ru.kovrochist.platform.mono.dto.metadata.TypeWrapper;
 import ru.kovrochist.platform.mono.dto.order.AssignDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.order.RescheduleDto;
+import ru.kovrochist.platform.mono.dto.order.StatusWrapper;
 import ru.kovrochist.platform.mono.dto.order.UpdateCommentDto;
 import ru.kovrochist.platform.mono.dto.order.UpdateOrderItemDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
@@ -52,7 +53,7 @@ public interface OrderApi {
 
 	@Operation(summary = "Обновление статуса заказа")
 	@PatchMapping("/{orderId}/status")
-	ResponseEntity<OrderDto> updateOrderStatus(@PathVariable Long orderId, @RequestBody TypeWrapper type) throws DoesNotExistException;
+	ResponseEntity<OrderDto> updateOrderStatus(@PathVariable Long orderId, @RequestBody StatusWrapper status) throws DoesNotExistException;
 
 	@Operation(summary = "Создание заказа")
 	@PostMapping

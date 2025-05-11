@@ -9,6 +9,7 @@ import ru.kovrochist.platform.mono.dto.metadata.TypeWrapper;
 import ru.kovrochist.platform.mono.dto.order.AssignDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.order.RescheduleDto;
+import ru.kovrochist.platform.mono.dto.order.StatusWrapper;
 import ru.kovrochist.platform.mono.dto.order.UpdateCommentDto;
 import ru.kovrochist.platform.mono.dto.order.UpdateOrderItemDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
@@ -52,8 +53,8 @@ public class OrderController implements OrderApi {
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> updateOrderStatus(Long orderId, TypeWrapper type) throws DoesNotExistException {
-		return ResponseEntity.ok(orderService.updateOrderStatus(orderId, type.getType()));
+	public ResponseEntity<OrderDto> updateOrderStatus(Long orderId, StatusWrapper status) throws DoesNotExistException {
+		return ResponseEntity.ok(orderService.updateOrderStatus(orderId, status.getStatus()));
 	}
 
 	@Override
