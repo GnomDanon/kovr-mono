@@ -36,6 +36,8 @@ public class OrderMapper {
 	}
 
 	public static OrderItemDto[] mapItems(List<OrderItems> items) {
+		if (items == null)
+			return null;
 		return (OrderItemDto[]) items.stream()
 				.map(OrderMapper::mapItem)
 				.toArray();
@@ -52,6 +54,8 @@ public class OrderMapper {
 	}
 
 	public static AssignedEmployeeDto[] mapEmployees(List<AssignedEmployees> employees) {
+		if (employees == null)
+			return null;
 		return (AssignedEmployeeDto[]) employees.stream()
 				.map(EmployeeMapper::mapAssigned)
 				.toArray();
