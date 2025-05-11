@@ -41,7 +41,7 @@ public class ClientMapper {
 				.setBirthday(client.getBirthday())
 				.setCity(client.getCity())
 				.setAddress(client.getAddress())
-				.setGender(client.getGender().getLabel());
+				.setGender(client.getGender() == null ? "" : client.getGender().getLabel());
 
 		return clientDto;
 	}

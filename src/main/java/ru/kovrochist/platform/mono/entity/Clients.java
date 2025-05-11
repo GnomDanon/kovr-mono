@@ -69,6 +69,6 @@ public class Clients implements User {
 		return Role.CLIENT;
 	}
 
-	@OneToMany(mappedBy = "client_id")
+	@OneToMany(mappedBy = "client")
 	private List<Orders> orders;
 }
