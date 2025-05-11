@@ -20,10 +20,4 @@ public class ClientDto extends UserDto {
 
 	@Schema(description = "Статус")
 	private String status;
-
-	@Schema(description = "Город")
-	private String city;
-
-	@Schema(description = "Адрес")
-	private String address;
 }

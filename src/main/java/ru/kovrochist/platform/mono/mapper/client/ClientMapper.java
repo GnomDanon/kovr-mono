@@ -21,6 +21,8 @@ public class ClientMapper {
 				.setFirstName(client.getFirstName())
 				.setLastName(client.getLastName())
 				.setBirthday(client.getBirthday())
+				.setCity(client.getCity())
+				.setAddress(client.getAddress())
 				.setGender(client.getGender() == null ? "" : client.getGender().getLabel())
 				.setRole(new RoleWrapper().setValue(Role.CLIENT.getValue()));
 	}

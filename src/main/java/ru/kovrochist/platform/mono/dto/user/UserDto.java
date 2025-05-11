@@ -30,4 +30,10 @@ public class UserDto {
 
 	@Schema(description = "Пол")
 	private String gender;
+
+	@Schema(description = "Город")
+	private String city;
+
+	@Schema(description = "Адрес")
+	private String address;
 }
