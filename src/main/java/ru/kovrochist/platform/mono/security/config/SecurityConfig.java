@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import ru.kovrochist.platform.mono.api.AuthApi;
+import ru.kovrochist.platform.mono.api.RequestApi;
 import ru.kovrochist.platform.mono.security.code.CodeGenerator;
 import ru.kovrochist.platform.mono.security.code.MockCodeGenerator;
 import ru.kovrochist.platform.mono.security.jwt.JwtFilter;
@@ -51,7 +52,7 @@ public class SecurityConfig {
 					return corsConfiguration;
 				}))
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers(SWAGGER_UI_ENTRY_POINT, SWAGGER_RESOURCES_ENTRY_POINT, API_DOCS_ENTRY_POINT, LOGIN_ENTRY_POINT, CONFIRM_ENTRY_POINT, REFRESH_ENTRY_POINT).permitAll()
+						.requestMatchers(SWAGGER_UI_ENTRY_POINT, SWAGGER_RESOURCES_ENTRY_POINT, API_DOCS_ENTRY_POINT, LOGIN_ENTRY_POINT, CONFIRM_ENTRY_POINT, REFRESH_ENTRY_POINT, RequestApi.REQUEST_ENTRY_POINT).permitAll()
 						.anyRequest().authenticated()
 				)
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

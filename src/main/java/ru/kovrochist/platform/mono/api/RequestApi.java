@@ -11,9 +11,11 @@ import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.request.RequestDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 
-@RequestMapping("/request")
+@RequestMapping(RequestApi.REQUEST_ENTRY_POINT)
 @Tag(name = "Заявка")
 public interface RequestApi {
+
+	String REQUEST_ENTRY_POINT = "/request";
 
 	@Operation(summary = "Регистрация новой заявки")
 	@PostMapping
