@@ -21,7 +21,7 @@ public interface OrderRepository extends CrudRepository<Orders, Long> {
 	Iterable<Orders> findByClientId(Long clientId);
 
 	@Query("select o from Orders o " +
-			"where lower(concat(coalesce(o.id, ''), ' ', coalesce(o.client.firstName, ''), ' ', coalesce(o.phone, ''))) like lower(:search) " +
+			"where lower(concat(o.id, ' ', coalesce(o.client.firstName, ''), ' ', coalesce(o.phone, ''))) like lower(:search) " +
 			"and (:status = null or o.status = :status) " +
 			"and (:deliveryType = null or o.deliveryType = :deliveryType) " +
 			"and lower(coalesce(o.district, '')) = lower(:district) ")
