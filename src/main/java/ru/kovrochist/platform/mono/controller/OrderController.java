@@ -68,6 +68,11 @@ public class OrderController implements OrderApi {
 	}
 
 	@Override
+	public ResponseEntity<OrderDto> update(OrderDto orderDto) {
+		return ResponseEntity.ok(orderDto);
+	}
+
+	@Override
 	public ResponseEntity<OrderDto> updateOrderItemServices(Long orderId, UpdateOrderItemDto updateDto) throws OrderItemDoesNotExistsException, OrderDoesNotExistException {
 		return ResponseEntity.ok(orderService.updateOrderItemServices(orderId, updateDto));
 	}

@@ -80,6 +80,12 @@ public class OrderService {
 		return OrderMapper.map(update(order));
 	}
 
+	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException {
+		itemService.update(updateInfo.getItems());
+		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), String.join(StringUtil.SEPARATOR, updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount());
+		return OrderMapper.map(order);
+	}
+
 	public OrderDto assignEmployeeToOrder(Long orderId, Long employeeId) throws OrderDoesNotExistException, EmployeeDoesNotExistException {
 		Orders order = getById(orderId);
 		Employees employee = employeeService.getById(employeeId);
@@ -182,6 +188,11 @@ public class OrderService {
 	public Orders create(Orders order) {
 		Date now = new Date();
 		return orderRepository.save(order.setCreatedAt(now).setUpdatedAt(now));
+	}
+
+	public Orders update(Long id, String status, String comment, String deliveryType, String phone, String city, String address, String district, String deliveryDays, Date deliveryTimeStart, Date deliveryTimeEnd, Double discount) throws DoesNotExistException {
+		Orders order = getById(id);
+		return update(order.setStatus(OrderStatus.byLabel(status)).setComment(comment).setDeliveryType(DeliveryType.byLabel(deliveryType)).setPhone(phone).setCity(city).setAddress(address).setDistrict(district).setDeliveryDays(deliveryDays).setDeliveryTimeStart(deliveryTimeStart).setDeliveryTimeEnd(deliveryTimeEnd).setDiscount(discount));
 	}
 
 	public Orders updateStatus(Long id, String statusLabel) throws DoesNotExistException {

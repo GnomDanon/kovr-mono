@@ -62,6 +62,10 @@ public interface OrderApi {
 	@DeleteMapping("/{id}")
 	ResponseEntity<String> deleteOrder(@PathVariable Long id);
 
+	@Operation(summary = "Обновление заказа")
+	@PatchMapping
+	ResponseEntity<OrderDto> update(@RequestBody OrderDto orderDto);
+
 	@Operation(summary = "Обновление услуги")
 	@PatchMapping("/{orderId}/services")
 	ResponseEntity<OrderDto> updateOrderItemServices(@PathVariable Long orderId, @RequestBody UpdateOrderItemDto updateDto) throws OrderItemDoesNotExistsException, OrderDoesNotExistException;
