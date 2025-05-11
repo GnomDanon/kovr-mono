@@ -16,7 +16,7 @@ public class EmployeeMapper {
 				.setLastName(employee.getLastName())
 				.setBirthday(employee.getBirthday())
 				.setPhone(employee.getPhone())
-				.setRole(new RoleWrapper().setValue(employee.getRole().getValue()))
+				.setRole(employee.getRole().getValue())
 				.setGender(employee.getGender() == null ? null : employee.getGender().getLabel());
 	}
 
@@ -32,7 +32,7 @@ public class EmployeeMapper {
 
 		return new AssignedEmployeeDto()
 				.setEmployeeId(employee.getId())
-				.setRole(new RoleWrapper().setValue(employee.getRole().getValue()))
+				.setRole(employee.getRole().getValue())
 				.setFullName(fullName)
 				.setComment(assigned.getComment());
 	}

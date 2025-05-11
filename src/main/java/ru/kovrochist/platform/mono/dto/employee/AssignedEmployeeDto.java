@@ -14,7 +14,7 @@ public class AssignedEmployeeDto {
 	private Long employeeId;
 
 	@Schema(description = "Роль")
-	private RoleWrapper role;
+	private String role;
 
 	@Schema(description = "Полное имя")
 	private String fullName;

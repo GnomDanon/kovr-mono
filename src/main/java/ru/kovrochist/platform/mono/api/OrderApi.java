@@ -65,7 +65,7 @@ public interface OrderApi {
 
 	@Operation(summary = "Обновление заказа")
 	@PatchMapping
-	ResponseEntity<OrderDto> update(@RequestBody OrderDto orderDto);
+	ResponseEntity<OrderDto> update(@RequestBody OrderDto orderDto) throws DoesNotExistException;
 
 	@Operation(summary = "Обновление услуги")
 	@PatchMapping("/{orderId}/services")

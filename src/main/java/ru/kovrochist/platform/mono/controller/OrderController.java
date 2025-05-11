@@ -70,8 +70,8 @@ public class OrderController implements OrderApi {
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> update(OrderDto orderDto) {
-		return ResponseEntity.ok(orderDto);
+	public ResponseEntity<OrderDto> update(OrderDto orderDto) throws DoesNotExistException {
+		return ResponseEntity.ok(orderService.update(orderDto));
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class UserDto {
 	private String phone;
 
 	@Schema(description = "Роль")
-	private RoleWrapper role;
+	private String role;
 
 	@Schema(description = "Имя")
 	private String firstName;

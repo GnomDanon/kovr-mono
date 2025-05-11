@@ -38,7 +38,7 @@ public class EmployeeService {
 	}
 
 	public UserDto createEmployee(UserDto userDto) throws DoesNotExistException, EmployeeAlreadyExistsException {
-		Employees employee = create(userDto.getFirstName(), userDto.getLastName(), userDto.getBirthday(), userDto.getPhone(), Role.byLabel(userDto.getRole().getValue()), userDto.getGender() == null ? null : Gender.byLabel(userDto.getGender()));
+		Employees employee = create(userDto.getFirstName(), userDto.getLastName(), userDto.getBirthday(), userDto.getPhone(), Role.byLabel(userDto.getRole()), userDto.getGender() == null ? null : Gender.byLabel(userDto.getGender()));
 		return EmployeeMapper.map(employee);
 	}
 
