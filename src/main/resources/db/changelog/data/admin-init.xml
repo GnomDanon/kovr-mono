@@ -9,6 +9,7 @@
         <insert tableName="employees">
             <column name="first_name" value="Admin"/>
             <column name="role" value="ADMIN"/>
+            <column name="phone" value="71111111111"/>
         </insert>
     </changeSet>
 
