@@ -25,7 +25,11 @@ public class OrderItemService {
 	}
 
 	public OrderItems update(OrderItemDto updateInfo) throws OrderItemDoesNotExistsException {
-		OrderItems item = getById(updateInfo.getId());
+		Long id = updateInfo.getId();
+		if (id == null) {
+			return orderItemRepository.save(new OrderItems().setProductType(updateInfo.getProductType()).setArea(updateInfo.getArea()).setComment(updateInfo.getComment()).setServices(updateInfo.getServices() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getServices())).setContaminations(updateInfo.getContaminations() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getContaminations())));
+		}
+		OrderItems item = getById(id);
 		return orderItemRepository.save(item.setProductType(updateInfo.getProductType()).setArea(updateInfo.getArea()).setComment(updateInfo.getComment()).setServices(String.join(StringUtil.SEPARATOR, updateInfo.getServices())).setContaminations(String.join(StringUtil.SEPARATOR, updateInfo.getContaminations())));
 	}
 
