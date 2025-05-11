@@ -185,7 +185,8 @@ public class OrderService {
 				.setDeliveryDays(deliveryDays)
 				.setDeliveryTimeStart(deliverTimeStart)
 				.setDeliveryTimeEnd(deliveryTimeEnd)
-				.setDiscount(discount);
+				.setDiscount(discount)
+				.setStatus(OrderStatus.CREATED);
 
 		return create(order);
 	}
