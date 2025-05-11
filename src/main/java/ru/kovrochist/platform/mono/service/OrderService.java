@@ -75,9 +75,9 @@ public class OrderService {
 
 	public OrderDto createOrder(OrderDto order) throws DoesNotExistException {
 		DeliveryType deliveryType = DeliveryType.byLabel(order.getDeliveryType());
-		String deliverDays = String.join(StringUtil.SEPARATOR, order.getDeliveryDays());
+		String deliveryDays = order.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, order.getDeliveryDays());
 		ClientDto client = order.getClient();
-		return OrderMapper.map(create(client.getFirstName(), client.getFirstName(), order.getPhone(), order.getCity(), order.getAddress(), order.getDistrict(), order.getComment(), deliveryType, deliverDays, order.getDeliveryTimeStart(), order.getDeliveryTimeEnd(), order.getDiscount()));
+		return OrderMapper.map(create(client.getFirstName(), client.getFirstName(), order.getPhone(), order.getCity(), order.getAddress(), order.getDistrict(), order.getComment(), deliveryType, deliveryDays, order.getDeliveryTimeStart(), order.getDeliveryTimeEnd(), order.getDiscount()));
 	}
 
 	public OrderDto updateOrderItemServices(Long orderId, UpdateOrderItemDto updateInfo) throws OrderDoesNotExistException, OrderItemDoesNotExistsException {
@@ -88,7 +88,7 @@ public class OrderService {
 
 	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException {
 		itemService.update(updateInfo.getItems());
-		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), String.join(StringUtil.SEPARATOR, updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount());
+		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount());
 		return OrderMapper.map(order);
 	}
 
