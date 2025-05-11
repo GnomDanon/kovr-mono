@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import ru.kovrochist.platform.mono.security.user.CommonUserDetails;
+import ru.kovrochist.platform.mono.security.user.User;
 import ru.kovrochist.platform.mono.security.user.UserService;
 
 import java.io.IOException;
@@ -24,6 +25,8 @@ public class JwtFilter extends OncePerRequestFilter {
 
 	private final JwtService jwtService;
 	private final UserService userService;
+
+	private final User USER;
 
 	@Override
 	protected void doFilterInternal(@NonNull HttpServletRequest request,
@@ -42,6 +45,7 @@ public class JwtFilter extends OncePerRequestFilter {
 		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(commonUserDetails,
 				null, commonUserDetails.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		saveUserInfo(commonUserDetails);
 	}
 
 	private String getTokenFromRequest(HttpServletRequest request) {
@@ -49,5 +53,10 @@ public class JwtFilter extends OncePerRequestFilter {
 		if (bearerToken != null && bearerToken.startsWith(BEARER))
 			return bearerToken.substring(BEARER.length());
 		return null;
+	}
+
+	private void saveUserInfo(CommonUserDetails userDetails) {
+		USER.setId(userDetails.getId());
+		USER.setRole(userDetails.getRole());
 	}
 }

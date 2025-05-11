@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
+import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 
 import java.util.List;
 
@@ -26,5 +27,5 @@ public interface ClientApi {
 
 	@Operation(summary = "Обновление профиля клиента")
 	@GetMapping("/{clientId}")
-	ResponseEntity<ClientDto> updateClientInfo(@PathVariable Long clientId, @RequestBody ClientDto client);
+	ResponseEntity<ClientDto> updateClientInfo(@PathVariable Long clientId, @RequestBody ClientDto client) throws DoesNotExistException;
 }

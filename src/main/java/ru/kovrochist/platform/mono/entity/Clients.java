@@ -7,7 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,8 +15,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import ru.kovrochist.platform.mono.type.Gender;
+import ru.kovrochist.platform.mono.type.Role;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -62,4 +64,11 @@ public class Clients implements User {
 
 	@Column(name = "status")
 	private String status;
+
+	public Role getRole() {
+		return Role.CLIENT;
+	}
+
+	@OneToMany(mappedBy = "client_id")
+	private List<Orders> orders;
 }

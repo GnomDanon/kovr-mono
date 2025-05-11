@@ -2,18 +2,39 @@ package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.entity.Clients;
+import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
+import ru.kovrochist.platform.mono.mapper.client.ClientMapper;
 import ru.kovrochist.platform.mono.repository.ClientRepository;
+import ru.kovrochist.platform.mono.type.Gender;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ClientService {
 
 	private final ClientRepository clientRepository;
+
+	public List<ClientDto> getClients() {
+		List<Clients> clients = get();
+		return clients.stream().map(ClientMapper::map).collect(Collectors.toList());
+	}
+
+	public List<ClientDto> getClients(String search) {
+		List<Clients> clients = get(search);
+		return clients.stream().map(ClientMapper::map).collect(Collectors.toList());
+	}
+
+	public ClientDto update(Long id, ClientDto profile) throws DoesNotExistException {
+		Clients client = update(id, profile.getPhone(), profile.getFirstName(), profile.getLastName(), profile.getBirthday(), profile.getCity(), profile.getAddress(), profile.getGender(), profile.getStatus());
+		return ClientMapper.map(client);
+	}
 
 	public List<Clients> get() {
 		List<Clients> result = new ArrayList<>();
@@ -59,6 +80,13 @@ public class ClientService {
 				.setAddress(address);
 
 		return clientRepository.save(client);
+	}
+
+	public Clients update(Long id, String phone, String firstName, String lastName, Date birthday, String city, String address, String gender, String status) throws DoesNotExistException {
+		Clients client = getById(id);
+		if (client.getBirthday() != null)
+			client.setBirthday(birthday);
+		return clientRepository.save(client.setPhone(phone).setFirstName(firstName).setLastName(lastName).setCity(city).setAddress(address).setGender(Gender.byLabel(gender)).setStatus(status));
 	}
 
 	public Clients setCode(Clients client, String code) {

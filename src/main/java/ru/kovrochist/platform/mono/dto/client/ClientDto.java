@@ -16,7 +16,7 @@ public class ClientDto extends UserDto {
 	private Integer ordersCount;
 
 	@Schema(description = "Количество дней с последнего заказа")
-	private Integer daysWithoutOrders;
+	private Long daysWithoutOrders;
 
 	@Schema(description = "Статус")
 	private String status;

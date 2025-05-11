@@ -36,6 +36,6 @@ public class UserService implements UserDetailsService {
 			return EmployeeMapper.map(employee);
 		}
 		Clients client = clientService.getByPhone(phone);
-		return ClientMapper.map(client);
+		return ClientMapper.mapToUser(client);
 	}
 }
