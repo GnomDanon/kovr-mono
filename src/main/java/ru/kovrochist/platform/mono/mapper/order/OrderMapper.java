@@ -22,13 +22,13 @@ public class OrderMapper {
 				.setStatus(order.getStatus().getLabel())
 				.setItems(mapItems(order.getItems()))
 				.setComment(order.getComment())
-				.setDeliveryType(order.getDeliveryType().getLabel())
+				.setDeliveryType(order.getDeliveryType() == null ? null : order.getDeliveryType().getLabel())
 				.setCreatedAt(order.getCreatedAt())
 				.setPhone(order.getPhone())
 				.setCity(order.getCity())
 				.setAddress(order.getAddress())
 				.setDistrict(order.getDistrict())
-				.setDeliveryDays(order.getDeliveryDays().split(StringUtil.SEPARATOR))
+				.setDeliveryDays(order.getDeliveryDays() == null ? null : order.getDeliveryDays().split(StringUtil.SEPARATOR))
 				.setDeliveryTimeStart(order.getDeliveryTimeStart())
 				.setDeliveryTimeEnd(order.getDeliveryTimeEnd())
 				.setDiscount(order.getDiscount())
@@ -49,8 +49,8 @@ public class OrderMapper {
 				.setProductType(item.getProductType())
 				.setArea(item.getArea())
 				.setComment(item.getComment())
-				.setServices(item.getServices().split(StringUtil.SEPARATOR))
-				.setContaminations(item.getContaminations().split(StringUtil.SEPARATOR));
+				.setServices(item.getServices() == null ? null : item.getServices().split(StringUtil.SEPARATOR))
+				.setContaminations(item.getContaminations() == null ? null : item.getContaminations().split(StringUtil.SEPARATOR));
 	}
 
 	public static AssignedEmployeeDto[] mapEmployees(List<AssignedEmployees> employees) {
