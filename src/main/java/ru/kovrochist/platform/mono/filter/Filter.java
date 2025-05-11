@@ -21,7 +21,7 @@ public abstract class Filter {
 		String sortBy = params.get(SORT_BY);
 		String orderBy = params.get(SORT_BY);
 
-		this.search = search == null ? "" : search;
+		this.search = search == null ? "" : "%" + search + "%";
 		this.sortBy = sortBy == null ? "" : sortBy;
 		this.orderBy = Order.byValue(orderBy);
 	}

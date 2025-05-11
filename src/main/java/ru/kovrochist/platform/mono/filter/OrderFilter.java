@@ -46,8 +46,8 @@ public class OrderFilter extends Filter {
 			}
 		}
 
-		this.status = orderStatus;
-		this.deliveryType = orderDeliveryType;
-		this.district = district;
+		this.status = orderStatus.length > 0 ? orderStatus : null;
+		this.deliveryType = orderDeliveryType.length > 0 ? orderDeliveryType : null;
+		this.district = district.length > 0 ? district : null;
 	}
 }
