@@ -6,10 +6,16 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.OrderApi;
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
 import ru.kovrochist.platform.mono.dto.metadata.TypeWrapper;
+import ru.kovrochist.platform.mono.dto.order.AssignDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.order.RescheduleDto;
 import ru.kovrochist.platform.mono.dto.order.UpdateCommentDto;
 import ru.kovrochist.platform.mono.dto.order.UpdateOrderItemDto;
+import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
+import ru.kovrochist.platform.mono.exception.order.OrderDoesNotExistException;
+import ru.kovrochist.platform.mono.exception.order.OrderItemDoesNotExistsException;
+import ru.kovrochist.platform.mono.service.OrderService;
 
 import java.util.List;
 import java.util.Map;
@@ -18,9 +24,11 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class OrderController implements OrderApi {
 
+	private final OrderService orderService;
+
 	@Override
 	public ResponseEntity<List<OrderDto>> fetchOrders() {
-		return null;
+		return ResponseEntity.ok(orderService.fetchOrder());
 	}
 
 	@Override
@@ -29,47 +37,59 @@ public class OrderController implements OrderApi {
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> updateOrderStatus(Long orderId, TypeWrapper type) {
-		return null;
+	public ResponseEntity<OrderDto> getOrderById(Long id) throws OrderDoesNotExistException {
+		return ResponseEntity.ok(orderService.getOrderById(id));
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> getOrderDto(Long id) {
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<String> deleteOrder(Long id) {
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<OrderDto> updateOrderItemServices(Long orderId, UpdateOrderItemDto updateDto) {
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<OrderDto> assignEmployeeToOrder(Long orderId, AssignedEmployeeDto assignDto) {
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<String> deAssignEmployee(Long orderId, Long employeeId) {
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<AssignedEmployeeDto> updateEmployeeComment(Long orderId, UpdateCommentDto updateDto) {
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<OrderDto> rescheduleOrder(Long orderId, RescheduleDto rescheduleDto) {
-		return null;
+	public ResponseEntity<List<OrderDto>> getEmployeeOrders(Long employeeId) {
+		return ResponseEntity.ok(orderService.getEmployeeOrders(employeeId));
 	}
 
 	@Override
 	public ResponseEntity<List<OrderDto>> getClientOrders(Long clientId) {
-		return null;
+		return ResponseEntity.ok(orderService.getClientOrders(clientId));
+	}
+
+	@Override
+	public ResponseEntity<OrderDto> updateOrderStatus(Long orderId, TypeWrapper type) throws DoesNotExistException {
+		return ResponseEntity.ok(orderService.updateOrderStatus(orderId, type.getType()));
+	}
+
+	@Override
+	public ResponseEntity<OrderDto> createOrder(OrderDto order) throws DoesNotExistException {
+		return ResponseEntity.ok(orderService.createOrder(order));
+	}
+
+	@Override
+	public ResponseEntity<String> deleteOrder(Long id) {
+		orderService.remove(id);
+		return ResponseEntity.ok("ok");
+	}
+
+	@Override
+	public ResponseEntity<OrderDto> updateOrderItemServices(Long orderId, UpdateOrderItemDto updateDto) throws OrderItemDoesNotExistsException, OrderDoesNotExistException {
+		return ResponseEntity.ok(orderService.updateOrderItemServices(orderId, updateDto));
+	}
+
+	@Override
+	public ResponseEntity<OrderDto> assignEmployeeToOrder(Long orderId, AssignDto assignDto) throws EmployeeDoesNotExistException, OrderDoesNotExistException {
+		return ResponseEntity.ok(orderService.assignEmployeeToOrder(orderId, assignDto.getEmployeeId()));
+	}
+
+	@Override
+	public ResponseEntity<String> deAssignEmployee(Long orderId, Long employeeId) {
+		orderService.deAssignEmployee(orderId, employeeId);
+		return ResponseEntity.ok("ok");
+	}
+
+	@Override
+	public ResponseEntity<AssignedEmployeeDto> updateEmployeeComment(Long orderId, UpdateCommentDto updateDto) throws DoesNotExistException {
+		return ResponseEntity.ok(orderService.updateEmployeeComment(orderId, updateDto.getEmployeeId(), updateDto.getComment()));
+	}
+
+	@Override
+	public ResponseEntity<OrderDto> rescheduleOrder(Long orderId, RescheduleDto rescheduleDto) throws OrderDoesNotExistException {
+		return ResponseEntity.ok(orderService.rescheduleOrder(orderId, rescheduleDto.getDeliveryDays(), rescheduleDto.getDeliveryTimeStart(), rescheduleDto.getDeliveryTimeEnd()));
 	}
 }

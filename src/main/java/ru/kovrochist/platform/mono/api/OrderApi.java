@@ -13,15 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
 import ru.kovrochist.platform.mono.dto.metadata.TypeWrapper;
+import ru.kovrochist.platform.mono.dto.order.AssignDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.order.RescheduleDto;
 import ru.kovrochist.platform.mono.dto.order.UpdateCommentDto;
 import ru.kovrochist.platform.mono.dto.order.UpdateOrderItemDto;
+import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
+import ru.kovrochist.platform.mono.exception.order.OrderDoesNotExistException;
+import ru.kovrochist.platform.mono.exception.order.OrderItemDoesNotExistsException;
 
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/order")
+@RequestMapping("/orders")
 @Tag(name = "Заказ")
 public interface OrderApi {
 
@@ -33,16 +38,25 @@ public interface OrderApi {
 	@GetMapping("/filter")
 	ResponseEntity<List<OrderDto>> fetchFilteredOrders(@RequestParam Map<String, String> allParams);
 
-	@Operation(summary = "Обновление статуса заказа")
-	@PatchMapping("/{orderId}/status")
-	ResponseEntity<OrderDto> updateOrderStatus(@PathVariable Long orderId, @RequestBody TypeWrapper type);
-
-
-//	ResponseEntity<OrderDto> createOrder() //TODO: ???
-
 	@Operation(summary = "Получение заказа по идентификатору")
 	@GetMapping("/{id}")
-	ResponseEntity<OrderDto> getOrderDto(@PathVariable Long id);
+	ResponseEntity<OrderDto> getOrderById(@PathVariable Long id) throws OrderDoesNotExistException;
+
+	@Operation(summary = "Получение заказов сотрудника")
+	@GetMapping("/employee/{employeeId}")
+	ResponseEntity<List<OrderDto>> getEmployeeOrders(@PathVariable Long employeeId);
+
+	@Operation(summary = "Получение заказов клиента")
+	@GetMapping("/client/{clientId}")
+	ResponseEntity<List<OrderDto>> getClientOrders(@PathVariable Long clientId);
+
+	@Operation(summary = "Обновление статуса заказа")
+	@PatchMapping("/{orderId}/status")
+	ResponseEntity<OrderDto> updateOrderStatus(@PathVariable Long orderId, @RequestBody TypeWrapper type) throws DoesNotExistException;
+
+	@Operation(summary = "Создание заказа")
+	@PostMapping
+	ResponseEntity<OrderDto> createOrder(@RequestBody OrderDto order) throws DoesNotExistException;
 
 	@Operation(summary = "Удаление заказа")
 	@DeleteMapping("/{id}")
@@ -50,11 +64,11 @@ public interface OrderApi {
 
 	@Operation(summary = "Обновление услуги")
 	@PatchMapping("/{orderId}/services")
-	ResponseEntity<OrderDto> updateOrderItemServices(@PathVariable Long orderId, @RequestBody UpdateOrderItemDto updateDto);
+	ResponseEntity<OrderDto> updateOrderItemServices(@PathVariable Long orderId, @RequestBody UpdateOrderItemDto updateDto) throws OrderItemDoesNotExistsException, OrderDoesNotExistException;
 
 	@Operation(summary = "Назначение сотрудника на заказ")
 	@PostMapping("/{orderId}/assignees")
-	ResponseEntity<OrderDto> assignEmployeeToOrder(@PathVariable Long orderId, @RequestBody AssignedEmployeeDto assignDto);
+	ResponseEntity<OrderDto> assignEmployeeToOrder(@PathVariable Long orderId, @RequestBody AssignDto assignDto) throws EmployeeDoesNotExistException, OrderDoesNotExistException;
 
 	@Operation(summary = "Снятие сотрудника с заказа")
 	@DeleteMapping("/{orderId}/assignees/{employeeId}")
@@ -62,13 +76,9 @@ public interface OrderApi {
 
 	@Operation(summary = "Обновление комментарий от сотрудника")
 	@PatchMapping("/{orderId}/employee-comment")
-	ResponseEntity<AssignedEmployeeDto> updateEmployeeComment(@PathVariable Long orderId, @RequestBody UpdateCommentDto updateDto);
+	ResponseEntity<AssignedEmployeeDto> updateEmployeeComment(@PathVariable Long orderId, @RequestBody UpdateCommentDto updateDto) throws DoesNotExistException;
 
 	@Operation(summary = "Обновление планируемой даты доставки")
 	@PatchMapping("/{orderId}/schedule")
-	ResponseEntity<OrderDto> rescheduleOrder(@PathVariable Long orderId, @RequestBody RescheduleDto rescheduleDto);
-
-	@Operation(summary = "Получение заказов по идентификатору клиента")
-	@GetMapping("/client/{clientId}")
-	ResponseEntity<List<OrderDto>> getClientOrders(@PathVariable Long clientId);
+	ResponseEntity<OrderDto> rescheduleOrder(@PathVariable Long orderId, @RequestBody RescheduleDto rescheduleDto) throws OrderDoesNotExistException;
 }

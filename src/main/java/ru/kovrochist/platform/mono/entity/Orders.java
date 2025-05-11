@@ -51,9 +51,6 @@ public class Orders {
 	@Column(name = "comment")
 	private String comment;
 
-	@Column(name = "approved")
-	private Boolean approved;
-
 	@Column(name = "created_at")
 	private Date createdAt;
 

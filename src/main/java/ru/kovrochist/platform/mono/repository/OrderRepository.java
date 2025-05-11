@@ -15,4 +15,6 @@ public interface OrderRepository extends CrudRepository<Orders, Long> {
 			"where concat(o.id, ' ', o.client.firstName, ' ', o.client.lastName, ' ', o.client.phone) " +
 			"like :filter ")
 	Iterable<Orders> find(@Param("filter") String filter);
+
+	Iterable<Orders> findByClientId(Long clientId);
 }

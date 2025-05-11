@@ -3,9 +3,7 @@ package ru.kovrochist.platform.mono.dto.order;
 import lombok.Data;
 
 @Data
-public class UpdateCommentDto {
+public class AssignDto {
 
 	private Long employeeId;
-
-	private String comment;
 }

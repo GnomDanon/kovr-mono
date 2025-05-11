@@ -49,7 +49,6 @@
             <column name="address" type="VARCHAR(255)"/>
             <column name="district" type="VARCHAR(255)"/>
             <column name="comment" type="TEXT"/>
-            <column name="approved" type="BOOLEAN"/>
             <column name="created_at" type="TIMESTAMP"/>
             <column name="updated_at" type="TIMESTAMP"/>
             <column name="delivery_type" type="VARCHAR(50)"/>

@@ -11,7 +11,7 @@ import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 public class AssignedEmployeeDto {
 
 	@Schema(description = "Идентификатор")
-	private Long id;
+	private Long employeeId;
 
 	@Schema(description = "Роль")
 	private RoleWrapper role;

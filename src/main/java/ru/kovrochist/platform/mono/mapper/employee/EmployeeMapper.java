@@ -5,7 +5,6 @@ import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.entity.AssignedEmployees;
 import ru.kovrochist.platform.mono.entity.Employees;
-import ru.kovrochist.platform.mono.type.Gender;
 import ru.kovrochist.platform.mono.util.StringUtil;
 
 public class EmployeeMapper {
@@ -32,7 +31,7 @@ public class EmployeeMapper {
 		String fullName = !isFirstNameNull && !isLastNameNull ? firstName + " " + lastName : !isFirstNameNull ? firstName : !isLastNameNull ? lastName : "";
 
 		return new AssignedEmployeeDto()
-				.setId(employee.getId())
+				.setEmployeeId(employee.getId())
 				.setRole(new RoleWrapper().setValue(employee.getRole().getValue()))
 				.setFullName(fullName)
 				.setComment(assigned.getComment());

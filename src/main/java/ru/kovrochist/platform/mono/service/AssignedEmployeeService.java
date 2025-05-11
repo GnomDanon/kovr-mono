@@ -2,6 +2,7 @@ package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
 import ru.kovrochist.platform.mono.entity.AssignedEmployees;
 import ru.kovrochist.platform.mono.entity.Employees;
 import ru.kovrochist.platform.mono.entity.Orders;
@@ -46,5 +47,20 @@ public class AssignedEmployeeService {
 		}
 
 		return result;
+	}
+
+	public void remove(Long orderId, Long employeeId) {
+		AssignedEmployees employee;
+		try {
+			employee = get(employeeId, orderId);
+		} catch (DoesNotExistException e) {
+			return;
+		}
+		assignedEmployeeRepository.delete(employee);
+	}
+
+	public AssignedEmployees updateComment(Long orderId, Long employeeId, String comment) throws DoesNotExistException {
+		AssignedEmployees employee = get(employeeId, orderId);
+		return assignedEmployeeRepository.save(employee.setComment(comment));
 	}
 }
