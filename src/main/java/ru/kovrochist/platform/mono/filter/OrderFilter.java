@@ -4,7 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.kovrochist.platform.mono.type.DeliveryType;
 import ru.kovrochist.platform.mono.type.OrderStatus;
+import ru.kovrochist.platform.mono.util.StringUtil;
 
+import java.util.Arrays;
 import java.util.Map;
 
 @Getter
@@ -14,34 +16,38 @@ public class OrderFilter extends Filter {
 	public static final String DELIVERY_TYPE = "deliveryType";
 	public static final String DISTRICT = "district";
 
-	private final OrderStatus status;
-	private final DeliveryType deliveryType;
-	private final String district;
+	private final OrderStatus[] status;
+	private final DeliveryType[] deliveryType;
+	private final String[] district;
 
 	public OrderFilter(Map<String, String> params) {
 		super(params);
 
-		String status = params.get(STATUS);
-		String deliveryType = params.get(DELIVERY_TYPE);
-		String district = params.get(DISTRICT);
+		String[] status = params.get(STATUS) == null ? new String[]{} : params.get(STATUS).split(StringUtil.SEPARATOR);
+		String[] deliveryType = params.get(DELIVERY_TYPE) == null ? new String[]{} : params.get(DELIVERY_TYPE).split(StringUtil.SEPARATOR);
+		String[] district = params.get(DISTRICT) == null ? new String[]{} : params.get(DISTRICT).split(StringUtil.SEPARATOR);
 
-		OrderStatus orderStatus;
-		DeliveryType orderDeliveryType;
+		OrderStatus[] orderStatus = new OrderStatus[status.length];
+		DeliveryType[] orderDeliveryType = new DeliveryType[deliveryType.length];
 
-		try {
-			orderStatus = OrderStatus.byLabel(status);
-		} catch (Exception e) {
-			orderStatus = null;
+		for (int i = 0; i < status.length; i++) {
+			try {
+				orderStatus[i] = OrderStatus.byLabel(status[i]);
+			} catch (Exception e) {
+				orderStatus[i] = null;
+			}
 		}
 
-		try {
-			orderDeliveryType = DeliveryType.byLabel(deliveryType);
-		} catch (Exception e) {
-			orderDeliveryType = null;
+		for (int i = 0; i < orderDeliveryType.length; i++) {
+			try {
+				orderDeliveryType[i] = DeliveryType.byLabel(deliveryType[i]);
+			} catch (Exception e) {
+				orderDeliveryType[i] = null;
+			}
 		}
 
 		this.status = orderStatus;
 		this.deliveryType = orderDeliveryType;
-		this.district = district == null ? "" : district;
+		this.district = district;
 	}
 }

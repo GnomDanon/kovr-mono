@@ -22,8 +22,8 @@ public interface OrderRepository extends CrudRepository<Orders, Long> {
 
 	@Query("select o from Orders o " +
 			"where lower(concat(o.id, ' ', coalesce(o.client.firstName, ''), ' ', coalesce(o.phone, ''))) like lower(:search) " +
-			"and (:status = null or o.status = :status) " +
-			"and (:deliveryType = null or o.deliveryType = :deliveryType) " +
-			"and lower(coalesce(o.district, '')) = lower(:district) ")
-	Iterable<Orders> find(@Param("search") String search, @Param("status") OrderStatus status, @Param("deliveryType") DeliveryType deliveryType, @Param("district") String district);
+			"and (:#{#status == null || #status.length == 0} = true or o.status in :status) " +
+			"and (:#{#deliveryType == null || #deliveryType.length == 0} = true or o.deliveryType in :deliveryType) " +
+			"and (:#{#district == null || #district.length == 0} = true or o.district in :district) ")
+	Iterable<Orders> find(@Param("search") String search, @Param("status") OrderStatus[] status, @Param("deliveryType") DeliveryType[] deliveryType, @Param("district") String[] district);
 }
