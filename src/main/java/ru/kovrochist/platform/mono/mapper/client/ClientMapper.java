@@ -29,7 +29,7 @@ public class ClientMapper {
 
 	public static ClientDto map(Clients client) {
 		ClientDto clientDto = new ClientDto()
-				.setOrdersCount(client.getOrders().size())
+				.setOrdersCount(client.getOrders() == null ? 0 : client.getOrders().size())
 				.setDaysWithoutOrders(getDaysWithoutOrders(client.getOrders()))
 				.setStatus(client.getStatus());
 
@@ -47,6 +47,8 @@ public class ClientMapper {
 	}
 
 	private static Long getDaysWithoutOrders(List<Orders> orders) {
+		if (orders == null)
+			return 0L;
 		Date today = new Date();
 		return orders.stream()
 				.map(order -> TimeUnit.MILLISECONDS.toDays(Math.abs(order.getUpdatedAt().getTime() - today.getTime())))
