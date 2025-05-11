@@ -17,7 +17,7 @@ public enum Order {
 	}
 
 	public static Order byValue(String value) {
-		if (value.equals(_DESC_))
+		if (value != null && value.equals(_DESC_))
 			return Order.DESC;
 		return Order.ASC;
 	}
