@@ -55,11 +55,12 @@ public class OrderService {
 		return assignedEmployeeService.getOrdersByEmployeeId(employeeId);
 	}
 
-	public Orders create(Clients client, String city, String address, String comment) {
+	public Orders create(Clients client, String phone, String city, String address, String comment) {
 		Date now = new Date();
 
 		Orders order = new Orders()
 				.setClient(client)
+				.setPhone(phone)
 				.setCity(city)
 				.setAddress(address)
 				.setComment(comment)

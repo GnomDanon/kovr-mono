@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
 import ru.kovrochist.platform.mono.dto.metadata.TypeWrapper;
-import ru.kovrochist.platform.mono.dto.order.AssignEmployeeDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.order.RescheduleDto;
 import ru.kovrochist.platform.mono.dto.order.UpdateCommentDto;
@@ -54,7 +54,7 @@ public interface OrderApi {
 
 	@Operation(summary = "Назначение сотрудника на заказ")
 	@PostMapping("/{orderId}/assignees")
-	ResponseEntity<OrderDto> assignEmployeeToOrder(@PathVariable Long orderId, @RequestBody AssignEmployeeDto assignDto);
+	ResponseEntity<OrderDto> assignEmployeeToOrder(@PathVariable Long orderId, @RequestBody AssignedEmployeeDto assignDto);
 
 	@Operation(summary = "Снятие сотрудника с заказа")
 	@DeleteMapping("/{orderId}/assignees/{employeeId}")
@@ -62,7 +62,7 @@ public interface OrderApi {
 
 	@Operation(summary = "Обновление комментарий от сотрудника")
 	@PatchMapping("/{orderId}/employee-comment")
-	ResponseEntity<AssignEmployeeDto> updateEmployeeComment(@PathVariable Long orderId, @RequestBody UpdateCommentDto updateDto);
+	ResponseEntity<AssignedEmployeeDto> updateEmployeeComment(@PathVariable Long orderId, @RequestBody UpdateCommentDto updateDto);
 
 	@Operation(summary = "Обновление планируемой даты доставки")
 	@PatchMapping("/{orderId}/schedule")

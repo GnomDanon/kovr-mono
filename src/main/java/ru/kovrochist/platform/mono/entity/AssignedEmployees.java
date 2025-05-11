@@ -35,4 +35,7 @@ public class AssignedEmployees {
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private Orders order;
+
+	@Column(name = "comment")
+	private String comment;
 }

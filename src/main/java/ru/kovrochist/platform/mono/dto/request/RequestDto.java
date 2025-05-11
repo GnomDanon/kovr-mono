@@ -9,9 +9,6 @@ import lombok.experimental.Accessors;
 @Schema(description = "Заявка")
 public class RequestDto {
 
-	@Schema(description = "Идентификатор заявки")
-	private Long id;
-
 	@Schema(description = "Номер телефона")
 	private String phone;
 

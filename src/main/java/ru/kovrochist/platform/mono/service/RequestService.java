@@ -2,17 +2,13 @@ package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.request.RequestDto;
 import ru.kovrochist.platform.mono.entity.Clients;
 import ru.kovrochist.platform.mono.entity.Orders;
-import ru.kovrochist.platform.mono.exception.DoesNotExistException;
-import ru.kovrochist.platform.mono.exception.ResourceConflictException;
-import ru.kovrochist.platform.mono.exception.order.CannotRejectException;
-import ru.kovrochist.platform.mono.exception.order.OrderDoesNotExistException;
-import ru.kovrochist.platform.mono.mapper.request.RequestMapper;
-import ru.kovrochist.platform.mono.type.OrderStatus;
-
-import java.util.UUID;
+import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
+import ru.kovrochist.platform.mono.mapper.order.OrderMapper;
+import ru.kovrochist.platform.mono.security.user.User;
 
 @Service
 @RequiredArgsConstructor
@@ -21,16 +17,25 @@ public class RequestService {
 	private final OrderService orderService;
 	private final ClientService clientService;
 
-	public Orders create(String phone, String firstName, String lastName, String city, String address, String comment) {
-		Clients client = clientService.getByPhone(phone);
+	private final User USER;
 
-		if (client == null)
-			client = clientService.create(phone, firstName, lastName, city, address);
-
-		return orderService.create(client, city, address, comment);
+	public OrderDto create(RequestDto request) {
+		return create(request.getPhone(), request.getFirstName(), request.getLastName(), request.getCity(), request.getAddress(), request.getComment());
 	}
 
-	public Orders update(RequestDto request) throws OrderDoesNotExistException {
-		return orderService.update(request.getId(), request.getCity(), request.getAddress(), request.getComment());
+	public OrderDto create(String phone, String firstName, String lastName, String city, String address, String comment) {
+		Long userId = USER.getId();
+		Clients client;
+		if (userId != null) {
+			try {
+				client = clientService.getById(userId);
+			} catch (ClientDoesNotExistException e) {
+				client = null;
+			}
+		} else {
+			client = clientService.create(phone, firstName, lastName, city, address);
+		}
+		Orders order = orderService.create(client, phone, city, address, comment);
+		return OrderMapper.map(order);
 	}
 }

@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.OrderApi;
+import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
 import ru.kovrochist.platform.mono.dto.metadata.TypeWrapper;
-import ru.kovrochist.platform.mono.dto.order.AssignEmployeeDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.order.RescheduleDto;
 import ru.kovrochist.platform.mono.dto.order.UpdateCommentDto;
@@ -49,7 +49,7 @@ public class OrderController implements OrderApi {
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> assignEmployeeToOrder(Long orderId, AssignEmployeeDto assignDto) {
+	public ResponseEntity<OrderDto> assignEmployeeToOrder(Long orderId, AssignedEmployeeDto assignDto) {
 		return null;
 	}
 
@@ -59,7 +59,7 @@ public class OrderController implements OrderApi {
 	}
 
 	@Override
-	public ResponseEntity<AssignEmployeeDto> updateEmployeeComment(Long orderId, UpdateCommentDto updateDto) {
+	public ResponseEntity<AssignedEmployeeDto> updateEmployeeComment(Long orderId, UpdateCommentDto updateDto) {
 		return null;
 	}
 

@@ -93,6 +93,7 @@
             </column>
             <column name="employee_id" type="BIGINT"/>
             <column name="order_id" type="BIGINT"/>
+            <column name="comment" type="TEXT"/>
         </createTable>
         <addForeignKeyConstraint baseTableName="assigned_employees"
                                  baseColumnNames="employee_id"

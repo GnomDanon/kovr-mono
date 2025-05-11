@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import ru.kovrochist.platform.mono.type.DeliveryType;
 import ru.kovrochist.platform.mono.type.OrderStatus;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -81,4 +83,10 @@ public class Orders {
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Clients client;
+
+	@OneToMany(mappedBy = "order")
+	private List<OrderItems> items;
+
+	@OneToMany(mappedBy = "order")
+	private List<AssignedEmployees> employees;
 }
