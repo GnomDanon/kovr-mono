@@ -13,13 +13,13 @@ public enum DeliveryDay {
 	SATURDAY(DeliveryDay._SATURDAY_),
 	SUNDAY(DeliveryDay._SUNDAY_);
 
-	private static final String _MONDAY_ = "Понедельник";
-	private static final String _TUESDAY_ = "Вторник";
-	private static final String _WEDNESDAY_ = "Среда";
-	private static final String _THURSDAY_ = "Четверг";
-	private static final String _FRIDAY_ = "Пятница";
-	private static final String _SATURDAY_ = "Суббота";
-	private static final String _SUNDAY_ = "Воскресенье";
+	private static final String _MONDAY_ = "Пн";
+	private static final String _TUESDAY_ = "Вт";
+	private static final String _WEDNESDAY_ = "Ср";
+	private static final String _THURSDAY_ = "Чт";
+	private static final String _FRIDAY_ = "Пт";
+	private static final String _SATURDAY_ = "Сб";
+	private static final String _SUNDAY_ = "Вс";
 
 	private final String label;
 

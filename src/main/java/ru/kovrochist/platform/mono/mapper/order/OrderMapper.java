@@ -8,8 +8,10 @@ import ru.kovrochist.platform.mono.entity.OrderItems;
 import ru.kovrochist.platform.mono.entity.Orders;
 import ru.kovrochist.platform.mono.mapper.client.ClientMapper;
 import ru.kovrochist.platform.mono.mapper.employee.EmployeeMapper;
+import ru.kovrochist.platform.mono.type.DeliveryDay;
 import ru.kovrochist.platform.mono.util.StringUtil;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class OrderMapper {
@@ -28,7 +30,7 @@ public class OrderMapper {
 				.setCity(order.getCity())
 				.setAddress(order.getAddress())
 				.setDistrict(order.getDistrict())
-				.setDeliveryDays(order.getDeliveryDays() == null ? null : order.getDeliveryDays().split(StringUtil.SEPARATOR))
+				.setDeliveryDays(order.getDeliveryDays() == null ? null : getDeliveryDays(order.getDeliveryDays()))
 				.setDeliveryTimeStart(order.getDeliveryTimeStart())
 				.setDeliveryTimeEnd(order.getDeliveryTimeEnd())
 				.setDiscount(order.getDiscount())
@@ -60,5 +62,10 @@ public class OrderMapper {
 		return employees.stream()
 				.map(EmployeeMapper::mapAssigned)
 				.toArray(AssignedEmployeeDto[]::new);
+	}
+
+	public static String[] getDeliveryDays(String deliveryDays) {
+		String[] labels = deliveryDays.split(StringUtil.SEPARATOR);
+		return Arrays.stream(labels).map(label -> DeliveryDay.valueOf(label).getLabel()).toArray(String[]::new);
 	}
 }
