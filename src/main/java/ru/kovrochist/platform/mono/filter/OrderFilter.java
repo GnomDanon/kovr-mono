@@ -1,12 +1,10 @@
 package ru.kovrochist.platform.mono.filter;
 
 import lombok.Getter;
-import lombok.Setter;
 import ru.kovrochist.platform.mono.type.DeliveryType;
 import ru.kovrochist.platform.mono.type.OrderStatus;
 import ru.kovrochist.platform.mono.util.StringUtil;
 
-import java.util.Arrays;
 import java.util.Map;
 
 @Getter
@@ -33,21 +31,30 @@ public class OrderFilter extends Filter {
 		for (int i = 0; i < status.length; i++) {
 			try {
 				orderStatus[i] = OrderStatus.byLabel(status[i]);
-			} catch (Exception e) {
-				orderStatus[i] = null;
+			} catch (Exception ignored) {
 			}
 		}
 
 		for (int i = 0; i < orderDeliveryType.length; i++) {
 			try {
 				orderDeliveryType[i] = DeliveryType.byLabel(deliveryType[i]);
-			} catch (Exception e) {
-				orderDeliveryType[i] = null;
+			} catch (Exception ignored) {
 			}
 		}
 
-		this.status = orderStatus.length > 0 ? orderStatus : null;
-		this.deliveryType = orderDeliveryType.length > 0 ? orderDeliveryType : null;
-		this.district = district.length > 0 ? district : null;
+		this.status = validate(orderStatus) ? orderStatus : null;
+		this.deliveryType = validate(orderDeliveryType) ? orderDeliveryType : null;
+		this.district = validate(district) ? district : null;
+	}
+
+	private boolean validate(Object[] array) {
+		boolean flag = true;
+		for (Object obj : array) {
+			if (obj != null) {
+				flag = false;
+				break;
+			}
+		}
+		return !flag;
 	}
 }

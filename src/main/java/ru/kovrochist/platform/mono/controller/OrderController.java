@@ -35,8 +35,7 @@ public class OrderController implements OrderApi {
 
 	@Override
 	public ResponseEntity<List<OrderDto>> fetchFilteredOrders(Map<String, String> allParams) {
-//		return ResponseEntity.ok(orderService.getOrders(new OrderFilter(allParams)));
-		return ResponseEntity.ok(orderService.fetchOrder());
+		return ResponseEntity.ok(orderService.getOrders(new OrderFilter(allParams)));
 	}
 
 	@Override
