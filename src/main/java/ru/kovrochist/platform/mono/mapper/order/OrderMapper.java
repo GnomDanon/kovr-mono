@@ -6,6 +6,7 @@ import ru.kovrochist.platform.mono.dto.order.OrderItemDto;
 import ru.kovrochist.platform.mono.entity.AssignedEmployees;
 import ru.kovrochist.platform.mono.entity.OrderItems;
 import ru.kovrochist.platform.mono.entity.Orders;
+import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.mapper.client.ClientMapper;
 import ru.kovrochist.platform.mono.mapper.employee.EmployeeMapper;
 import ru.kovrochist.platform.mono.type.DeliveryDay;
@@ -67,5 +68,13 @@ public class OrderMapper {
 	public static String[] getDeliveryDays(String deliveryDays) {
 		String[] labels = deliveryDays.split(StringUtil.SEPARATOR);
 		return Arrays.stream(labels).map(label -> DeliveryDay.valueOf(label).getLabel()).toArray(String[]::new);
+	}
+
+	public static String getDeliveryDays(String[] deliveryDays) throws DoesNotExistException {
+		String[] days = new String[deliveryDays.length];
+		for (int i = 0; i < deliveryDays.length; i++) {
+			days[i] = DeliveryDay.byLabel(deliveryDays[i]).name();
+		}
+		return String.join(StringUtil.SEPARATOR, days);
 	}
 }

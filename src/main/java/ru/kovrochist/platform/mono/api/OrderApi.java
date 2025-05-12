@@ -85,5 +85,5 @@ public interface OrderApi {
 
 	@Operation(summary = "Обновление планируемой даты доставки")
 	@PatchMapping("/{orderId}/schedule")
-	ResponseEntity<OrderDto> rescheduleOrder(@PathVariable Long orderId, @RequestBody RescheduleDto rescheduleDto) throws OrderDoesNotExistException;
+	ResponseEntity<OrderDto> rescheduleOrder(@PathVariable Long orderId, @RequestBody RescheduleDto rescheduleDto) throws DoesNotExistException;
 }

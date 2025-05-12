@@ -75,7 +75,7 @@ public class OrderService {
 
 	public OrderDto createOrder(OrderDto order) throws DoesNotExistException {
 		DeliveryType deliveryType = DeliveryType.byLabel(order.getDeliveryType());
-		String deliveryDays = order.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, order.getDeliveryDays());
+		String deliveryDays = order.getDeliveryDays() == null ? null : OrderMapper.getDeliveryDays(order.getDeliveryDays());
 		String sources = order.getSources() == null ? null : String.join(StringUtil.SEPARATOR, order.getSources());
 		OrderStatus status = order.getStatus() == null ? OrderStatus.CREATED : OrderStatus.byLabel(order.getStatus());
 		ClientDto client = order.getClient();
@@ -92,7 +92,7 @@ public class OrderService {
 	}
 
 	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException {
-		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount(), updateInfo.getSources() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getSources()));
+		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : OrderMapper.getDeliveryDays(updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount(), updateInfo.getSources() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getSources()));
 		order = assignEmployeeToOrder(order, USER.getId());
 		List<OrderItems> items = itemService.update(order, updateInfo.getItems());
 		return OrderMapper.map(order.setItems(items));
@@ -124,8 +124,8 @@ public class OrderService {
 		return EmployeeMapper.mapAssigned(assignedEmployee);
 	}
 
-	public OrderDto rescheduleOrder(Long orderId, String[] deliveryDays, Date deliveryTimeStart, Date deliveryTimeEnd) throws OrderDoesNotExistException {
-		return OrderMapper.map(updateDelivery(orderId, String.join(StringUtil.SEPARATOR, deliveryDays), deliveryTimeStart, deliveryTimeEnd));
+	public OrderDto rescheduleOrder(Long orderId, String[] deliveryDays, Date deliveryTimeStart, Date deliveryTimeEnd) throws DoesNotExistException {
+		return OrderMapper.map(updateDelivery(orderId, OrderMapper.getDeliveryDays(deliveryDays), deliveryTimeStart, deliveryTimeEnd));
 	}
 
 	public List<Orders> get() {

@@ -97,7 +97,7 @@ public class OrderController implements OrderApi {
 	}
 
 	@Override
-	public ResponseEntity<OrderDto> rescheduleOrder(Long orderId, RescheduleDto rescheduleDto) throws OrderDoesNotExistException {
+	public ResponseEntity<OrderDto> rescheduleOrder(Long orderId, RescheduleDto rescheduleDto) throws DoesNotExistException {
 		return ResponseEntity.ok(orderService.rescheduleOrder(orderId, rescheduleDto.getDeliveryDays(), rescheduleDto.getDeliveryTimeStart(), rescheduleDto.getDeliveryTimeEnd()));
 	}
 }
