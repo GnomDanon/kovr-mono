@@ -1,0 +1,1457 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <changeSet id="insert-clients" author="Daniil">
+        <insert tableName="clients">
+            <column name="id" value="1"/>
+            <column name="first_name" value="Мария"/>
+            <column name="last_name" value="Потапова"/>
+            <column name="phone" value="70487647593"/>
+            <column name="code" value="C0001"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="алл. Детская, д. 51 стр. 24"/>
+            <column name="district" value="Октябрьский"/>
+            <column name="gender" value="Женский"/>
+            <column name="birthday" value="2000-03-12T09:47:04"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="2"/>
+            <column name="first_name" value="Анжела"/>
+            <column name="last_name" value="Бирюкова"/>
+            <column name="phone" value="77815659387"/>
+            <column name="code" value="C0002"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ш. Троицкое, д. 280 к. 1/8"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Женский"/>
+            <column name="birthday" value="2003-07-16T04:28:40"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="3"/>
+            <column name="first_name" value="Лора"/>
+            <column name="last_name" value="Мартынов"/>
+            <column name="phone" value="71393328711"/>
+            <column name="code" value="C0003"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пер. Пожарского, д. 548 к. 985"/>
+            <column name="district" value="Октябрьский"/>
+            <column name="gender" value="Женский"/>
+            <column name="birthday" value="1982-04-11T16:17:53"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="4"/>
+            <column name="first_name" value="Элеонора"/>
+            <column name="last_name" value="Ковалева"/>
+            <column name="phone" value="74719659342"/>
+            <column name="code" value="C0004"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ш. Техническое, д. 894"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Женский"/>
+            <column name="birthday" value="1977-09-17T22:27:53"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="5"/>
+            <column name="first_name" value="Бронислав"/>
+            <column name="last_name" value="Щербакова"/>
+            <column name="phone" value="72018684833"/>
+            <column name="code" value="C0005"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пер. Маркса Карла, д. 8 стр. 6/2"/>
+            <column name="district" value="Октябрьский"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="1986-05-25T22:38:15"/>
+            <column name="status" value="Непостоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="6"/>
+            <column name="first_name" value="Юлий"/>
+            <column name="last_name" value="Жуков"/>
+            <column name="phone" value="79533041352"/>
+            <column name="code" value="C0006"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пр. Овражный, д. 123 к. 401"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="1995-12-29T16:27:38"/>
+            <column name="status" value="Непостоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="7"/>
+            <column name="first_name" value="Фирс"/>
+            <column name="last_name" value="Журавлев"/>
+            <column name="phone" value="71510903217"/>
+            <column name="code" value="C0007"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="бул. Транспортный, д. 286"/>
+            <column name="district" value="Октябрьский"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="2003-10-21T14:39:48"/>
+            <column name="status" value="Непостоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="8"/>
+            <column name="first_name" value="Казимир"/>
+            <column name="last_name" value="Кудрявцев"/>
+            <column name="phone" value="71456208709"/>
+            <column name="code" value="C0008"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="бул. Черняховского, д. 64"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="2006-02-18T20:23:03"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="9"/>
+            <column name="first_name" value="Олимпиада"/>
+            <column name="last_name" value="Филатова"/>
+            <column name="phone" value="782302258419"/>
+            <column name="code" value="C0009"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="бул. Ягодный, д. 976 к. 6"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Женский"/>
+            <column name="birthday" value="1988-08-02T06:02:57"/>
+            <column name="status" value="Непостоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="10"/>
+            <column name="first_name" value="Зоя"/>
+            <column name="last_name" value="Тимофеев"/>
+            <column name="phone" value="70715084237"/>
+            <column name="code" value="C0010"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пер. Высотный, д. 3 к. 7"/>
+            <column name="district" value="Октябрьский"/>
+            <column name="gender" value="Женский"/>
+            <column name="birthday" value="2000-10-30T05:35:39"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="11"/>
+            <column name="first_name" value="Павел"/>
+            <column name="last_name" value="Федосеева"/>
+            <column name="phone" value="70935233769"/>
+            <column name="code" value="C0011"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ул. Короленко, д. 1/3 к. 2/5"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="1999-03-26T12:19:59"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="12"/>
+            <column name="first_name" value="Галина"/>
+            <column name="last_name" value="Рожков"/>
+            <column name="phone" value="77890075470"/>
+            <column name="code" value="C0012"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="алл. Народная, д. 70 к. 6/1"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Женский"/>
+            <column name="birthday" value="1982-08-17T23:11:51"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="13"/>
+            <column name="first_name" value="Агафон"/>
+            <column name="last_name" value="Рыбакова"/>
+            <column name="phone" value="78913193442"/>
+            <column name="code" value="C0013"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пр. М.Горького, д. 804"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="2002-07-30T05:57:02"/>
+            <column name="status" value="Непостоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="14"/>
+            <column name="first_name" value="Виктор"/>
+            <column name="last_name" value="Дементьева"/>
+            <column name="phone" value="72851240003"/>
+            <column name="code" value="C0014"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="наб. Островского, д. 1 стр. 8/7"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="1988-01-14T00:18:15"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="15"/>
+            <column name="first_name" value="Тимофей"/>
+            <column name="last_name" value="Ефимов"/>
+            <column name="phone" value="76940224555"/>
+            <column name="code" value="C0015"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ул. Титова, д. 304 стр. 59"/>
+            <column name="district" value="Ленинский"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="1987-08-23T13:34:31"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="16"/>
+            <column name="first_name" value="Марфа"/>
+            <column name="last_name" value="Ковалева"/>
+            <column name="phone" value="74173042814"/>
+            <column name="code" value="C0016"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ш. Урицкого, д. 7 к. 818"/>
+            <column name="district" value="Центральный"/>
+            <column name="gender" value="Женский"/>
+            <column name="birthday" value="1991-06-29T02:22:44"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="17"/>
+            <column name="first_name" value="Мартын"/>
+            <column name="last_name" value="Крюкова"/>
+            <column name="phone" value="71717604522"/>
+            <column name="code" value="C0017"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пер. Менделеева, д. 411 стр. 70"/>
+            <column name="district" value="Центральный"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="1975-08-18T22:38:25"/>
+            <column name="status" value="Непостоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="18"/>
+            <column name="first_name" value="Валерьян"/>
+            <column name="last_name" value="Устинов"/>
+            <column name="phone" value="78477936153"/>
+            <column name="code" value="C0018"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пер. Ольховый, д. 4/6 к. 910"/>
+            <column name="district" value="Центральный"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="1990-09-23T19:26:52"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="19"/>
+            <column name="first_name" value="Егор"/>
+            <column name="last_name" value="Фролов"/>
+            <column name="phone" value="76430392137"/>
+            <column name="code" value="C0019"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="наб. Короткая, д. 397 к. 7/9"/>
+            <column name="district" value="Центральный"/>
+            <column name="gender" value="Мужской"/>
+            <column name="birthday" value="1992-03-21T01:33:25"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+        <insert tableName="clients">
+            <column name="id" value="20"/>
+            <column name="first_name" value="Лидия"/>
+            <column name="last_name" value="Пахомова"/>
+            <column name="phone" value="77389305550"/>
+            <column name="code" value="C0020"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="алл. Иркутская, д. 56 стр. 2/2"/>
+            <column name="district" value="Центральный"/>
+            <column name="gender" value="Женский"/>
+            <column name="birthday" value="1992-12-08T13:24:09"/>
+            <column name="status" value="Постоянный"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert-employees" author="Daniil">
+        <insert tableName="employees">
+            <column name="id" value="1"/>
+            <column name="first_name" value="Алина"/>
+            <column name="last_name" value="Титов"/>
+            <column name="birthday" value="1980-09-05T15:11:29"/>
+            <column name="phone" value="7990407522758"/>
+            <column name="code" value="E0001"/>
+            <column name="role" value="OPERATOR"/>
+            <column name="gender" value="Женский"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Уволен"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="2"/>
+            <column name="first_name" value="Наум"/>
+            <column name="last_name" value="Шарапова"/>
+            <column name="birthday" value="2001-06-01T09:57:53"/>
+            <column name="phone" value="79910916348"/>
+            <column name="code" value="E0002"/>
+            <column name="role" value="OPERATOR"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="false"/>
+            <column name="status" value="Уволен"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="3"/>
+            <column name="first_name" value="Эммануил"/>
+            <column name="last_name" value="Щукин"/>
+            <column name="birthday" value="1998-03-06T10:58:39"/>
+            <column name="phone" value="7993990024894"/>
+            <column name="code" value="E0003"/>
+            <column name="role" value="OPERATOR"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="false"/>
+            <column name="status" value="Уволен"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="4"/>
+            <column name="first_name" value="Мариан"/>
+            <column name="last_name" value="Титов"/>
+            <column name="birthday" value="1998-12-12T05:34:48"/>
+            <column name="phone" value="7997466022345"/>
+            <column name="code" value="E0004"/>
+            <column name="role" value="COURIER"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Работает"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="5"/>
+            <column name="first_name" value="Аполлон"/>
+            <column name="last_name" value="Бурова"/>
+            <column name="birthday" value="1967-10-23T02:45:09"/>
+            <column name="phone" value="7996279125609"/>
+            <column name="code" value="E0005"/>
+            <column name="role" value="ADMIN"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="false"/>
+            <column name="status" value="Уволен"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="6"/>
+            <column name="first_name" value="Рубен"/>
+            <column name="last_name" value="Мамонтов"/>
+            <column name="birthday" value="1996-08-03T13:21:43"/>
+            <column name="phone" value="7991720099251"/>
+            <column name="code" value="E0006"/>
+            <column name="role" value="ADMIN"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Работает"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="7"/>
+            <column name="first_name" value="Ульян"/>
+            <column name="last_name" value="Маркова"/>
+            <column name="birthday" value="1988-12-14T10:53:29"/>
+            <column name="phone" value="7996710979519"/>
+            <column name="code" value="E0007"/>
+            <column name="role" value="ADMIN"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="false"/>
+            <column name="status" value="Уволен"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="8"/>
+            <column name="first_name" value="Лавр"/>
+            <column name="last_name" value="Моисеева"/>
+            <column name="birthday" value="1974-01-05T06:55:53"/>
+            <column name="phone" value="7994183067537"/>
+            <column name="code" value="E0008"/>
+            <column name="role" value="ADMIN"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="false"/>
+            <column name="status" value="Уволен"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="9"/>
+            <column name="first_name" value="Людмила"/>
+            <column name="last_name" value="Елисеева"/>
+            <column name="birthday" value="1970-06-28T13:11:51"/>
+            <column name="phone" value="7990740899331"/>
+            <column name="code" value="E0009"/>
+            <column name="role" value="COURIER"/>
+            <column name="gender" value="Женский"/>
+            <column name="on_shift" value="false"/>
+            <column name="status" value="Работает"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="10"/>
+            <column name="first_name" value="Прасковья"/>
+            <column name="last_name" value="Гаврилова"/>
+            <column name="birthday" value="2000-12-31T21:28:59"/>
+            <column name="phone" value="7998412696116"/>
+            <column name="code" value="E0010"/>
+            <column name="role" value="OPERATOR"/>
+            <column name="gender" value="Женский"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Уволен"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="11"/>
+            <column name="first_name" value="Ангелина"/>
+            <column name="last_name" value="Лазарев"/>
+            <column name="birthday" value="1993-08-12T20:50:03"/>
+            <column name="phone" value="7990766075415"/>
+            <column name="code" value="E0011"/>
+            <column name="role" value="ADMIN"/>
+            <column name="gender" value="Женский"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Работает"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="12"/>
+            <column name="first_name" value="Анжела"/>
+            <column name="last_name" value="Николаев"/>
+            <column name="birthday" value="1989-10-23T06:20:05"/>
+            <column name="phone" value="7995520351923"/>
+            <column name="code" value="E0012"/>
+            <column name="role" value="ADMIN"/>
+            <column name="gender" value="Женский"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Уволен"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="13"/>
+            <column name="first_name" value="Авдей"/>
+            <column name="last_name" value="Исаков"/>
+            <column name="birthday" value="1973-09-29T19:57:41"/>
+            <column name="phone" value="7994509322717"/>
+            <column name="code" value="E0013"/>
+            <column name="role" value="COURIER"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="false"/>
+            <column name="status" value="Работает"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="14"/>
+            <column name="first_name" value="Мечислав"/>
+            <column name="last_name" value="Быкова"/>
+            <column name="birthday" value="1982-12-08T00:55:37"/>
+            <column name="phone" value="7990355744852"/>
+            <column name="code" value="E0014"/>
+            <column name="role" value="ADMIN"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Работает"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="15"/>
+            <column name="first_name" value="Христофор"/>
+            <column name="last_name" value="Сорокин"/>
+            <column name="birthday" value="1972-05-05T14:59:58"/>
+            <column name="phone" value="799426223583"/>
+            <column name="code" value="E0015"/>
+            <column name="role" value="ADMIN"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Работает"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="16"/>
+            <column name="first_name" value="Изот"/>
+            <column name="last_name" value="Лукина"/>
+            <column name="birthday" value="1977-11-17T22:30:26"/>
+            <column name="phone" value="79975602906112"/>
+            <column name="code" value="E0016"/>
+            <column name="role" value="COURIER"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Уволен"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="17"/>
+            <column name="first_name" value="Пантелеймон"/>
+            <column name="last_name" value="Моисеев"/>
+            <column name="birthday" value="2002-11-04T14:46:10"/>
+            <column name="phone" value="72964513758"/>
+            <column name="code" value="E0017"/>
+            <column name="role" value="OPERATOR"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Работает"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="18"/>
+            <column name="first_name" value="Арефий"/>
+            <column name="last_name" value="Ситников"/>
+            <column name="birthday" value="1993-03-03T10:25:16"/>
+            <column name="phone" value="76573547121"/>
+            <column name="code" value="E0018"/>
+            <column name="role" value="COURIER"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="false"/>
+            <column name="status" value="В отпуске"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="19"/>
+            <column name="first_name" value="Кирилл"/>
+            <column name="last_name" value="Цветков"/>
+            <column name="birthday" value="2003-05-07T15:40:11"/>
+            <column name="phone" value="72762662375"/>
+            <column name="code" value="E0019"/>
+            <column name="role" value="MASTER"/>
+            <column name="gender" value="Мужской"/>
+            <column name="on_shift" value="false"/>
+            <column name="status" value="Отгул"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="id" value="20"/>
+            <column name="first_name" value="Регина"/>
+            <column name="last_name" value="Бобров"/>
+            <column name="birthday" value="1989-07-18T16:19:34"/>
+            <column name="phone" value="71734079703"/>
+            <column name="code" value="E0020"/>
+            <column name="role" value="COURIER"/>
+            <column name="gender" value="Женский"/>
+            <column name="on_shift" value="true"/>
+            <column name="status" value="Работает"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert-orders" author="Daniil">
+        <insert tableName="orders">
+            <column name="id" value="1"/>
+            <column name="phone" value="74892671738"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="наб. Рабочая, д. 140 к. 7"/>
+            <column name="district" value="Центр"/>
+            <column name="comment" value="Плясать запеть художественный да пища роскошный означать."/>
+            <column name="created_at" value="2024-09-05T02:00:25"/>
+            <column name="updated_at" value="2024-09-12T02:00:25"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="WEDNESDAY&amp;THURSDAY"/>
+            <column name="delivery_time_start" value="2024-09-05T09:00:25"/>
+            <column name="delivery_time_end" value="2024-09-05T18:00:25"/>
+            <column name="status" value="CREATED"/>
+            <column name="discount" value="1.83"/>
+            <column name="sources" value="Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="3"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="2"/>
+            <column name="phone" value="781014485183"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ул. Зои Космодемьянской, д. 5"/>
+            <column name="district" value="Лепсе"/>
+            <column name="comment" value="Вперед исследование крыса близко невыносимый поговорить уронить."/>
+            <column name="created_at" value="2024-07-27T06:21:55"/>
+            <column name="updated_at" value="2024-07-30T06:21:55"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="TUESDAY&amp;WEDNESDAY"/>
+            <column name="delivery_time_start" value="2024-07-27T09:00:55"/>
+            <column name="delivery_time_end" value="2024-07-27T18:00:55"/>
+            <column name="status" value="IN_WORK"/>
+            <column name="discount" value="27.13"/>
+            <column name="sources" value="Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)&amp;Рекомендации знакомых"/>
+            <column name="client_id" value="20"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="3"/>
+            <column name="phone" value="774759221166"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пр. Кленовый, д. 6 стр. 7/4"/>
+            <column name="district" value="Лепсе"/>
+            <column name="comment" value="Космос очередной функция тревога покидать мгновение поставить."/>
+            <column name="created_at" value="2025-04-28T05:32:30"/>
+            <column name="updated_at" value="2025-05-20T05:32:30"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="MONDAY&amp;TUESDAY"/>
+            <column name="delivery_time_start" value="2025-04-28T09:00:30"/>
+            <column name="delivery_time_end" value="2025-04-28T18:00:30"/>
+            <column name="status" value="CREATED"/>
+            <column name="discount" value="10.27"/>
+            <column name="sources" value="Рекомендации знакомых&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="6"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="4"/>
+            <column name="phone" value="783057608116"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="наб. Дачная, д. 590"/>
+            <column name="district" value="Чистые пруды"/>
+            <column name="comment" value="Бак бочок дыхание естественный близко."/>
+            <column name="created_at" value="2025-04-21T17:47:19"/>
+            <column name="updated_at" value="2025-05-20T17:47:19"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="MONDAY&amp;THURSDAY"/>
+            <column name="delivery_time_start" value="2025-04-21T09:00:19"/>
+            <column name="delivery_time_end" value="2025-04-21T18:00:19"/>
+            <column name="status" value="COMPLETED"/>
+            <column name="discount" value="12.3"/>
+            <column name="sources" value="Рекомендации знакомых&amp;Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)"/>
+            <column name="client_id" value="20"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="5"/>
+            <column name="phone" value="76256627285"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="алл. Техническая, д. 6/7"/>
+            <column name="district" value="Лепсе"/>
+            <column name="comment" value="Демократия реклама находить песенка исполнять угроза."/>
+            <column name="created_at" value="2024-11-07T03:04:36"/>
+            <column name="updated_at" value="2024-11-19T03:04:36"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="TUESDAY&amp;FRIDAY"/>
+            <column name="delivery_time_start" value="2024-11-07T09:00:36"/>
+            <column name="delivery_time_end" value="2024-11-07T18:00:36"/>
+            <column name="status" value="COMPLETED"/>
+            <column name="discount" value="0.37"/>
+            <column name="sources" value="Соц.сети (ВК, Инстаграм, Тг-канал)&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="12"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="6"/>
+            <column name="phone" value="70312502394"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ул. Балтийская, д. 7 стр. 1/9"/>
+            <column name="district" value="Чистые пруды"/>
+            <column name="comment" value="Руководитель понятный спешить природа предоставить космос самостоятельно."/>
+            <column name="created_at" value="2024-05-31T11:19:54"/>
+            <column name="updated_at" value="2024-06-17T11:19:54"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="TUESDAY&amp;THURSDAY"/>
+            <column name="delivery_time_start" value="2024-05-31T09:00:54"/>
+            <column name="delivery_time_end" value="2024-05-31T18:00:54"/>
+            <column name="status" value="IN_WORK"/>
+            <column name="discount" value="18.3"/>
+            <column name="sources" value="Рекомендации знакомых&amp;Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)"/>
+            <column name="client_id" value="2"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="7"/>
+            <column name="phone" value="72504021639"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пер. Черноморский, д. 4/6 к. 691"/>
+            <column name="district" value="Лепсе"/>
+            <column name="comment" value="Одиннадцать дурацкий солнце интеллектуальный вздрогнуть господь."/>
+            <column name="created_at" value="2024-05-29T03:32:17"/>
+            <column name="updated_at" value="2024-06-02T03:32:17"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="THURSDAY&amp;THURSDAY"/>
+            <column name="delivery_time_start" value="2024-05-29T09:00:17"/>
+            <column name="delivery_time_end" value="2024-05-29T18:00:17"/>
+            <column name="status" value="COMPLETED"/>
+            <column name="discount" value="2.42"/>
+            <column name="sources" value="Соц.сети (ВК, Инстаграм, Тг-канал)&amp;Рекомендации знакомых"/>
+            <column name="client_id" value="20"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="8"/>
+            <column name="phone" value="75334448647"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ш. Ставропольское, д. 248 к. 877"/>
+            <column name="district" value="Центр"/>
+            <column name="comment" value="Валюта командование функция."/>
+            <column name="created_at" value="2025-04-14T23:43:35"/>
+            <column name="updated_at" value="2025-04-19T23:43:35"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="THURSDAY&amp;THURSDAY"/>
+            <column name="delivery_time_start" value="2025-04-14T09:00:35"/>
+            <column name="delivery_time_end" value="2025-04-14T18:00:35"/>
+            <column name="status" value="COMPLETED"/>
+            <column name="discount" value="26.26"/>
+            <column name="sources" value="Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="11"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="9"/>
+            <column name="phone" value="71131263791"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пер. Льва Толстого, д. 823 к. 52"/>
+            <column name="district" value="Лепсе"/>
+            <column name="comment" value="Ручей результат отражение монета магазин правильный."/>
+            <column name="created_at" value="2024-10-30T01:20:04"/>
+            <column name="updated_at" value="2024-11-26T01:20:04"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="MONDAY&amp;TUESDAY"/>
+            <column name="delivery_time_start" value="2024-10-30T09:00:04"/>
+            <column name="delivery_time_end" value="2024-10-30T18:00:04"/>
+            <column name="status" value="IN_WORK"/>
+            <column name="discount" value="1.92"/>
+            <column name="sources" value="Соц.сети (ВК, Инстаграм, Тг-канал)&amp;Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)"/>
+            <column name="client_id" value="13"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="10"/>
+            <column name="phone" value="78978443019"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ул. Коллективная, д. 4/4 стр. 1"/>
+            <column name="district" value="Чистые пруды"/>
+            <column name="comment" value="Задержать левый палец банда проход палка успокоиться."/>
+            <column name="created_at" value="2024-09-04T08:07:18"/>
+            <column name="updated_at" value="2024-10-02T08:07:18"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="MONDAY&amp;THURSDAY"/>
+            <column name="delivery_time_start" value="2024-09-04T09:00:18"/>
+            <column name="delivery_time_end" value="2024-09-04T18:00:18"/>
+            <column name="status" value="IN_WORK"/>
+            <column name="discount" value="9.36"/>
+            <column name="sources" value="Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="17"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="11"/>
+            <column name="phone" value="74331845357"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пер. Ярославский, д. 90 к. 6"/>
+            <column name="district" value="Лепсе"/>
+            <column name="comment" value="Академик конструкция заведение рассуждение отдел написать вперед запустить."/>
+            <column name="created_at" value="2025-01-29T05:34:55"/>
+            <column name="updated_at" value="2025-02-04T05:34:55"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="TUESDAY&amp;MONDAY"/>
+            <column name="delivery_time_start" value="2025-01-29T09:00:55"/>
+            <column name="delivery_time_end" value="2025-01-29T18:00:55"/>
+            <column name="status" value="IN_WORK"/>
+            <column name="discount" value="28.49"/>
+            <column name="sources" value="Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="14"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="12"/>
+            <column name="phone" value="79332365992"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пр. Олимпийский, д. 689 стр. 8/5"/>
+            <column name="district" value="Центр"/>
+            <column name="comment" value="Тревога сохранять светило."/>
+            <column name="created_at" value="2025-05-02T12:46:17"/>
+            <column name="updated_at" value="2025-05-08T12:46:17"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="FRIDAY&amp;FRIDAY"/>
+            <column name="delivery_time_start" value="2025-05-02T09:00:17"/>
+            <column name="delivery_time_end" value="2025-05-02T18:00:17"/>
+            <column name="status" value="CREATED"/>
+            <column name="discount" value="5.71"/>
+            <column name="sources" value="Соц.сети (ВК, Инстаграм, Тг-канал)&amp;Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)"/>
+            <column name="client_id" value="1"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="13"/>
+            <column name="phone" value="77851429635"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пр. Привокзальный, д. 60 к. 85"/>
+            <column name="district" value="Центр"/>
+            <column name="comment" value="Блин упор штаб секунда манера."/>
+            <column name="created_at" value="2025-04-18T12:49:51"/>
+            <column name="updated_at" value="2025-05-10T12:49:51"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="THURSDAY&amp;THURSDAY"/>
+            <column name="delivery_time_start" value="2025-04-18T09:00:51"/>
+            <column name="delivery_time_end" value="2025-04-18T18:00:51"/>
+            <column name="status" value="COMPLETED"/>
+            <column name="discount" value="2.44"/>
+            <column name="sources" value="Рекомендации знакомых&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="9"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="14"/>
+            <column name="phone" value="75070030035"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ш. Овражное, д. 7"/>
+            <column name="district" value="Чистые пруды"/>
+            <column name="comment" value="Дурацкий радость результат успокоиться."/>
+            <column name="created_at" value="2025-02-20T12:53:04"/>
+            <column name="updated_at" value="2025-03-19T12:53:04"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="FRIDAY&amp;WEDNESDAY"/>
+            <column name="delivery_time_start" value="2025-02-20T09:00:04"/>
+            <column name="delivery_time_end" value="2025-02-20T18:00:04"/>
+            <column name="status" value="CREATED"/>
+            <column name="discount" value="26.16"/>
+            <column name="sources" value="Рекомендации знакомых&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="4"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="15"/>
+            <column name="phone" value="76606488709"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пр. Разина, д. 90"/>
+            <column name="district" value="Центр"/>
+            <column name="comment" value="Приходить подземный пространство добиться."/>
+            <column name="created_at" value="2024-07-19T20:23:01"/>
+            <column name="updated_at" value="2024-07-20T20:23:01"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="FRIDAY&amp;WEDNESDAY"/>
+            <column name="delivery_time_start" value="2024-07-19T09:00:01"/>
+            <column name="delivery_time_end" value="2024-07-19T18:00:01"/>
+            <column name="status" value="IN_WORK"/>
+            <column name="discount" value="28.15"/>
+            <column name="sources" value="Соц.сети (ВК, Инстаграм, Тг-канал)&amp;Рекомендации знакомых"/>
+            <column name="client_id" value="2"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="16"/>
+            <column name="phone" value="73230282169"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="пер. Л.Толстого, д. 19"/>
+            <column name="district" value="Чистые пруды"/>
+            <column name="comment" value="Следовательно трясти бегать постоянный неожиданный."/>
+            <column name="created_at" value="2024-06-12T01:35:33"/>
+            <column name="updated_at" value="2024-07-02T01:35:33"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="THURSDAY&amp;WEDNESDAY"/>
+            <column name="delivery_time_start" value="2024-06-12T09:00:33"/>
+            <column name="delivery_time_end" value="2024-06-12T18:00:33"/>
+            <column name="status" value="COMPLETED"/>
+            <column name="discount" value="5.35"/>
+            <column name="sources" value="Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)&amp;Рекомендации знакомых"/>
+            <column name="client_id" value="20"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="17"/>
+            <column name="phone" value="75427385265"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="ш. 8-е Марта, д. 1/5 к. 9"/>
+            <column name="district" value="Центр"/>
+            <column name="comment" value="Ремень сопровождаться очутиться степь команда слишком вообще."/>
+            <column name="created_at" value="2024-11-20T21:29:42"/>
+            <column name="updated_at" value="2024-11-20T21:29:42"/>
+            <column name="delivery_type" value="DELIVERY"/>
+            <column name="delivery_days" value="WEDNESDAY&amp;WEDNESDAY"/>
+            <column name="delivery_time_start" value="2024-11-20T09:00:42"/>
+            <column name="delivery_time_end" value="2024-11-20T18:00:42"/>
+            <column name="status" value="IN_WORK"/>
+            <column name="discount" value="23.69"/>
+            <column name="sources" value="Соц.сети (ВК, Инстаграм, Тг-канал)&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="10"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="18"/>
+            <column name="phone" value="87004049438"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="наб. 50 лет Победы, д. 4 стр. 495"/>
+            <column name="district" value="Центр"/>
+            <column name="comment" value="Означать рай костер светило виднеться тяжелый наткнуться житель."/>
+            <column name="created_at" value="2024-10-15T22:42:58"/>
+            <column name="updated_at" value="2024-10-16T22:42:58"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="TUESDAY&amp;TUESDAY"/>
+            <column name="delivery_time_start" value="2024-10-15T09:00:58"/>
+            <column name="delivery_time_end" value="2024-10-15T18:00:58"/>
+            <column name="status" value="COMPLETED"/>
+            <column name="discount" value="8.69"/>
+            <column name="sources" value="Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)&amp;Рекомендации знакомых"/>
+            <column name="client_id" value="20"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="19"/>
+            <column name="phone" value="79255445769"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="алл. Молодежная, д. 19 к. 3/6"/>
+            <column name="district" value="Центр"/>
+            <column name="comment" value="Командир мрачно печатать."/>
+            <column name="created_at" value="2024-12-25T07:11:34"/>
+            <column name="updated_at" value="2025-01-03T07:11:34"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="TUESDAY&amp;MONDAY"/>
+            <column name="delivery_time_start" value="2024-12-25T09:00:34"/>
+            <column name="delivery_time_end" value="2024-12-25T18:00:34"/>
+            <column name="status" value="IN_WORK"/>
+            <column name="discount" value="5.39"/>
+            <column name="sources" value="Соц.сети (ВК, Инстаграм, Тг-канал)&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="5"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="20"/>
+            <column name="phone" value="79318642821"/>
+            <column name="city" value="Киров"/>
+            <column name="address" value="бул. Авиационный, д. 788 стр. 5/5"/>
+            <column name="district" value="Чистые пруды"/>
+            <column name="comment" value="Вытаскивать угол направо ягода настать."/>
+            <column name="created_at" value="2025-03-25T23:09:01"/>
+            <column name="updated_at" value="2025-04-20T23:09:01"/>
+            <column name="delivery_type" value="SELF"/>
+            <column name="delivery_days" value="THURSDAY&amp;MONDAY"/>
+            <column name="delivery_time_start" value="2025-03-25T09:00:01"/>
+            <column name="delivery_time_end" value="2025-03-25T18:00:01"/>
+            <column name="status" value="CREATED"/>
+            <column name="discount" value="16.82"/>
+            <column name="sources" value="Офлайн (Баннеры, листовки, флаеры, наклейки на подъезд)&amp;Соц.сети (ВК, Инстаграм, Тг-канал)"/>
+            <column name="client_id" value="13"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert-order-items" author="Daniil">
+        <insert tableName="order_items">
+            <column name="id" value="1"/>
+            <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
+            <column name="area" value="9.1"/>
+            <column name="comment" value="Сохранять написать упорно ложиться еврейский мусор дыхание."/>
+            <column name="order_id" value="11"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="2"/>
+            <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
+            <column name="area" value="16.32"/>
+            <column name="comment" value="Инструкция сутки ботинок ныне."/>
+            <column name="order_id" value="10"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="3"/>
+            <column name="services" value="Химчистка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
+            <column name="area" value="2.16"/>
+            <column name="comment" value="Командир тесно обида запретить роса ночь приятель."/>
+            <column name="order_id" value="3"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="4"/>
+            <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
+            <column name="area" value="9.52"/>
+            <column name="comment" value="Один идея танцевать ученый сутки куча правление."/>
+            <column name="order_id" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="5"/>
+            <column name="services" value="Дезинфекция&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
+            <column name="area" value="5.18"/>
+            <column name="comment" value="Плясать необычный госпожа скользить возмутиться висеть основание."/>
+            <column name="order_id" value="16"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="6"/>
+            <column name="services" value="Дезинфекция&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
+            <column name="area" value="3.19"/>
+            <column name="comment" value="Коричневый дрогнуть конструкция даль упорно падаль соответствие."/>
+            <column name="order_id" value="9"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="7"/>
+            <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="10.44"/>
+            <column name="comment" value="Академик исполнять темнеть слишком сопровождаться угодный."/>
+            <column name="order_id" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="8"/>
+            <column name="services" value="Химчистка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
+            <column name="area" value="2.99"/>
+            <column name="comment" value="Ломать функция мягкий намерение."/>
+            <column name="order_id" value="9"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="9"/>
+            <column name="services" value="Антибактериальная обработка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="19.79"/>
+            <column name="comment" value="Пол цепочка постоянный реклама слишком миф."/>
+            <column name="order_id" value="15"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="10"/>
+            <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
+            <column name="area" value="17.68"/>
+            <column name="comment" value="Ученый славный прежний труп товар потрясти боец."/>
+            <column name="order_id" value="16"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="11"/>
+            <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
+            <column name="area" value="11.31"/>
+            <column name="comment" value="Грустный прежний художественный вскинуть."/>
+            <column name="order_id" value="16"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="12"/>
+            <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
+            <column name="area" value="16.54"/>
+            <column name="comment" value="Пересечь упор что легко пространство."/>
+            <column name="order_id" value="8"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="13"/>
+            <column name="services" value="Дезинфекция&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
+            <column name="area" value="17.0"/>
+            <column name="comment" value="Легко песня доставать."/>
+            <column name="order_id" value="2"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="14"/>
+            <column name="services" value="Антибактериальная обработка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="2.26"/>
+            <column name="comment" value="Жить мгновение табак страсть расстройство."/>
+            <column name="order_id" value="19"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="15"/>
+            <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="17.38"/>
+            <column name="comment" value="Приличный неожиданно мрачно жестокий."/>
+            <column name="order_id" value="5"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="16"/>
+            <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
+            <column name="area" value="18.12"/>
+            <column name="comment" value="Передо инвалид товар."/>
+            <column name="order_id" value="5"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="17"/>
+            <column name="services" value="Химчистка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
+            <column name="area" value="15.19"/>
+            <column name="comment" value="Пол поздравлять смелый задрать господь советовать самостоятельно смелый."/>
+            <column name="order_id" value="17"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="18"/>
+            <column name="services" value="Антибактериальная обработка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
+            <column name="area" value="17.18"/>
+            <column name="comment" value="Сутки темнеть настать понятный равнодушный рассуждение."/>
+            <column name="order_id" value="7"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="19"/>
+            <column name="services" value="Дезинфекция&amp;Химчистка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
+            <column name="area" value="10.63"/>
+            <column name="comment" value="Механический миф ребятишки жестокий мучительно бетонный военный."/>
+            <column name="order_id" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="20"/>
+            <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="15.68"/>
+            <column name="comment" value="Затянуться еврейский засунуть задрать."/>
+            <column name="order_id" value="9"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="21"/>
+            <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
+            <column name="area" value="5.54"/>
+            <column name="comment" value="Идея возникновение торопливый единый сохранять поговорить житель."/>
+            <column name="order_id" value="13"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="22"/>
+            <column name="services" value="Химчистка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
+            <column name="area" value="10.34"/>
+            <column name="comment" value="Монета цепочка развитый непривычный очутиться степь."/>
+            <column name="order_id" value="11"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="23"/>
+            <column name="services" value="Дезинфекция&amp;Химчистка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
+            <column name="area" value="16.4"/>
+            <column name="comment" value="Адвокат хозяйка хлеб проход чувство точно."/>
+            <column name="order_id" value="20"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="24"/>
+            <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="9.72"/>
+            <column name="comment" value="Куча мальчишка затянуться командование."/>
+            <column name="order_id" value="12"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="25"/>
+            <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="12.97"/>
+            <column name="comment" value="Добиться граница термин трубка."/>
+            <column name="order_id" value="4"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="26"/>
+            <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="3.11"/>
+            <column name="comment" value="Секунда лиловый возмутиться другой."/>
+            <column name="order_id" value="4"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="27"/>
+            <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
+            <column name="area" value="13.36"/>
+            <column name="comment" value="Пасть приходить солнце возможно торговля каюта."/>
+            <column name="order_id" value="2"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="28"/>
+            <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
+            <column name="area" value="10.86"/>
+            <column name="comment" value="Художественный сустав вздрогнуть пол."/>
+            <column name="order_id" value="20"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="29"/>
+            <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
+            <column name="area" value="9.65"/>
+            <column name="comment" value="Хотеть изба порт покидать недостаток сбросить."/>
+            <column name="order_id" value="7"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="30"/>
+            <column name="services" value="Химчистка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
+            <column name="area" value="18.95"/>
+            <column name="comment" value="Нервно сохранять роскошный оборот господь мелькнуть."/>
+            <column name="order_id" value="3"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="31"/>
+            <column name="services" value="Дезинфекция&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
+            <column name="area" value="10.64"/>
+            <column name="comment" value="Еврейский левый степь изменение прежде материя."/>
+            <column name="order_id" value="19"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="32"/>
+            <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
+            <column name="area" value="18.78"/>
+            <column name="comment" value="Успокоиться ленинград сверкающий рассуждение появление роса."/>
+            <column name="order_id" value="4"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="33"/>
+            <column name="services" value="Химчистка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="16.04"/>
+            <column name="comment" value="Войти возбуждение госпожа."/>
+            <column name="order_id" value="14"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="34"/>
+            <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="14.73"/>
+            <column name="comment" value="Что угол идея столетие."/>
+            <column name="order_id" value="14"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="35"/>
+            <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
+            <column name="area" value="7.56"/>
+            <column name="comment" value="Грудь точно тревога постоянный потрясти бочок академик грудь."/>
+            <column name="order_id" value="3"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="36"/>
+            <column name="services" value="Химчистка&amp;Дезинфекция"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="4.95"/>
+            <column name="comment" value="Пища светило второй аж прежний."/>
+            <column name="order_id" value="6"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="37"/>
+            <column name="services" value="Дезинфекция&amp;Химчистка"/>
+            <column name="product_type" value="Ковровая плитка"/>
+            <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
+            <column name="area" value="8.01"/>
+            <column name="comment" value="Прежний вытаскивать волк вскинуть реклама смелый."/>
+            <column name="order_id" value="7"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="38"/>
+            <column name="services" value="Дезинфекция&amp;Химчистка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
+            <column name="area" value="3.14"/>
+            <column name="comment" value="Куча неправда расстройство миф."/>
+            <column name="order_id" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="id" value="39"/>
+            <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
+            <column name="product_type" value="Ковролин"/>
+            <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
+            <column name="area" value="7.88"/>
+            <column name="comment" value="Лететь табак тяжелый присесть."/>
+            <column name="order_id" value="12"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert-assigned-employees" author="Daniil">
+        <insert tableName="assigned_employees">
+            <column name="id" value="1"/>
+            <column name="employee_id" value="10"/>
+            <column name="order_id" value="16"/>
+            <column name="comment" value="Головной славный команда."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="2"/>
+            <column name="employee_id" value="18"/>
+            <column name="order_id" value="10"/>
+            <column name="comment" value="Райком вскакивать радость освобождение белье."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="3"/>
+            <column name="employee_id" value="6"/>
+            <column name="order_id" value="11"/>
+            <column name="comment" value="Промолчать покинуть через отметить что горький премьера."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="4"/>
+            <column name="employee_id" value="3"/>
+            <column name="order_id" value="19"/>
+            <column name="comment" value="Дальний спешить лиловый увеличиваться мальчишка потянуться порт."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="5"/>
+            <column name="employee_id" value="18"/>
+            <column name="order_id" value="4"/>
+            <column name="comment" value="Угол заведение армейский засунуть страсть при анализ одиннадцать."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="6"/>
+            <column name="employee_id" value="10"/>
+            <column name="order_id" value="19"/>
+            <column name="comment" value="Плавно школьный конференция."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="7"/>
+            <column name="employee_id" value="13"/>
+            <column name="order_id" value="6"/>
+            <column name="comment" value="Господь близко зима зима бок холодно."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="8"/>
+            <column name="employee_id" value="5"/>
+            <column name="order_id" value="5"/>
+            <column name="comment" value="Цвет увеличиваться около медицина."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="9"/>
+            <column name="employee_id" value="11"/>
+            <column name="order_id" value="8"/>
+            <column name="comment" value="Сынок терапия конференция приятель применяться танцевать."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="10"/>
+            <column name="employee_id" value="8"/>
+            <column name="order_id" value="17"/>
+            <column name="comment" value="Отдел сынок строительство академик район."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="11"/>
+            <column name="employee_id" value="6"/>
+            <column name="order_id" value="8"/>
+            <column name="comment" value="Изображать обида растеряться наслаждение вперед эпоха."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="12"/>
+            <column name="employee_id" value="12"/>
+            <column name="order_id" value="10"/>
+            <column name="comment" value="Порода через потрясти возмутиться бригада разнообразный."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="13"/>
+            <column name="employee_id" value="2"/>
+            <column name="order_id" value="14"/>
+            <column name="comment" value="Полоска механический бок запустить ночь господь."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="14"/>
+            <column name="employee_id" value="20"/>
+            <column name="order_id" value="5"/>
+            <column name="comment" value="Секунда слишком правление пересечь степь проход актриса."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="15"/>
+            <column name="employee_id" value="13"/>
+            <column name="order_id" value="1"/>
+            <column name="comment" value="Сопровождаться блин идея анализ сверкающий рай."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="16"/>
+            <column name="employee_id" value="3"/>
+            <column name="order_id" value="3"/>
+            <column name="comment" value="Нажать доставать витрина штаб."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="17"/>
+            <column name="employee_id" value="14"/>
+            <column name="order_id" value="5"/>
+            <column name="comment" value="Художественный командир расстройство полностью призыв задрать."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="18"/>
+            <column name="employee_id" value="18"/>
+            <column name="order_id" value="10"/>
+            <column name="comment" value="Табак сынок академик один."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="19"/>
+            <column name="employee_id" value="5"/>
+            <column name="order_id" value="14"/>
+            <column name="comment" value="Более угол добиться парень подробность адвокат крутой."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="20"/>
+            <column name="employee_id" value="14"/>
+            <column name="order_id" value="19"/>
+            <column name="comment" value="Бок инфекция фонарик освободить аж рис ручей бабочка."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="21"/>
+            <column name="employee_id" value="12"/>
+            <column name="order_id" value="10"/>
+            <column name="comment" value="Ребятишки темнеть иной цепочка райком тесно."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="22"/>
+            <column name="employee_id" value="8"/>
+            <column name="order_id" value="3"/>
+            <column name="comment" value="Ботинок зарплата мальчишка заплакать."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="23"/>
+            <column name="employee_id" value="12"/>
+            <column name="order_id" value="15"/>
+            <column name="comment" value="Пропадать появление угодный наслаждение."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="24"/>
+            <column name="employee_id" value="2"/>
+            <column name="order_id" value="17"/>
+            <column name="comment" value="Самостоятельно угроза набор очко падаль полевой."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="25"/>
+            <column name="employee_id" value="14"/>
+            <column name="order_id" value="13"/>
+            <column name="comment" value="Руководитель голубчик оставить степь зарплата слишком."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="26"/>
+            <column name="employee_id" value="14"/>
+            <column name="order_id" value="1"/>
+            <column name="comment" value="Приходить картинка зарплата домашний премьера самостоятельно ночь."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="27"/>
+            <column name="employee_id" value="15"/>
+            <column name="order_id" value="11"/>
+            <column name="comment" value="Идея место кидать мгновение коммунизм коммунизм."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="28"/>
+            <column name="employee_id" value="12"/>
+            <column name="order_id" value="7"/>
+            <column name="comment" value="Посидеть какой прощение выгнать багровый строительство."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="29"/>
+            <column name="employee_id" value="16"/>
+            <column name="order_id" value="10"/>
+            <column name="comment" value="Конструкция кольцо потом товар зато научить."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="30"/>
+            <column name="employee_id" value="6"/>
+            <column name="order_id" value="3"/>
+            <column name="comment" value="Мучительно наступать добиться."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="31"/>
+            <column name="employee_id" value="9"/>
+            <column name="order_id" value="4"/>
+            <column name="comment" value="Природа недостаток волк научить костер жидкий хотеть вскинуть."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="32"/>
+            <column name="employee_id" value="18"/>
+            <column name="order_id" value="4"/>
+            <column name="comment" value="Оборот доставать необычный экзамен ученый."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="33"/>
+            <column name="employee_id" value="5"/>
+            <column name="order_id" value="20"/>
+            <column name="comment" value="Скользить пространство штаб князь трясти актриса хлеб."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="34"/>
+            <column name="employee_id" value="13"/>
+            <column name="order_id" value="15"/>
+            <column name="comment" value="Счастье понятный витрина мрачно."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="35"/>
+            <column name="employee_id" value="14"/>
+            <column name="order_id" value="6"/>
+            <column name="comment" value="Около цель кидать проход ученый виднеться."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="36"/>
+            <column name="employee_id" value="6"/>
+            <column name="order_id" value="14"/>
+            <column name="comment" value="Разводить угроза видимо через успокоиться."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="37"/>
+            <column name="employee_id" value="15"/>
+            <column name="order_id" value="8"/>
+            <column name="comment" value="Конференция выраженный около близко рота палец."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="38"/>
+            <column name="employee_id" value="17"/>
+            <column name="order_id" value="11"/>
+            <column name="comment" value="Сынок провинция смеяться невыносимый."/>
+        </insert>
+        <insert tableName="assigned_employees">
+            <column name="id" value="39"/>
+            <column name="employee_id" value="12"/>
+            <column name="order_id" value="5"/>
+            <column name="comment" value="Ночь разнообразный указанный эффект зима понятный равнодушный."/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
