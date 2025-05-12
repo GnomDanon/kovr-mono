@@ -89,9 +89,9 @@ public class OrderService {
 	}
 
 	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException {
-		itemService.update(updateInfo.getItems());
+		List<OrderItems> items = itemService.update(updateInfo.getItems());
 		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount(), updateInfo.getSources() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getSources()));
-		return OrderMapper.map(order);
+		return OrderMapper.map(order.setItems(items));
 	}
 
 	public OrderDto assignEmployeeToOrder(Long orderId, Long employeeId) throws OrderDoesNotExistException, EmployeeDoesNotExistException {

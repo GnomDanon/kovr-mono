@@ -8,6 +8,9 @@ import ru.kovrochist.platform.mono.exception.order.OrderItemDoesNotExistsExcepti
 import ru.kovrochist.platform.mono.repository.OrderItemRepository;
 import ru.kovrochist.platform.mono.util.StringUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OrderItemService {
@@ -18,10 +21,12 @@ public class OrderItemService {
 		return orderItemRepository.findById(id).orElseThrow(() -> new OrderItemDoesNotExistsException(id));
 	}
 
-	public void update(OrderItemDto[] items) throws OrderItemDoesNotExistsException {
+	public List<OrderItems> update(OrderItemDto[] items) throws OrderItemDoesNotExistsException {
+		List<OrderItems> result = new ArrayList<>();
 		for (OrderItemDto item : items) {
-			update(item);
+			result.add(update(item));
 		}
+		return result;
 	}
 
 	public OrderItems update(OrderItemDto updateInfo) throws OrderItemDoesNotExistsException {
