@@ -100,7 +100,7 @@ public class EmployeeService {
 
 	public Employees update(Long id, String firstName, String lastName, Date birthday, String phone, String gender) throws DoesNotExistException {
 		Employees employee = getById(id);
-		return update(employee, firstName, lastName, birthday, phone, employee.getRole().getValue(), gender);
+		return update(employee, firstName, lastName, birthday, phone, employee.getRole().getLabel(), gender);
 	}
 
 	public Employees update(Employees employee, String firstName, String lastName, Date birthday, String phone, String roleValue, String genderLabel) throws DoesNotExistException {

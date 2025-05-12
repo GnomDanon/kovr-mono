@@ -2,9 +2,10 @@ package ru.kovrochist.platform.mono.type;
 
 import lombok.Getter;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.metadata.GenderDoesNotExistsException;
 
 @Getter
-public enum Gender {
+public enum Gender implements LabeledEnum {
 	MALE(Gender._MALE_),
 	FEMALE(Gender._FEMALE_);
 
@@ -18,10 +19,6 @@ public enum Gender {
 	}
 
 	public static Gender byLabel(String label) throws DoesNotExistException {
-		return switch (label) {
-			case _MALE_ -> MALE;
-			case _FEMALE_ -> FEMALE;
-			default -> throw new DoesNotExistException("Не существует пола " + label);
-		};
+		return LabeledEnum.byLabel(Gender.class, label, GenderDoesNotExistsException::new);
 	}
 }

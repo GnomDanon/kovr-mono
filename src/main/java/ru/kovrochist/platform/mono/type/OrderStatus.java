@@ -2,9 +2,10 @@ package ru.kovrochist.platform.mono.type;
 
 import lombok.Getter;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.metadata.OrderStatusDoesNotExistsException;
 
 @Getter
-public enum OrderStatus {
+public enum OrderStatus implements LabeledEnum {
 	REJECTED(OrderStatus._REJECTED_),
 	CREATED(OrderStatus._CREATED_),
 	APPROVED(OrderStatus._APPROVED_),
@@ -32,17 +33,6 @@ public enum OrderStatus {
 	}
 
 	public static OrderStatus byLabel(String label) throws DoesNotExistException {
-		return switch (label) {
-			case _REJECTED_ -> REJECTED;
-			case _CREATED_ -> CREATED;
-			case _APPROVED_ -> APPROVED;
-			case _PICKING_UP_ -> PICKING_UP;
-			case _PICKED_UP_ -> PICKED_UP;
-			case _IN_WORK_ -> IN_WORK;
-			case _READY_ -> READY;
-			case _DELIVERING_ -> DELIVERING;
-			case _COMPLETED_ -> COMPLETED;
-			default -> throw new DoesNotExistException("Не существует статуса заказа " + label);
-		};
+		return LabeledEnum.byLabel(OrderStatus.class, label, OrderStatusDoesNotExistsException::new);
 	}
 }

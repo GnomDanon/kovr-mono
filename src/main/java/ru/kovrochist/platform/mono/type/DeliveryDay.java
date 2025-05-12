@@ -2,9 +2,10 @@ package ru.kovrochist.platform.mono.type;
 
 import lombok.Getter;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.metadata.DeliveryDayDoesNotExistsException;
 
 @Getter
-public enum DeliveryDay {
+public enum DeliveryDay implements LabeledEnum {
 	MONDAY(DeliveryDay._MONDAY_),
 	TUESDAY(DeliveryDay._TUESDAY_),
 	WEDNESDAY(DeliveryDay._WEDNESDAY_),
@@ -23,20 +24,11 @@ public enum DeliveryDay {
 
 	private final String label;
 
-	DeliveryDay(String label) {;
+	DeliveryDay(String label) {
 		this.label = label;
 	}
 
 	public static DeliveryDay byLabel(String label) throws DoesNotExistException {
-		return switch (label) {
-			case _MONDAY_ -> MONDAY;
-			case _TUESDAY_ -> TUESDAY;
-			case _WEDNESDAY_ -> WEDNESDAY;
-			case _THURSDAY_ -> THURSDAY;
-			case _FRIDAY_ -> FRIDAY;
-			case _SATURDAY_ -> SATURDAY;
-			case _SUNDAY_ -> SUNDAY;
-			default -> throw new DoesNotExistException("Не существует дня " + label);
-		};
+		return LabeledEnum.byLabel(DeliveryDay.class, label, DeliveryDayDoesNotExistsException::new);
 	}
 }

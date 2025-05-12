@@ -2,9 +2,10 @@ package ru.kovrochist.platform.mono.type;
 
 import lombok.Getter;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.metadata.DeliveryTypeDoesNotExistsException;
 
 @Getter
-public enum DeliveryType {
+public enum DeliveryType implements LabeledEnum {
 	SELF(DeliveryType._SELF_),
 	DELIVERY(DeliveryType._DELIVERY_),
 	HOME_VISIT(DeliveryType._HOME_VISIT_);
@@ -20,11 +21,6 @@ public enum DeliveryType {
 	}
 
 	public static DeliveryType byLabel(String label) throws DoesNotExistException {
-		return switch (label) {
-			case _SELF_ -> SELF;
-			case _DELIVERY_ -> DELIVERY;
-			case _HOME_VISIT_ -> HOME_VISIT;
-			default -> throw new DoesNotExistException("Не существует типа доставки " + label);
-		};
+		return LabeledEnum.byLabel(DeliveryType.class, label, DeliveryTypeDoesNotExistsException::new);
 	}
 }

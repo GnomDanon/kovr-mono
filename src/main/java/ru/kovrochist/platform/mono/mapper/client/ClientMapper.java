@@ -22,7 +22,7 @@ public class ClientMapper {
 				.setCity(client.getCity())
 				.setAddress(client.getAddress())
 				.setGender(client.getGender() == null ? "" : client.getGender().getLabel())
-				.setRole(Role.CLIENT.getValue());
+				.setRole(Role.CLIENT.getLabel());
 	}
 
 	public static ClientDto map(Clients client) {
@@ -35,7 +35,7 @@ public class ClientMapper {
 				.setAddress(client.getAddress())
 				.setId(client.getId())
 				.setPhone(client.getPhone())
-				.setRole(client.getRole().getValue())
+				.setRole(client.getRole().getLabel())
 				.setFirstName(client.getFirstName())
 				.setLastName(client.getLastName())
 				.setBirthday(client.getBirthday())
