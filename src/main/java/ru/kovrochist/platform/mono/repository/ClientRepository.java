@@ -21,7 +21,7 @@ public interface ClientRepository extends CrudRepository<Clients, Long> {
 
 	@Query("select c from Clients c " +
 			"where lower(concat(coalesce(c.phone, ''), ' ', coalesce(c.firstName, ''), ' ', coalesce(c.lastName, ''))) like lower(:search) " +
-			"and lower(c.status) like lower(:status) " +
-			"and lower(c.district) like lower(:status) ")
-	Iterable<Clients> find(@Param("search") String search, @Param("status") String status, @Param("district") String district);
+			"and (:status is null or c.status in :status) " +
+			"and (:district is null or c.district in :district)")
+	Iterable<Clients> find(@Param("search") String search, @Param("status") String[] status, @Param("district") String[] district);
 }

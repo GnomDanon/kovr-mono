@@ -25,4 +25,15 @@ public abstract class Filter {
 		this.sortBy = sortBy == null ? "" : sortBy;
 		this.orderBy = Order.byValue(orderBy);
 	}
+
+	protected boolean validate(Object[] array) {
+		boolean flag = true;
+		for (Object obj : array) {
+			if (obj != null) {
+				flag = false;
+				break;
+			}
+		}
+		return !flag;
+	}
 }

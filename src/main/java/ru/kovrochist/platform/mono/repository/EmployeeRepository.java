@@ -20,8 +20,8 @@ public interface EmployeeRepository extends CrudRepository<Employees, Long> {
 
 	@Query("select e from Employees e " +
 			"where lower(concat(coalesce(e.phone, ''), ' ', coalesce(e.firstName, ''), ' ', coalesce(e.lastName, ''))) like lower(:search) " +
-			"and lower(concat(e.status, '')) like lower(:status) " +
-			"and (:onShift = null or e.onShift = :onShift) " +
-			"and (:role = null or e.role = :role) ")
-	Iterable<Employees> find(@Param("search") String search, @Param("status") String status, @Param("onShift") Boolean onShift, @Param("role") Role role);
+			"and (:status is null or e.status in :status) " +
+			"and (:onShift is null or e.onShift = :onShift) " +
+			"and (:role is null or e.role in :role) ")
+	Iterable<Employees> find(@Param("search") String search, @Param("status") String[] status, @Param("onShift") Boolean onShift, @Param("role") Role[] role);
 }

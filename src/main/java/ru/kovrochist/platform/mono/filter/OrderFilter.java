@@ -46,15 +46,4 @@ public class OrderFilter extends Filter {
 		this.deliveryType = validate(orderDeliveryType) ? orderDeliveryType : null;
 		this.district = validate(district) ? district : null;
 	}
-
-	private boolean validate(Object[] array) {
-		boolean flag = true;
-		for (Object obj : array) {
-			if (obj != null) {
-				flag = false;
-				break;
-			}
-		}
-		return !flag;
-	}
 }
