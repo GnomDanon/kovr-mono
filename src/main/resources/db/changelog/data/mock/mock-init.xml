@@ -8,7 +8,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="алл. Детская, д. 51 стр. 24"/>
             <column name="district" value="Октябрьский"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="birthday" value="2000-03-12T09:47:04"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -20,7 +20,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="ш. Троицкое, д. 280 к. 1/8"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="birthday" value="2003-07-16T04:28:40"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -32,7 +32,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="пер. Пожарского, д. 548 к. 985"/>
             <column name="district" value="Октябрьский"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="birthday" value="1982-04-11T16:17:53"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -44,7 +44,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="ш. Техническое, д. 894"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="birthday" value="1977-09-17T22:27:53"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -56,7 +56,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="пер. Маркса Карла, д. 8 стр. 6/2"/>
             <column name="district" value="Октябрьский"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="1986-05-25T22:38:15"/>
             <column name="status" value="Непостоянный"/>
         </insert>
@@ -68,7 +68,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="пр. Овражный, д. 123 к. 401"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="1995-12-29T16:27:38"/>
             <column name="status" value="Непостоянный"/>
         </insert>
@@ -80,7 +80,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="бул. Транспортный, д. 286"/>
             <column name="district" value="Октябрьский"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="2003-10-21T14:39:48"/>
             <column name="status" value="Непостоянный"/>
         </insert>
@@ -92,19 +92,19 @@
             <column name="city" value="Киров"/>
             <column name="address" value="бул. Черняховского, д. 64"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="2006-02-18T20:23:03"/>
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
             <column name="first_name" value="Олимпиада"/>
             <column name="last_name" value="Филатова"/>
-            <column name="phone" value="782302258419"/>
+            <column name="phone" value="78230225841"/>
             <column name="code" value="C0009"/>
             <column name="city" value="Киров"/>
             <column name="address" value="бул. Ягодный, д. 976 к. 6"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="birthday" value="1988-08-02T06:02:57"/>
             <column name="status" value="Непостоянный"/>
         </insert>
@@ -116,7 +116,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="пер. Высотный, д. 3 к. 7"/>
             <column name="district" value="Октябрьский"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="birthday" value="2000-10-30T05:35:39"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -128,7 +128,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="ул. Короленко, д. 1/3 к. 2/5"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="1999-03-26T12:19:59"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -140,7 +140,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="алл. Народная, д. 70 к. 6/1"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="birthday" value="1982-08-17T23:11:51"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -152,7 +152,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="пр. М.Горького, д. 804"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="2002-07-30T05:57:02"/>
             <column name="status" value="Непостоянный"/>
         </insert>
@@ -164,7 +164,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="наб. Островского, д. 1 стр. 8/7"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="1988-01-14T00:18:15"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -176,7 +176,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="ул. Титова, д. 304 стр. 59"/>
             <column name="district" value="Ленинский"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="1987-08-23T13:34:31"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -188,7 +188,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="ш. Урицкого, д. 7 к. 818"/>
             <column name="district" value="Центральный"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="birthday" value="1991-06-29T02:22:44"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -200,7 +200,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="пер. Менделеева, д. 411 стр. 70"/>
             <column name="district" value="Центральный"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="1975-08-18T22:38:25"/>
             <column name="status" value="Непостоянный"/>
         </insert>
@@ -212,7 +212,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="пер. Ольховый, д. 4/6 к. 910"/>
             <column name="district" value="Центральный"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="1990-09-23T19:26:52"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -224,7 +224,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="наб. Короткая, д. 397 к. 7/9"/>
             <column name="district" value="Центральный"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="birthday" value="1992-03-21T01:33:25"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -236,7 +236,7 @@
             <column name="city" value="Киров"/>
             <column name="address" value="алл. Иркутская, д. 56 стр. 2/2"/>
             <column name="district" value="Центральный"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="birthday" value="1992-12-08T13:24:09"/>
             <column name="status" value="Постоянный"/>
         </insert>
@@ -246,10 +246,10 @@
             <column name="first_name" value="Алина"/>
             <column name="last_name" value="Титов"/>
             <column name="birthday" value="1980-09-05T15:11:29"/>
-            <column name="phone" value="7990407522758"/>
+            <column name="phone" value="79904075227"/>
             <column name="code" value="E0001"/>
             <column name="role" value="OPERATOR"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Уволен"/>
         </insert>
@@ -260,7 +260,7 @@
             <column name="phone" value="79910916348"/>
             <column name="code" value="E0002"/>
             <column name="role" value="OPERATOR"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="false"/>
             <column name="status" value="Уволен"/>
         </insert>
@@ -268,10 +268,10 @@
             <column name="first_name" value="Эммануил"/>
             <column name="last_name" value="Щукин"/>
             <column name="birthday" value="1998-03-06T10:58:39"/>
-            <column name="phone" value="7993990024894"/>
+            <column name="phone" value="79939900248"/>
             <column name="code" value="E0003"/>
             <column name="role" value="OPERATOR"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="false"/>
             <column name="status" value="Уволен"/>
         </insert>
@@ -279,10 +279,10 @@
             <column name="first_name" value="Мариан"/>
             <column name="last_name" value="Титов"/>
             <column name="birthday" value="1998-12-12T05:34:48"/>
-            <column name="phone" value="7997466022345"/>
+            <column name="phone" value="79974660223"/>
             <column name="code" value="E0004"/>
             <column name="role" value="COURIER"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Работает"/>
         </insert>
@@ -290,10 +290,10 @@
             <column name="first_name" value="Аполлон"/>
             <column name="last_name" value="Бурова"/>
             <column name="birthday" value="1967-10-23T02:45:09"/>
-            <column name="phone" value="7996279125609"/>
+            <column name="phone" value="79962791256"/>
             <column name="code" value="E0005"/>
             <column name="role" value="ADMIN"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="false"/>
             <column name="status" value="Уволен"/>
         </insert>
@@ -301,10 +301,10 @@
             <column name="first_name" value="Рубен"/>
             <column name="last_name" value="Мамонтов"/>
             <column name="birthday" value="1996-08-03T13:21:43"/>
-            <column name="phone" value="7991720099251"/>
+            <column name="phone" value="79917200992"/>
             <column name="code" value="E0006"/>
             <column name="role" value="ADMIN"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Работает"/>
         </insert>
@@ -312,10 +312,10 @@
             <column name="first_name" value="Ульян"/>
             <column name="last_name" value="Маркова"/>
             <column name="birthday" value="1988-12-14T10:53:29"/>
-            <column name="phone" value="7996710979519"/>
+            <column name="phone" value="79967109795"/>
             <column name="code" value="E0007"/>
             <column name="role" value="ADMIN"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="false"/>
             <column name="status" value="Уволен"/>
         </insert>
@@ -323,10 +323,10 @@
             <column name="first_name" value="Лавр"/>
             <column name="last_name" value="Моисеева"/>
             <column name="birthday" value="1974-01-05T06:55:53"/>
-            <column name="phone" value="7994183067537"/>
+            <column name="phone" value="79941830675"/>
             <column name="code" value="E0008"/>
             <column name="role" value="ADMIN"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="false"/>
             <column name="status" value="Уволен"/>
         </insert>
@@ -334,10 +334,10 @@
             <column name="first_name" value="Людмила"/>
             <column name="last_name" value="Елисеева"/>
             <column name="birthday" value="1970-06-28T13:11:51"/>
-            <column name="phone" value="7990740899331"/>
+            <column name="phone" value="79907408993"/>
             <column name="code" value="E0009"/>
             <column name="role" value="COURIER"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="on_shift" value="false"/>
             <column name="status" value="Работает"/>
         </insert>
@@ -345,10 +345,10 @@
             <column name="first_name" value="Прасковья"/>
             <column name="last_name" value="Гаврилова"/>
             <column name="birthday" value="2000-12-31T21:28:59"/>
-            <column name="phone" value="7998412696116"/>
+            <column name="phone" value="79984126961"/>
             <column name="code" value="E0010"/>
             <column name="role" value="OPERATOR"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Уволен"/>
         </insert>
@@ -356,10 +356,10 @@
             <column name="first_name" value="Ангелина"/>
             <column name="last_name" value="Лазарев"/>
             <column name="birthday" value="1993-08-12T20:50:03"/>
-            <column name="phone" value="7990766075415"/>
+            <column name="phone" value="79907660754"/>
             <column name="code" value="E0011"/>
             <column name="role" value="ADMIN"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Работает"/>
         </insert>
@@ -367,10 +367,10 @@
             <column name="first_name" value="Анжела"/>
             <column name="last_name" value="Николаев"/>
             <column name="birthday" value="1989-10-23T06:20:05"/>
-            <column name="phone" value="7995520351923"/>
+            <column name="phone" value="79955203519"/>
             <column name="code" value="E0012"/>
             <column name="role" value="ADMIN"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Уволен"/>
         </insert>
@@ -378,10 +378,10 @@
             <column name="first_name" value="Авдей"/>
             <column name="last_name" value="Исаков"/>
             <column name="birthday" value="1973-09-29T19:57:41"/>
-            <column name="phone" value="7994509322717"/>
+            <column name="phone" value="79945093227"/>
             <column name="code" value="E0013"/>
             <column name="role" value="COURIER"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="false"/>
             <column name="status" value="Работает"/>
         </insert>
@@ -389,10 +389,10 @@
             <column name="first_name" value="Мечислав"/>
             <column name="last_name" value="Быкова"/>
             <column name="birthday" value="1982-12-08T00:55:37"/>
-            <column name="phone" value="7990355744852"/>
+            <column name="phone" value="79903557448"/>
             <column name="code" value="E0014"/>
             <column name="role" value="ADMIN"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Работает"/>
         </insert>
@@ -400,10 +400,10 @@
             <column name="first_name" value="Христофор"/>
             <column name="last_name" value="Сорокин"/>
             <column name="birthday" value="1972-05-05T14:59:58"/>
-            <column name="phone" value="799426223583"/>
+            <column name="phone" value="79942622358"/>
             <column name="code" value="E0015"/>
             <column name="role" value="ADMIN"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Работает"/>
         </insert>
@@ -411,10 +411,10 @@
             <column name="first_name" value="Изот"/>
             <column name="last_name" value="Лукина"/>
             <column name="birthday" value="1977-11-17T22:30:26"/>
-            <column name="phone" value="79975602906112"/>
+            <column name="phone" value="79975602906"/>
             <column name="code" value="E0016"/>
             <column name="role" value="COURIER"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Уволен"/>
         </insert>
@@ -425,7 +425,7 @@
             <column name="phone" value="72964513758"/>
             <column name="code" value="E0017"/>
             <column name="role" value="OPERATOR"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Работает"/>
         </insert>
@@ -436,7 +436,7 @@
             <column name="phone" value="76573547121"/>
             <column name="code" value="E0018"/>
             <column name="role" value="COURIER"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="false"/>
             <column name="status" value="В отпуске"/>
         </insert>
@@ -447,7 +447,7 @@
             <column name="phone" value="72762662375"/>
             <column name="code" value="E0019"/>
             <column name="role" value="MASTER"/>
-            <column name="gender" value="Мужской"/>
+            <column name="gender" value="MALE"/>
             <column name="on_shift" value="false"/>
             <column name="status" value="Отгул"/>
         </insert>
@@ -458,7 +458,7 @@
             <column name="phone" value="71734079703"/>
             <column name="code" value="E0020"/>
             <column name="role" value="COURIER"/>
-            <column name="gender" value="Женский"/>
+            <column name="gender" value="FEMALE"/>
             <column name="on_shift" value="true"/>
             <column name="status" value="Работает"/>
         </insert>
@@ -482,7 +482,7 @@
             <column name="client_id" value="3"/>
         </insert>
         <insert tableName="orders">
-            <column name="phone" value="781014485183"/>
+            <column name="phone" value="78101448518"/>
             <column name="city" value="Киров"/>
             <column name="address" value="ул. Зои Космодемьянской, д. 5"/>
             <column name="district" value="Лепсе"/>
@@ -499,7 +499,7 @@
             <column name="client_id" value="20"/>
         </insert>
         <insert tableName="orders">
-            <column name="phone" value="774759221166"/>
+            <column name="phone" value="77475922116"/>
             <column name="city" value="Киров"/>
             <column name="address" value="пр. Кленовый, д. 6 стр. 7/4"/>
             <column name="district" value="Лепсе"/>
@@ -516,7 +516,7 @@
             <column name="client_id" value="6"/>
         </insert>
         <insert tableName="orders">
-            <column name="phone" value="783057608116"/>
+            <column name="phone" value="78305760811"/>
             <column name="city" value="Киров"/>
             <column name="address" value="наб. Дачная, д. 590"/>
             <column name="district" value="Чистые пруды"/>

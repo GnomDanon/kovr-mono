@@ -19,12 +19,23 @@ public class AssignedEmployeeService {
 
 	private final AssignedEmployeeRepository assignedEmployeeRepository;
 
-	public AssignedEmployees create(Orders order, Employees employee) {
-		return assignedEmployeeRepository.save(new AssignedEmployees().setOrder(order).setEmployee(employee));
+	public List<AssignedEmployees> create(Orders order, Employees employee) {
+		List<AssignedEmployees> employees = getAssignedByOrderId(order.getId());
+		AssignedEmployees assignedEmployee = get(order, employee);
+		if (assignedEmployee != null) {
+			employees.add(assignedEmployee);
+			return employees;
+		}
+		employees.add(assignedEmployeeRepository.save(new AssignedEmployees().setOrder(order).setEmployee(employee)));
+		return employees;
 	}
 
 	public AssignedEmployees get(Long employeeId, Long orderId) throws DoesNotExistException {
 		return assignedEmployeeRepository.find(employeeId, orderId).orElseThrow(() -> new EmployeeOrderItemDoesNotExistsException(employeeId, orderId));
+	}
+
+	public AssignedEmployees get(Orders order, Employees employee) {
+		return assignedEmployeeRepository.find(employee.getId(), order.getId()).orElse(null);
 	}
 
 	public List<Orders> getOrdersByEmployeeId(Long employeeId) {
@@ -44,6 +55,17 @@ public class AssignedEmployeeService {
 
 		for (AssignedEmployees item : items) {
 			result.add(item.getEmployee());
+		}
+
+		return result;
+	}
+
+	public List<AssignedEmployees> getAssignedByOrderId(Long orderId) {
+		List<AssignedEmployees> result = new ArrayList<>();
+		Iterable<AssignedEmployees> items = assignedEmployeeRepository.findByOrderId(orderId);
+
+		for (AssignedEmployees item : items) {
+			result.add(item);
 		}
 
 		return result;

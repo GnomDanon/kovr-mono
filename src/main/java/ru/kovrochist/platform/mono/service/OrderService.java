@@ -81,6 +81,7 @@ public class OrderService {
 		ClientDto client = order.getClient();
 		Orders newOrder = create(client.getFirstName(), client.getFirstName(), order.getPhone(), order.getCity(), order.getAddress(), order.getDistrict(), order.getComment(), deliveryType, deliveryDays, order.getDeliveryTimeStart(), order.getDeliveryTimeEnd(), order.getDiscount(), sources, status);
 		List<OrderItems> items = itemService.update(newOrder, order.getItems());
+		newOrder = assignEmployeeToOrder(newOrder, USER.getId());
 		return OrderMapper.map(newOrder.setItems(items));
 	}
 
@@ -92,6 +93,7 @@ public class OrderService {
 
 	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException {
 		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount(), updateInfo.getSources() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getSources()));
+		order = assignEmployeeToOrder(order, USER.getId());
 		List<OrderItems> items = itemService.update(order, updateInfo.getItems());
 		return OrderMapper.map(order.setItems(items));
 	}
@@ -99,9 +101,16 @@ public class OrderService {
 	public OrderDto assignEmployeeToOrder(Long orderId, Long employeeId) throws OrderDoesNotExistException, EmployeeDoesNotExistException {
 		Orders order = getById(orderId);
 		Employees employee = employeeService.getById(employeeId);
-		AssignedEmployees assignedEmployee = assignedEmployeeService.create(order, employee);
-		order.getEmployees().add(assignedEmployee);
+		List<AssignedEmployees> assignedEmployee = assignedEmployeeService.create(order, employee);
+		order.setEmployees(assignedEmployee);
 		return OrderMapper.map(update(order));
+	}
+
+	public Orders assignEmployeeToOrder(Orders order, Long employeeId) throws EmployeeDoesNotExistException {
+		Employees employee = employeeService.getById(employeeId);
+		List<AssignedEmployees> assignedEmployee = assignedEmployeeService.create(order, employee);
+		order.setEmployees(assignedEmployee);
+		return order;
 	}
 
 	public void deAssignEmployee(Long orderId, Long employeeId) {
