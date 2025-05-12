@@ -95,7 +95,7 @@ public class EmployeeService {
 		}
 
 		employee = new Employees().setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setPhone(phone).setRole(role).setGender(gender);
-		return employeeRepository.save(employee);
+		return employeeRepository.save(employee.setCreatedAt(new Date()));
 	}
 
 	public Employees update(Long id, String firstName, String lastName, Date birthday, String phone, String gender) throws DoesNotExistException {

@@ -23,6 +23,7 @@
             <column name="birthday" type="TIMESTAMP"/>
             <column name="avatar" type="BYTEA"/>
             <column name="status" type="VARCHAR(50)"/>
+            <column name="created_at" type="TIMESTAMP"/>
         </createTable>
     </changeSet>
 
@@ -43,6 +44,7 @@
             <column name="avatar" type="BYTEA"/>
             <column name="on_shift" type="BOOLEAN"/>
             <column name="status" type="VARCHAR(255)"/>
+            <column name="created_at" type="TIMESTAMP"/>
         </createTable>
     </changeSet>
 
@@ -65,6 +67,7 @@
             <column name="status" type="VARCHAR(50)"/>
             <column name="discount" type="DOUBLE"/>
             <column name="sources" type="TEXT"/>
+            <column name="price" type="INT"/>
             <column name="client_id" type="BIGINT"/>
         </createTable>
         <addForeignKeyConstraint baseTableName="orders"

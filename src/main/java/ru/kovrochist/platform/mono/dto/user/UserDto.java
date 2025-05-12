@@ -36,4 +36,7 @@ public class UserDto {
 
 	@Schema(description = "Адрес")
 	private String address;
+
+	@Schema(description = "Дата создания аккаунта")
+	private Date createdAt;
 }

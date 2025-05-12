@@ -80,6 +80,9 @@ public class Orders {
 	@Column(name = "sources")
 	private String sources;
 
+	@Column(name = "price")
+	private Integer price;
+
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Clients client;

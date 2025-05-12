@@ -90,7 +90,7 @@ public class ClientService {
 
 	public Clients create(String phone, String code) {
 		Clients client = new Clients().setPhone(phone).setCode(code);
-		return clientRepository.save(client);
+		return clientRepository.save(client.setCreatedAt(new Date()));
 	}
 
 	public Clients create(String phone, String firstName, String lastName, String city, String address) {
@@ -101,7 +101,7 @@ public class ClientService {
 				.setCity(city)
 				.setAddress(address);
 
-		return clientRepository.save(client);
+		return clientRepository.save(client.setCreatedAt(new Date()));
 	}
 
 	public Clients update(Long id, String phone, String firstName, String lastName, Date birthday, String city, String address, String gender) throws DoesNotExistException {

@@ -20,4 +20,7 @@ public class ClientDto extends UserDto {
 
 	@Schema(description = "Статус")
 	private String status;
+
+	@Schema(description = "Средняя стоимость заказа")
+	private Double averageCheck;
 }

@@ -16,7 +16,8 @@ public class EmployeeMapper {
 				.setBirthday(employee.getBirthday())
 				.setPhone(employee.getPhone())
 				.setRole(employee.getRole().getLabel())
-				.setGender(employee.getGender() == null ? null : employee.getGender().getLabel());
+				.setGender(employee.getGender() == null ? null : employee.getGender().getLabel())
+				.setCreatedAt(employee.getCreatedAt());
 	}
 
 	public static AssignedEmployeeDto mapAssigned(AssignedEmployees assigned) {

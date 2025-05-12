@@ -35,6 +35,7 @@ public class OrderMapper {
 				.setDeliveryTimeStart(order.getDeliveryTimeStart())
 				.setDeliveryTimeEnd(order.getDeliveryTimeEnd())
 				.setDiscount(order.getDiscount())
+				.setPrice(order.getPrice())
 				.setSources(order.getSources() == null ? null : order.getSources().split(StringUtil.SEPARATOR))
 				.setAssignees(mapEmployees(order.getEmployees()));
 	}

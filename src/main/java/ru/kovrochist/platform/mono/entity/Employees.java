@@ -63,4 +63,7 @@ public class Employees implements User{
 
 	@Column(name = "status")
 	private String status;
+
+	@Column(name = "created_at")
+	private Date createdAt;
 }

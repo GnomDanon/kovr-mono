@@ -64,6 +64,9 @@ public class OrderDto {
 	@Schema(description = "Источники")
 	private String[] sources;
 
+	@Schema(description = "Стоимость")
+	private Integer price;
+
 	@Schema(description = "Назначенные сотрудники")
 	private AssignedEmployeeDto[] assignees;
 }

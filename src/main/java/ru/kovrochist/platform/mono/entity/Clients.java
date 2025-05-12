@@ -68,6 +68,9 @@ public class Clients implements User {
 	@Column(name = "status")
 	private String status;
 
+	@Column(name = "created_at")
+	private Date createdAt;
+
 	public Role getRole() {
 		return Role.CLIENT;
 	}

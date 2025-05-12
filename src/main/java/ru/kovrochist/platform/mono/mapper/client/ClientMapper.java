@@ -22,14 +22,16 @@ public class ClientMapper {
 				.setCity(client.getCity())
 				.setAddress(client.getAddress())
 				.setGender(client.getGender() == null ? "" : client.getGender().getLabel())
-				.setRole(Role.CLIENT.getLabel());
+				.setRole(Role.CLIENT.getLabel())
+				.setCreatedAt(client.getCreatedAt());
 	}
 
 	public static ClientDto map(Clients client) {
 		ClientDto clientDto = new ClientDto()
 				.setOrdersCount(client.getOrders() == null ? 0 : client.getOrders().size())
 				.setDaysWithoutOrders(getDaysWithoutOrders(client.getOrders()))
-				.setStatus(client.getStatus());
+				.setStatus(client.getStatus())
+				.setAverageCheck(getAverageCheck(client.getOrders()));
 
 		clientDto.setCity(client.getCity())
 				.setAddress(client.getAddress())
@@ -39,7 +41,8 @@ public class ClientMapper {
 				.setFirstName(client.getFirstName())
 				.setLastName(client.getLastName())
 				.setBirthday(client.getBirthday())
-				.setGender(client.getGender() == null ? "" : client.getGender().getLabel());
+				.setGender(client.getGender() == null ? "" : client.getGender().getLabel())
+				.setCreatedAt(client.getCreatedAt());
 
 		return clientDto;
 	}
@@ -52,5 +55,19 @@ public class ClientMapper {
 				.map(order -> TimeUnit.MILLISECONDS.toDays(Math.abs(order.getUpdatedAt().getTime() - today.getTime())))
 				.max(Long::compare)
 				.orElse(0L);
+	}
+
+	private static Double getAverageCheck(List<Orders> orders) {
+		if (orders == null)
+			return 0D;
+		double result = 0D;
+		int ordersCount = 0;
+		for (Orders order : orders) {
+			if (order.getPrice() != null) {
+				result += order.getPrice();
+				ordersCount++;
+			}
+		}
+		return result / ordersCount;
 	}
 }
