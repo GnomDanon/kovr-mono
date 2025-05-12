@@ -77,8 +77,9 @@ public class OrderService {
 		DeliveryType deliveryType = DeliveryType.byLabel(order.getDeliveryType());
 		String deliveryDays = order.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, order.getDeliveryDays());
 		String sources = order.getSources() == null ? null : String.join(StringUtil.SEPARATOR, order.getSources());
+		OrderStatus status = order.getStatus() == null ? OrderStatus.CREATED : OrderStatus.byLabel(order.getStatus());
 		ClientDto client = order.getClient();
-		return OrderMapper.map(create(client.getFirstName(), client.getFirstName(), order.getPhone(), order.getCity(), order.getAddress(), order.getDistrict(), order.getComment(), deliveryType, deliveryDays, order.getDeliveryTimeStart(), order.getDeliveryTimeEnd(), order.getDiscount(), sources));
+		return OrderMapper.map(create(client.getFirstName(), client.getFirstName(), order.getPhone(), order.getCity(), order.getAddress(), order.getDistrict(), order.getComment(), deliveryType, deliveryDays, order.getDeliveryTimeStart(), order.getDeliveryTimeEnd(), order.getDiscount(), sources, status));
 	}
 
 	public OrderDto updateOrderItemServices(Long orderId, UpdateOrderItemDto updateInfo) throws OrderDoesNotExistException, OrderItemDoesNotExistsException {
@@ -168,7 +169,7 @@ public class OrderService {
 		return result;
 	}
 
-	public Orders create(String firstName, String lastName, String phone, String city, String address, String district, String comment, DeliveryType deliveryType, String deliveryDays, Date deliverTimeStart, Date deliveryTimeEnd, Double discount, String sources) {
+	public Orders create(String firstName, String lastName, String phone, String city, String address, String district, String comment, DeliveryType deliveryType, String deliveryDays, Date deliverTimeStart, Date deliveryTimeEnd, Double discount, String sources, OrderStatus status) {
 		Clients client = clientService.getByPhone(phone);
 
 		if (client == null) {
@@ -188,7 +189,7 @@ public class OrderService {
 				.setDeliveryTimeEnd(deliveryTimeEnd)
 				.setDiscount(discount)
 				.setSources(sources)
-				.setStatus(OrderStatus.CREATED);
+				.setStatus(status);
 
 		return create(order);
 	}
