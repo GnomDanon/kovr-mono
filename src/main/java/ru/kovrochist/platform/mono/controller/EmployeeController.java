@@ -27,8 +27,7 @@ public class EmployeeController implements EmployeeApi {
 
 	@Override
 	public ResponseEntity<List<UserDto>> fetchFilteredEmployees(Map<String, String> allParams) {
-//		return ResponseEntity.ok(employeeService.getEmployees(new EmployeeFilter(allParams)));
-		return ResponseEntity.ok(employeeService.getEmployees());
+		return ResponseEntity.ok(employeeService.getEmployees(new EmployeeFilter(allParams)));
 	}
 
 	@Override

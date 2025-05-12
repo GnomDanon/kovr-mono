@@ -31,8 +31,7 @@ public class ClientController implements ClientApi {
 
 	@Override
 	public ResponseEntity<List<ClientDto>> fetchFilteredClients(Map<String, String> allParams) {
-//		return ResponseEntity.ok(clientService.getClients(new ClientFilter(allParams)));
-		return ResponseEntity.ok(clientService.getClients());
+		return ResponseEntity.ok(clientService.getClients(new ClientFilter(allParams)));
 	}
 
 	@Override
