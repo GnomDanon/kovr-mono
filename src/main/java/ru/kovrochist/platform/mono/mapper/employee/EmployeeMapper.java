@@ -1,6 +1,7 @@
 package ru.kovrochist.platform.mono.mapper.employee;
 
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
+import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.entity.AssignedEmployees;
 import ru.kovrochist.platform.mono.entity.Employees;
@@ -8,7 +9,7 @@ import ru.kovrochist.platform.mono.util.StringUtil;
 
 public class EmployeeMapper {
 
-	public static UserDto map(Employees employee) {
+	public static UserDto mapToUser(Employees employee) {
 		return new UserDto()
 				.setId(employee.getId())
 				.setFirstName(employee.getFirstName())
@@ -18,6 +19,23 @@ public class EmployeeMapper {
 				.setRole(employee.getRole().getLabel())
 				.setGender(employee.getGender() == null ? null : employee.getGender().getLabel())
 				.setCreatedAt(employee.getCreatedAt());
+	}
+
+	public static EmployeeDto map(Employees employee) {
+		EmployeeDto employeeDto = new EmployeeDto()
+				.setOnShift(employee.getOnShift())
+				.setStatus(employee.getStatus());
+
+		employeeDto.setId(employee.getId())
+				.setFirstName(employee.getFirstName())
+				.setLastName(employee.getLastName())
+				.setBirthday(employee.getBirthday())
+				.setPhone(employee.getPhone())
+				.setRole(employee.getRole().getLabel())
+				.setGender(employee.getGender() == null ? null : employee.getGender().getLabel())
+				.setCreatedAt(employee.getCreatedAt());
+
+		return employeeDto;
 	}
 
 	public static AssignedEmployeeDto mapAssigned(AssignedEmployees assigned) {

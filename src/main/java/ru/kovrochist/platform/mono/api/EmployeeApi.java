@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
-import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeAlreadyExistsException;
 
@@ -25,15 +25,15 @@ public interface EmployeeApi {
 
 	@Operation(summary = "Получение сотрудников")
 	@GetMapping
-	ResponseEntity<List<UserDto>> getEmployees();
+	ResponseEntity<List<EmployeeDto>> getEmployees();
 
 	@Operation(summary = "Получение отфильтрованных сотрудников")
 	@GetMapping("/filter")
-	ResponseEntity<List<UserDto>> fetchFilteredEmployees(@RequestParam Map<String, String> allParams);
+	ResponseEntity<List<EmployeeDto>> fetchFilteredEmployees(@RequestParam Map<String, String> allParams);
 
 	@Operation(summary = "Создание сотрудника")
 	@PostMapping
-	ResponseEntity<UserDto> createEmployee(@RequestBody UserDto user) throws DoesNotExistException, EmployeeAlreadyExistsException;
+	ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto user) throws DoesNotExistException, EmployeeAlreadyExistsException;
 
 	@Operation(summary = "") //TODO: ???
 	@DeleteMapping("/{id}")
@@ -41,5 +41,5 @@ public interface EmployeeApi {
 
 	@Operation(summary = "Обновление роли клиента")
 	@PatchMapping("/{id}/role")
-	ResponseEntity<UserDto> updateEmployeeRole(@PathVariable Long id, @RequestBody RoleWrapper roleWrapper) throws DoesNotExistException;
+	ResponseEntity<EmployeeDto> updateEmployeeRole(@PathVariable Long id, @RequestBody RoleWrapper roleWrapper) throws DoesNotExistException;
 }

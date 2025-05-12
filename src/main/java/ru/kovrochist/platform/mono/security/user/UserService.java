@@ -40,7 +40,7 @@ public class UserService implements UserDetailsService {
 	public UserDto findUser(String phone) {
 		Employees employee = employeeService.getByPhone(phone);
 		if (employee != null) {
-			return EmployeeMapper.map(employee);
+			return EmployeeMapper.mapToUser(employee);
 		}
 		Clients client = clientService.getByPhone(phone);
 		return ClientMapper.mapToUser(client);
@@ -50,13 +50,13 @@ public class UserService implements UserDetailsService {
 		Long id = USER.getId();
 		if (USER.getRole() == Role.CLIENT)
 			return ClientMapper.map(clientService.getById(id));
-		return EmployeeMapper.map(employeeService.getById(id));
+		return EmployeeMapper.mapToUser(employeeService.getById(id));
 	}
 
 	public UserDto updateProfile(ProfileFormData profile) throws DoesNotExistException {
 		Long id = USER.getId();
 		if (USER.getRole() == Role.CLIENT)
 			return ClientMapper.map(clientService.update(id, profile.getPhone(), profile.getFirstName(), profile.getLastName(), profile.getBirthday(), profile.getCity(), profile.getAddress(), profile.getGender()));
-		return EmployeeMapper.map(employeeService.update(id, profile.getFirstName(), profile.getLastName(), profile.getBirthday(), profile.getPhone(), profile.getGender()));
+		return EmployeeMapper.mapToUser(employeeService.update(id, profile.getFirstName(), profile.getLastName(), profile.getBirthday(), profile.getPhone(), profile.getGender()));
 	}
 }

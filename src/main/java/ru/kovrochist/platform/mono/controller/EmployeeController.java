@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.EmployeeApi;
+import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
-import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeAlreadyExistsException;
 import ru.kovrochist.platform.mono.filter.EmployeeFilter;
@@ -21,17 +21,17 @@ public class EmployeeController implements EmployeeApi {
 	private final EmployeeService employeeService;
 
 	@Override
-	public ResponseEntity<List<UserDto>> getEmployees() {
+	public ResponseEntity<List<EmployeeDto>> getEmployees() {
 		return ResponseEntity.ok(employeeService.getEmployees());
 	}
 
 	@Override
-	public ResponseEntity<List<UserDto>> fetchFilteredEmployees(Map<String, String> allParams) {
+	public ResponseEntity<List<EmployeeDto>> fetchFilteredEmployees(Map<String, String> allParams) {
 		return ResponseEntity.ok(employeeService.getEmployees(new EmployeeFilter(allParams)));
 	}
 
 	@Override
-	public ResponseEntity<UserDto> createEmployee(UserDto user) throws DoesNotExistException, EmployeeAlreadyExistsException {
+	public ResponseEntity<EmployeeDto> createEmployee(EmployeeDto user) throws DoesNotExistException, EmployeeAlreadyExistsException {
 		return ResponseEntity.ok(employeeService.createEmployee(user));
 	}
 
@@ -41,7 +41,7 @@ public class EmployeeController implements EmployeeApi {
 	}
 
 	@Override
-	public ResponseEntity<UserDto> updateEmployeeRole(Long id, RoleWrapper role) throws DoesNotExistException {
+	public ResponseEntity<EmployeeDto> updateEmployeeRole(Long id, RoleWrapper role) throws DoesNotExistException {
 		return ResponseEntity.ok(employeeService.updateEmployeeRole(id, role));
 	}
 }

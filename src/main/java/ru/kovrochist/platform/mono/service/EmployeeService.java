@@ -2,6 +2,7 @@ package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.entity.Employees;
@@ -25,22 +26,22 @@ public class EmployeeService {
 
 	private final EmployeeRepository employeeRepository;
 
-	public List<UserDto> getEmployees() {
+	public List<EmployeeDto> getEmployees() {
 		List<Employees> employees = get();
 		return employees.stream().map(EmployeeMapper::map).collect(Collectors.toList());
 	}
 
-	public List<UserDto> getEmployees(EmployeeFilter filter) {
+	public List<EmployeeDto> getEmployees(EmployeeFilter filter) {
 		List<Employees> employees = get(filter);
 		return employees.stream().map(EmployeeMapper::map).collect(Collectors.toList());
 	}
 
-	public UserDto createEmployee(UserDto userDto) throws DoesNotExistException, EmployeeAlreadyExistsException {
+	public EmployeeDto createEmployee(UserDto userDto) throws DoesNotExistException, EmployeeAlreadyExistsException {
 		Employees employee = create(userDto.getFirstName(), userDto.getLastName(), userDto.getBirthday(), userDto.getPhone(), Role.byLabel(userDto.getRole()), userDto.getGender() == null ? null : Gender.byLabel(userDto.getGender()));
 		return EmployeeMapper.map(employee);
 	}
 
-	public UserDto updateEmployeeRole(Long id, RoleWrapper role) throws DoesNotExistException {
+	public EmployeeDto updateEmployeeRole(Long id, RoleWrapper role) throws DoesNotExistException {
 		Employees employee = getById(id);
 		employeeRepository.save(employee.setRole(Role.byLabel(role.getValue())));
 		return EmployeeMapper.map(employee);
