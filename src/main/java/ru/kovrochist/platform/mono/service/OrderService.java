@@ -79,7 +79,9 @@ public class OrderService {
 		String sources = order.getSources() == null ? null : String.join(StringUtil.SEPARATOR, order.getSources());
 		OrderStatus status = order.getStatus() == null ? OrderStatus.CREATED : OrderStatus.byLabel(order.getStatus());
 		ClientDto client = order.getClient();
-		return OrderMapper.map(create(client.getFirstName(), client.getFirstName(), order.getPhone(), order.getCity(), order.getAddress(), order.getDistrict(), order.getComment(), deliveryType, deliveryDays, order.getDeliveryTimeStart(), order.getDeliveryTimeEnd(), order.getDiscount(), sources, status));
+		Orders newOrder = create(client.getFirstName(), client.getFirstName(), order.getPhone(), order.getCity(), order.getAddress(), order.getDistrict(), order.getComment(), deliveryType, deliveryDays, order.getDeliveryTimeStart(), order.getDeliveryTimeEnd(), order.getDiscount(), sources, status);
+		List<OrderItems> items = itemService.update(newOrder, order.getItems());
+		return OrderMapper.map(newOrder.setItems(items));
 	}
 
 	public OrderDto updateOrderItemServices(Long orderId, UpdateOrderItemDto updateInfo) throws OrderDoesNotExistException, OrderItemDoesNotExistsException {
@@ -89,8 +91,8 @@ public class OrderService {
 	}
 
 	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException {
-		List<OrderItems> items = itemService.update(updateInfo.getItems());
 		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount(), updateInfo.getSources() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getSources()));
+		List<OrderItems> items = itemService.update(order, updateInfo.getItems());
 		return OrderMapper.map(order.setItems(items));
 	}
 
