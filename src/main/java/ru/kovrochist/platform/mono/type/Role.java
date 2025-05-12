@@ -8,7 +8,7 @@ public enum Role {
 	GUEST(Role._GUEST_),
 	CLIENT(Role._CLIENT_),
 	OPERATOR(Role._OPERATOR_),
-	COURIER(Role._CLIENT_),
+	COURIER(Role._COURIER_),
 	MASTER(Role._MASTER_),
 	ADMIN(Role._ADMIN_);
 
