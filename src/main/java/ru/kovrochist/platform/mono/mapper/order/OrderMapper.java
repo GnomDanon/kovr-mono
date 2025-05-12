@@ -73,7 +73,7 @@ public class OrderMapper {
 	}
 
 	public static String getDeliveryDays(String[] deliveryDays) throws DoesNotExistException {
-		if (deliveryDays == null)
+		if (deliveryDays == null || deliveryDays.length == 0)
 			return null;
 		String[] days = new String[deliveryDays.length];
 		for (int i = 0; i < deliveryDays.length; i++) {
