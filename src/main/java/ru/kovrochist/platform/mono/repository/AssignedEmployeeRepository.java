@@ -14,7 +14,7 @@ public interface AssignedEmployeeRepository extends JpaRepository<AssignedEmploy
 	@Query("select e from AssignedEmployees e " +
 			"where e.employee.id = :employeeId " +
 			"and e.order.id = :orderId")
-	Optional<AssignedEmployees> find(@Param("orderId") Long employeeId, @Param("employeeId") Long orderId);
+	Optional<AssignedEmployees> find(@Param("employeeId") Long employeeId, @Param("orderId") Long orderId);
 
 	Iterable<AssignedEmployees> findByEmployeeId(Long employeeId);
 	Iterable<AssignedEmployees> findByOrderId(Long orderId);
