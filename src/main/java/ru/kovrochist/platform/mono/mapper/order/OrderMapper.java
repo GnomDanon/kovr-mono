@@ -66,11 +66,15 @@ public class OrderMapper {
 	}
 
 	public static String[] getDeliveryDays(String deliveryDays) {
+		if (deliveryDays == null)
+			return null;
 		String[] labels = deliveryDays.split(StringUtil.SEPARATOR);
 		return Arrays.stream(labels).map(label -> DeliveryDay.valueOf(label).getLabel()).toArray(String[]::new);
 	}
 
 	public static String getDeliveryDays(String[] deliveryDays) throws DoesNotExistException {
+		if (deliveryDays == null)
+			return null;
 		String[] days = new String[deliveryDays.length];
 		for (int i = 0; i < deliveryDays.length; i++) {
 			days[i] = DeliveryDay.byLabel(deliveryDays[i]).name();
