@@ -27,6 +27,11 @@ public class ClientService {
 		return clients.stream().map(ClientMapper::map).collect(Collectors.toList());
 	}
 
+	public ClientDto getClient(Long id) throws ClientDoesNotExistException {
+		Clients client = getById(id);
+		return ClientMapper.map(client);
+	}
+
 	public List<ClientDto> getClients(String search) {
 		List<Clients> clients = get(search);
 		return clients.stream().map(ClientMapper::map).collect(Collectors.toList());

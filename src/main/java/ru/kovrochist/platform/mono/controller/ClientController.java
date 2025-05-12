@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.ClientApi;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
 import ru.kovrochist.platform.mono.filter.ClientFilter;
 import ru.kovrochist.platform.mono.service.ClientService;
 
@@ -21,6 +22,11 @@ public class ClientController implements ClientApi {
 	@Override
 	public ResponseEntity<List<ClientDto>> getClients() {
 		return ResponseEntity.ok(clientService.getClients());
+	}
+
+	@Override
+	public ResponseEntity<ClientDto> getClientById(Long id) throws ClientDoesNotExistException {
+		return ResponseEntity.ok(clientService.getClient(id));
 	}
 
 	@Override
