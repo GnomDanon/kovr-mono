@@ -29,8 +29,4 @@ public class EmployeeStatuses implements Metadata {
 
 	@Column(name = "name")
 	private String name;
-
-	public EmployeeStatuses(String name) {
-		this.name = name;
-	}
 }

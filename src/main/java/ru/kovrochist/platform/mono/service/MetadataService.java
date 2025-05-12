@@ -27,11 +27,8 @@ import ru.kovrochist.platform.mono.repository.metadata.DistrictRepository;
 import ru.kovrochist.platform.mono.repository.metadata.ProductRepository;
 import ru.kovrochist.platform.mono.repository.metadata.ServiceRepository;
 import ru.kovrochist.platform.mono.repository.metadata.SourceRepository;
-import ru.kovrochist.platform.mono.type.DeliveryDay;
 import ru.kovrochist.platform.mono.type.DeliveryType;
-import ru.kovrochist.platform.mono.type.Gender;
 import ru.kovrochist.platform.mono.type.OrderStatus;
-import ru.kovrochist.platform.mono.type.Role;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,16 +46,6 @@ public class MetadataService {
 	private final ServiceRepository serviceRepository;
 	private final SourceRepository sourceRepository;
 
-	public List<String> getDeliveryDays() {
-		List<String> result = new ArrayList<>();
-		DeliveryDay[] days = DeliveryDay.values();
-
-		for (DeliveryDay day : days)
-			result.add(day.getLabel());
-
-		return result;
-	}
-
 	public List<String> getDeliveryTypes() {
 		List<String> result = new ArrayList<>();
 		DeliveryType[] types = DeliveryType.values();
@@ -69,26 +56,12 @@ public class MetadataService {
 		return result;
 	}
 
-	public List<String> getGenders() {
-		return List.of(Gender.MALE.getLabel(), Gender.FEMALE.getLabel());
-	}
-
 	public List<String> getOrderStatuses() {
 		List<String> result = new ArrayList<>();
 		OrderStatus[] statuses = OrderStatus.values();
 
 		for (OrderStatus status : statuses)
 			result.add(status.getLabel());
-
-		return result;
-	}
-
-	public List<String> getRoles() {
-		List<String> result = new ArrayList<>();
-		Role[] roles = Role.values();
-
-		for (Role role : roles)
-			result.add(role.getValue());
 
 		return result;
 	}
@@ -114,11 +87,6 @@ public class MetadataService {
 
 	public List<String> getClientStatuses() {
 		return get(clientStatusRepository);
-	}
-
-	public List<String> removeClientStatus(String name) {
-		remove(name, clientStatusRepository);
-		return getClientStatuses();
 	}
 
 	public List<String> createContamination(String name) throws ContamintaionAlreadyExistsException {

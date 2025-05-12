@@ -1,7 +1,6 @@
 package ru.kovrochist.platform.mono.mapper.employee;
 
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
-import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.entity.AssignedEmployees;
 import ru.kovrochist.platform.mono.entity.Employees;

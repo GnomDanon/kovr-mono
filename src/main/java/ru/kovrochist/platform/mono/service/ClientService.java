@@ -126,7 +126,7 @@ public class ClientService {
 		return clientRepository.save(client.setPhone(phone).setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setCity(city).setAddress(address).setGender(gender).setStatus(status));
 	}
 
-	public Clients setCode(Clients client, String code) {
-		return clientRepository.save(client.setCode(code));
+	public void setCode(Clients client, String code) {
+		clientRepository.save(client.setCode(code));
 	}
 }

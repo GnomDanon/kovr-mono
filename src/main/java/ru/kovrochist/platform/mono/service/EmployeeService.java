@@ -25,8 +25,6 @@ public class EmployeeService {
 
 	private final EmployeeRepository employeeRepository;
 
-	private final AssignedEmployeeService assignedEmployeeService;
-
 	public List<UserDto> getEmployees() {
 		List<Employees> employees = get();
 		return employees.stream().map(EmployeeMapper::map).collect(Collectors.toList());
@@ -89,10 +87,6 @@ public class EmployeeService {
 		return employeeRepository.findByPhone(phone).orElse(null);
 	}
 
-	public List<Employees> getByOrderId(Long orderId) {
-		return assignedEmployeeService.getEmployeesByOrderId(orderId);
-	}
-
 	public Employees create(String firstName, String lastName, Date birthday, String phone, Role role, Gender gender) throws EmployeeAlreadyExistsException {
 		Employees employee = employeeRepository.findByPhone(phone).orElse(null);
 
@@ -109,11 +103,6 @@ public class EmployeeService {
 		return update(employee, firstName, lastName, birthday, phone, employee.getRole().getValue(), gender);
 	}
 
-	public Employees update(Long id, String firstName, String lastName, Date birthday, String roleValue) throws DoesNotExistException {
-		Employees employee = getById(id);
-		return update(employee, firstName, lastName, birthday, employee.getPhone(), roleValue, employee.getGender() == null ? null : employee.getGender().getLabel());
-	}
-
 	public Employees update(Employees employee, String firstName, String lastName, Date birthday, String phone, String roleValue, String genderLabel) throws DoesNotExistException {
 		Role role = Role.byLabel(roleValue);
 		Gender gender = genderLabel == null ? null : Gender.byLabel(genderLabel);
@@ -127,7 +116,7 @@ public class EmployeeService {
 		return employeeRepository.save(employees.setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setPhone(phone).setRole(role).setGender(gender));
 	}
 
-	public Employees setCode(Employees employee, String code) {
-		return employeeRepository.save(employee.setCode(code));
+	public void setCode(Employees employee, String code) {
+		employeeRepository.save(employee.setCode(code));
 	}
 }

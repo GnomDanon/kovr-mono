@@ -31,19 +31,6 @@ public enum OrderStatus {
 		this.label = label;
 	}
 
-	public OrderStatus getNextStatus() {
-		int index = this.ordinal() + 1;
-		OrderStatus[] statuses = OrderStatus.values();
-		if (index == statuses.length) {
-			return this;
-		}
-		return statuses[index];
-	}
-
-	public boolean canBeRejected() {
-		return this != COMPLETED;
-	}
-
 	public static OrderStatus byLabel(String label) throws DoesNotExistException {
 		return switch (label) {
 			case _REJECTED_ -> REJECTED;

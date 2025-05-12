@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.OrderApi;
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
-import ru.kovrochist.platform.mono.dto.metadata.TypeWrapper;
 import ru.kovrochist.platform.mono.dto.order.AssignDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.order.RescheduleDto;

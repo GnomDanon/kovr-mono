@@ -1,7 +1,6 @@
 package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
@@ -13,9 +12,7 @@ import ru.kovrochist.platform.mono.entity.Employees;
 import ru.kovrochist.platform.mono.entity.OrderItems;
 import ru.kovrochist.platform.mono.entity.Orders;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
-import ru.kovrochist.platform.mono.exception.ResourceConflictException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
-import ru.kovrochist.platform.mono.exception.order.CannotRejectException;
 import ru.kovrochist.platform.mono.exception.order.OrderDoesNotExistException;
 import ru.kovrochist.platform.mono.exception.order.OrderItemDoesNotExistsException;
 import ru.kovrochist.platform.mono.filter.OrderFilter;
@@ -86,7 +83,7 @@ public class OrderService {
 	}
 
 	public OrderDto updateOrderItemServices(Long orderId, UpdateOrderItemDto updateInfo) throws OrderDoesNotExistException, OrderItemDoesNotExistsException {
-		OrderItems item = itemService.updateServices(updateInfo.getItemId(), updateInfo.getServices());
+		itemService.updateServices(updateInfo.getItemId(), updateInfo.getServices());
 		Orders order = getById(orderId);
 		return OrderMapper.map(update(order));
 	}

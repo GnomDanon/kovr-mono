@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
-import ru.kovrochist.platform.mono.dto.metadata.TypeWrapper;
 import ru.kovrochist.platform.mono.dto.order.AssignDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.order.RescheduleDto;

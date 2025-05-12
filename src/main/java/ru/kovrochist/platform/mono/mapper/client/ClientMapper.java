@@ -1,13 +1,11 @@
 package ru.kovrochist.platform.mono.mapper.client;
 
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
-import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.entity.Clients;
 import ru.kovrochist.platform.mono.entity.Orders;
 import ru.kovrochist.platform.mono.type.Role;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;

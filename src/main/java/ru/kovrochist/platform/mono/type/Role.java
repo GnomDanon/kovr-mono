@@ -25,14 +25,6 @@ public enum Role {
 		this.value = label;
 	}
 
-	public static Role[] getEmployeeRoles() {
-		return new Role[] { OPERATOR, COURIER, MASTER, ADMIN };
-	}
-
-	public static Role[] getClientRoles() {
-		return new Role[] { GUEST, CLIENT };
-	}
-
 	public static Role byLabel(String value) throws DoesNotExistException{
 		return switch (value) {
 			case _GUEST_ -> GUEST;

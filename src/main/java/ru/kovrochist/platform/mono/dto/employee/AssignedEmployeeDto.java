@@ -3,7 +3,6 @@ package ru.kovrochist.platform.mono.dto.employee;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 
 @Data
 @Accessors(chain = true)

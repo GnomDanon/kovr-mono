@@ -2,7 +2,6 @@ package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
 import ru.kovrochist.platform.mono.entity.AssignedEmployees;
 import ru.kovrochist.platform.mono.entity.Employees;
 import ru.kovrochist.platform.mono.entity.Orders;

@@ -8,8 +8,6 @@ import ru.kovrochist.platform.mono.entity.Orders;
 import ru.kovrochist.platform.mono.type.DeliveryType;
 import ru.kovrochist.platform.mono.type.OrderStatus;
 
-import java.util.UUID;
-
 @Repository
 public interface OrderRepository extends CrudRepository<Orders, Long> {
 

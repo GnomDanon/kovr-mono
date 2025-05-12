@@ -5,8 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.kovrochist.platform.mono.entity.Clients;
-import ru.kovrochist.platform.mono.type.DeliveryType;
-import ru.kovrochist.platform.mono.type.OrderStatus;
 
 import java.util.Optional;
 
