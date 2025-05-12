@@ -76,8 +76,9 @@ public class OrderService {
 	public OrderDto createOrder(OrderDto order) throws DoesNotExistException {
 		DeliveryType deliveryType = DeliveryType.byLabel(order.getDeliveryType());
 		String deliveryDays = order.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, order.getDeliveryDays());
+		String sources = order.getSources() == null ? null : String.join(StringUtil.SEPARATOR, order.getSources());
 		ClientDto client = order.getClient();
-		return OrderMapper.map(create(client.getFirstName(), client.getFirstName(), order.getPhone(), order.getCity(), order.getAddress(), order.getDistrict(), order.getComment(), deliveryType, deliveryDays, order.getDeliveryTimeStart(), order.getDeliveryTimeEnd(), order.getDiscount()));
+		return OrderMapper.map(create(client.getFirstName(), client.getFirstName(), order.getPhone(), order.getCity(), order.getAddress(), order.getDistrict(), order.getComment(), deliveryType, deliveryDays, order.getDeliveryTimeStart(), order.getDeliveryTimeEnd(), order.getDiscount(), sources));
 	}
 
 	public OrderDto updateOrderItemServices(Long orderId, UpdateOrderItemDto updateInfo) throws OrderDoesNotExistException, OrderItemDoesNotExistsException {
@@ -88,7 +89,7 @@ public class OrderService {
 
 	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException {
 		itemService.update(updateInfo.getItems());
-		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount());
+		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount(), updateInfo.getSources() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getSources()));
 		return OrderMapper.map(order);
 	}
 
@@ -167,7 +168,7 @@ public class OrderService {
 		return result;
 	}
 
-	public Orders create(String firstName, String lastName, String phone, String city, String address, String district, String comment, DeliveryType deliveryType, String deliveryDays, Date deliverTimeStart, Date deliveryTimeEnd, Double discount) {
+	public Orders create(String firstName, String lastName, String phone, String city, String address, String district, String comment, DeliveryType deliveryType, String deliveryDays, Date deliverTimeStart, Date deliveryTimeEnd, Double discount, String sources) {
 		Clients client = clientService.getByPhone(phone);
 
 		if (client == null) {
@@ -186,6 +187,7 @@ public class OrderService {
 				.setDeliveryTimeStart(deliverTimeStart)
 				.setDeliveryTimeEnd(deliveryTimeEnd)
 				.setDiscount(discount)
+				.setSources(sources)
 				.setStatus(OrderStatus.CREATED);
 
 		return create(order);
@@ -208,9 +210,9 @@ public class OrderService {
 		return orderRepository.save(order.setCreatedAt(now).setUpdatedAt(now));
 	}
 
-	public Orders update(Long id, String status, String comment, String deliveryType, String phone, String city, String address, String district, String deliveryDays, Date deliveryTimeStart, Date deliveryTimeEnd, Double discount) throws DoesNotExistException {
+	public Orders update(Long id, String status, String comment, String deliveryType, String phone, String city, String address, String district, String deliveryDays, Date deliveryTimeStart, Date deliveryTimeEnd, Double discount, String sources) throws DoesNotExistException {
 		Orders order = getById(id);
-		return update(order.setStatus(OrderStatus.byLabel(status)).setComment(comment).setDeliveryType(DeliveryType.byLabel(deliveryType)).setPhone(phone).setCity(city).setAddress(address).setDistrict(district).setDeliveryDays(deliveryDays).setDeliveryTimeStart(deliveryTimeStart).setDeliveryTimeEnd(deliveryTimeEnd).setDiscount(discount));
+		return update(order.setStatus(OrderStatus.byLabel(status)).setComment(comment).setDeliveryType(DeliveryType.byLabel(deliveryType)).setPhone(phone).setCity(city).setAddress(address).setDistrict(district).setDeliveryDays(deliveryDays).setDeliveryTimeStart(deliveryTimeStart).setDeliveryTimeEnd(deliveryTimeEnd).setDiscount(discount).setSources(sources));
 	}
 
 	public Orders updateStatus(Long id, String statusLabel) throws DoesNotExistException {

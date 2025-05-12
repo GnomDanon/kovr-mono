@@ -77,6 +77,9 @@ public class Orders {
 	@Column(name = "discount")
 	private Double discount;
 
+	@Column(name = "sources")
+	private String sources;
+
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Clients client;

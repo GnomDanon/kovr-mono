@@ -60,6 +60,7 @@
             <column name="delivery_time_end" type="TIMESTAMP"/>
             <column name="status" type="VARCHAR(50)"/>
             <column name="discount" type="DOUBLE"/>
+            <column name="sources" type="TEXT"/>
             <column name="client_id" type="BIGINT"/>
         </createTable>
         <addForeignKeyConstraint baseTableName="orders"

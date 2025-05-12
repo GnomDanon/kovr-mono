@@ -61,6 +61,9 @@ public class OrderDto {
 	@Schema(description = "Размер скидки")
 	private Double discount;
 
+	@Schema(description = "Источники")
+	private String[] sources;
+
 	@Schema(description = "Назначенные сотрудники")
 	private AssignedEmployeeDto[] assignees;
 }
