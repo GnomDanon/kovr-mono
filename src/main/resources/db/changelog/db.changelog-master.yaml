@@ -6,5 +6,5 @@ databaseChangeLog:
       file: data/metadata-init.xml
       relativeToChangelogFile: true
   - include:
-      file: data/mock-init.xml
+      file: data/mock/mock-init.xml
       relativeToChangelogFile: true
