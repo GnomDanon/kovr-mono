@@ -1,7 +1,6 @@
 <databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
     <changeSet id="insert-clients" author="Daniil">
         <insert tableName="clients">
-            <column name="id" value="1"/>
             <column name="first_name" value="Мария"/>
             <column name="last_name" value="Потапова"/>
             <column name="phone" value="70487647593"/>
@@ -14,7 +13,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="2"/>
             <column name="first_name" value="Анжела"/>
             <column name="last_name" value="Бирюкова"/>
             <column name="phone" value="77815659387"/>
@@ -27,7 +25,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="3"/>
             <column name="first_name" value="Лора"/>
             <column name="last_name" value="Мартынов"/>
             <column name="phone" value="71393328711"/>
@@ -40,7 +37,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="4"/>
             <column name="first_name" value="Элеонора"/>
             <column name="last_name" value="Ковалева"/>
             <column name="phone" value="74719659342"/>
@@ -53,7 +49,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="5"/>
             <column name="first_name" value="Бронислав"/>
             <column name="last_name" value="Щербакова"/>
             <column name="phone" value="72018684833"/>
@@ -66,7 +61,6 @@
             <column name="status" value="Непостоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="6"/>
             <column name="first_name" value="Юлий"/>
             <column name="last_name" value="Жуков"/>
             <column name="phone" value="79533041352"/>
@@ -79,7 +73,6 @@
             <column name="status" value="Непостоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="7"/>
             <column name="first_name" value="Фирс"/>
             <column name="last_name" value="Журавлев"/>
             <column name="phone" value="71510903217"/>
@@ -92,7 +85,6 @@
             <column name="status" value="Непостоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="8"/>
             <column name="first_name" value="Казимир"/>
             <column name="last_name" value="Кудрявцев"/>
             <column name="phone" value="71456208709"/>
@@ -105,7 +97,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="9"/>
             <column name="first_name" value="Олимпиада"/>
             <column name="last_name" value="Филатова"/>
             <column name="phone" value="782302258419"/>
@@ -118,7 +109,6 @@
             <column name="status" value="Непостоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="10"/>
             <column name="first_name" value="Зоя"/>
             <column name="last_name" value="Тимофеев"/>
             <column name="phone" value="70715084237"/>
@@ -131,7 +121,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="11"/>
             <column name="first_name" value="Павел"/>
             <column name="last_name" value="Федосеева"/>
             <column name="phone" value="70935233769"/>
@@ -144,7 +133,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="12"/>
             <column name="first_name" value="Галина"/>
             <column name="last_name" value="Рожков"/>
             <column name="phone" value="77890075470"/>
@@ -157,7 +145,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="13"/>
             <column name="first_name" value="Агафон"/>
             <column name="last_name" value="Рыбакова"/>
             <column name="phone" value="78913193442"/>
@@ -170,7 +157,6 @@
             <column name="status" value="Непостоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="14"/>
             <column name="first_name" value="Виктор"/>
             <column name="last_name" value="Дементьева"/>
             <column name="phone" value="72851240003"/>
@@ -183,7 +169,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="15"/>
             <column name="first_name" value="Тимофей"/>
             <column name="last_name" value="Ефимов"/>
             <column name="phone" value="76940224555"/>
@@ -196,7 +181,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="16"/>
             <column name="first_name" value="Марфа"/>
             <column name="last_name" value="Ковалева"/>
             <column name="phone" value="74173042814"/>
@@ -209,7 +193,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="17"/>
             <column name="first_name" value="Мартын"/>
             <column name="last_name" value="Крюкова"/>
             <column name="phone" value="71717604522"/>
@@ -222,7 +205,6 @@
             <column name="status" value="Непостоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="18"/>
             <column name="first_name" value="Валерьян"/>
             <column name="last_name" value="Устинов"/>
             <column name="phone" value="78477936153"/>
@@ -235,7 +217,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="19"/>
             <column name="first_name" value="Егор"/>
             <column name="last_name" value="Фролов"/>
             <column name="phone" value="76430392137"/>
@@ -248,7 +229,6 @@
             <column name="status" value="Постоянный"/>
         </insert>
         <insert tableName="clients">
-            <column name="id" value="20"/>
             <column name="first_name" value="Лидия"/>
             <column name="last_name" value="Пахомова"/>
             <column name="phone" value="77389305550"/>
@@ -263,7 +243,6 @@
     </changeSet>
     <changeSet id="insert-employees" author="Daniil">
         <insert tableName="employees">
-            <column name="id" value="1"/>
             <column name="first_name" value="Алина"/>
             <column name="last_name" value="Титов"/>
             <column name="birthday" value="1980-09-05T15:11:29"/>
@@ -275,7 +254,6 @@
             <column name="status" value="Уволен"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="2"/>
             <column name="first_name" value="Наум"/>
             <column name="last_name" value="Шарапова"/>
             <column name="birthday" value="2001-06-01T09:57:53"/>
@@ -287,7 +265,6 @@
             <column name="status" value="Уволен"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="3"/>
             <column name="first_name" value="Эммануил"/>
             <column name="last_name" value="Щукин"/>
             <column name="birthday" value="1998-03-06T10:58:39"/>
@@ -299,7 +276,6 @@
             <column name="status" value="Уволен"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="4"/>
             <column name="first_name" value="Мариан"/>
             <column name="last_name" value="Титов"/>
             <column name="birthday" value="1998-12-12T05:34:48"/>
@@ -311,7 +287,6 @@
             <column name="status" value="Работает"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="5"/>
             <column name="first_name" value="Аполлон"/>
             <column name="last_name" value="Бурова"/>
             <column name="birthday" value="1967-10-23T02:45:09"/>
@@ -323,7 +298,6 @@
             <column name="status" value="Уволен"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="6"/>
             <column name="first_name" value="Рубен"/>
             <column name="last_name" value="Мамонтов"/>
             <column name="birthday" value="1996-08-03T13:21:43"/>
@@ -335,7 +309,6 @@
             <column name="status" value="Работает"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="7"/>
             <column name="first_name" value="Ульян"/>
             <column name="last_name" value="Маркова"/>
             <column name="birthday" value="1988-12-14T10:53:29"/>
@@ -347,7 +320,6 @@
             <column name="status" value="Уволен"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="8"/>
             <column name="first_name" value="Лавр"/>
             <column name="last_name" value="Моисеева"/>
             <column name="birthday" value="1974-01-05T06:55:53"/>
@@ -359,7 +331,6 @@
             <column name="status" value="Уволен"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="9"/>
             <column name="first_name" value="Людмила"/>
             <column name="last_name" value="Елисеева"/>
             <column name="birthday" value="1970-06-28T13:11:51"/>
@@ -371,7 +342,6 @@
             <column name="status" value="Работает"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="10"/>
             <column name="first_name" value="Прасковья"/>
             <column name="last_name" value="Гаврилова"/>
             <column name="birthday" value="2000-12-31T21:28:59"/>
@@ -383,7 +353,6 @@
             <column name="status" value="Уволен"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="11"/>
             <column name="first_name" value="Ангелина"/>
             <column name="last_name" value="Лазарев"/>
             <column name="birthday" value="1993-08-12T20:50:03"/>
@@ -395,7 +364,6 @@
             <column name="status" value="Работает"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="12"/>
             <column name="first_name" value="Анжела"/>
             <column name="last_name" value="Николаев"/>
             <column name="birthday" value="1989-10-23T06:20:05"/>
@@ -407,7 +375,6 @@
             <column name="status" value="Уволен"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="13"/>
             <column name="first_name" value="Авдей"/>
             <column name="last_name" value="Исаков"/>
             <column name="birthday" value="1973-09-29T19:57:41"/>
@@ -419,7 +386,6 @@
             <column name="status" value="Работает"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="14"/>
             <column name="first_name" value="Мечислав"/>
             <column name="last_name" value="Быкова"/>
             <column name="birthday" value="1982-12-08T00:55:37"/>
@@ -431,7 +397,6 @@
             <column name="status" value="Работает"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="15"/>
             <column name="first_name" value="Христофор"/>
             <column name="last_name" value="Сорокин"/>
             <column name="birthday" value="1972-05-05T14:59:58"/>
@@ -443,7 +408,6 @@
             <column name="status" value="Работает"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="16"/>
             <column name="first_name" value="Изот"/>
             <column name="last_name" value="Лукина"/>
             <column name="birthday" value="1977-11-17T22:30:26"/>
@@ -455,7 +419,6 @@
             <column name="status" value="Уволен"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="17"/>
             <column name="first_name" value="Пантелеймон"/>
             <column name="last_name" value="Моисеев"/>
             <column name="birthday" value="2002-11-04T14:46:10"/>
@@ -467,7 +430,6 @@
             <column name="status" value="Работает"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="18"/>
             <column name="first_name" value="Арефий"/>
             <column name="last_name" value="Ситников"/>
             <column name="birthday" value="1993-03-03T10:25:16"/>
@@ -479,7 +441,6 @@
             <column name="status" value="В отпуске"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="19"/>
             <column name="first_name" value="Кирилл"/>
             <column name="last_name" value="Цветков"/>
             <column name="birthday" value="2003-05-07T15:40:11"/>
@@ -491,7 +452,6 @@
             <column name="status" value="Отгул"/>
         </insert>
         <insert tableName="employees">
-            <column name="id" value="20"/>
             <column name="first_name" value="Регина"/>
             <column name="last_name" value="Бобров"/>
             <column name="birthday" value="1989-07-18T16:19:34"/>
@@ -505,7 +465,6 @@
     </changeSet>
     <changeSet id="insert-orders" author="Daniil">
         <insert tableName="orders">
-            <column name="id" value="1"/>
             <column name="phone" value="74892671738"/>
             <column name="city" value="Киров"/>
             <column name="address" value="наб. Рабочая, д. 140 к. 7"/>
@@ -523,7 +482,6 @@
             <column name="client_id" value="3"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="2"/>
             <column name="phone" value="781014485183"/>
             <column name="city" value="Киров"/>
             <column name="address" value="ул. Зои Космодемьянской, д. 5"/>
@@ -541,7 +499,6 @@
             <column name="client_id" value="20"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="3"/>
             <column name="phone" value="774759221166"/>
             <column name="city" value="Киров"/>
             <column name="address" value="пр. Кленовый, д. 6 стр. 7/4"/>
@@ -559,7 +516,6 @@
             <column name="client_id" value="6"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="4"/>
             <column name="phone" value="783057608116"/>
             <column name="city" value="Киров"/>
             <column name="address" value="наб. Дачная, д. 590"/>
@@ -577,7 +533,6 @@
             <column name="client_id" value="20"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="5"/>
             <column name="phone" value="76256627285"/>
             <column name="city" value="Киров"/>
             <column name="address" value="алл. Техническая, д. 6/7"/>
@@ -595,7 +550,6 @@
             <column name="client_id" value="12"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="6"/>
             <column name="phone" value="70312502394"/>
             <column name="city" value="Киров"/>
             <column name="address" value="ул. Балтийская, д. 7 стр. 1/9"/>
@@ -613,7 +567,6 @@
             <column name="client_id" value="2"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="7"/>
             <column name="phone" value="72504021639"/>
             <column name="city" value="Киров"/>
             <column name="address" value="пер. Черноморский, д. 4/6 к. 691"/>
@@ -631,7 +584,6 @@
             <column name="client_id" value="20"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="8"/>
             <column name="phone" value="75334448647"/>
             <column name="city" value="Киров"/>
             <column name="address" value="ш. Ставропольское, д. 248 к. 877"/>
@@ -649,7 +601,6 @@
             <column name="client_id" value="11"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="9"/>
             <column name="phone" value="71131263791"/>
             <column name="city" value="Киров"/>
             <column name="address" value="пер. Льва Толстого, д. 823 к. 52"/>
@@ -667,7 +618,6 @@
             <column name="client_id" value="13"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="10"/>
             <column name="phone" value="78978443019"/>
             <column name="city" value="Киров"/>
             <column name="address" value="ул. Коллективная, д. 4/4 стр. 1"/>
@@ -685,7 +635,6 @@
             <column name="client_id" value="17"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="11"/>
             <column name="phone" value="74331845357"/>
             <column name="city" value="Киров"/>
             <column name="address" value="пер. Ярославский, д. 90 к. 6"/>
@@ -703,7 +652,6 @@
             <column name="client_id" value="14"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="12"/>
             <column name="phone" value="79332365992"/>
             <column name="city" value="Киров"/>
             <column name="address" value="пр. Олимпийский, д. 689 стр. 8/5"/>
@@ -721,7 +669,6 @@
             <column name="client_id" value="1"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="13"/>
             <column name="phone" value="77851429635"/>
             <column name="city" value="Киров"/>
             <column name="address" value="пр. Привокзальный, д. 60 к. 85"/>
@@ -739,7 +686,6 @@
             <column name="client_id" value="9"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="14"/>
             <column name="phone" value="75070030035"/>
             <column name="city" value="Киров"/>
             <column name="address" value="ш. Овражное, д. 7"/>
@@ -757,7 +703,6 @@
             <column name="client_id" value="4"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="15"/>
             <column name="phone" value="76606488709"/>
             <column name="city" value="Киров"/>
             <column name="address" value="пр. Разина, д. 90"/>
@@ -775,7 +720,6 @@
             <column name="client_id" value="2"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="16"/>
             <column name="phone" value="73230282169"/>
             <column name="city" value="Киров"/>
             <column name="address" value="пер. Л.Толстого, д. 19"/>
@@ -793,7 +737,6 @@
             <column name="client_id" value="20"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="17"/>
             <column name="phone" value="75427385265"/>
             <column name="city" value="Киров"/>
             <column name="address" value="ш. 8-е Марта, д. 1/5 к. 9"/>
@@ -811,7 +754,6 @@
             <column name="client_id" value="10"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="18"/>
             <column name="phone" value="87004049438"/>
             <column name="city" value="Киров"/>
             <column name="address" value="наб. 50 лет Победы, д. 4 стр. 495"/>
@@ -829,7 +771,6 @@
             <column name="client_id" value="20"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="19"/>
             <column name="phone" value="79255445769"/>
             <column name="city" value="Киров"/>
             <column name="address" value="алл. Молодежная, д. 19 к. 3/6"/>
@@ -847,7 +788,6 @@
             <column name="client_id" value="5"/>
         </insert>
         <insert tableName="orders">
-            <column name="id" value="20"/>
             <column name="phone" value="79318642821"/>
             <column name="city" value="Киров"/>
             <column name="address" value="бул. Авиационный, д. 788 стр. 5/5"/>
@@ -867,7 +807,6 @@
     </changeSet>
     <changeSet id="insert-order-items" author="Daniil">
         <insert tableName="order_items">
-            <column name="id" value="1"/>
             <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
@@ -876,7 +815,6 @@
             <column name="order_id" value="11"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="2"/>
             <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
@@ -885,7 +823,6 @@
             <column name="order_id" value="10"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="3"/>
             <column name="services" value="Химчистка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
@@ -894,7 +831,6 @@
             <column name="order_id" value="3"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="4"/>
             <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
@@ -903,7 +839,6 @@
             <column name="order_id" value="1"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="5"/>
             <column name="services" value="Дезинфекция&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
@@ -912,7 +847,6 @@
             <column name="order_id" value="16"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="6"/>
             <column name="services" value="Дезинфекция&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
@@ -921,7 +855,6 @@
             <column name="order_id" value="9"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="7"/>
             <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
@@ -930,7 +863,6 @@
             <column name="order_id" value="1"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="8"/>
             <column name="services" value="Химчистка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
@@ -939,7 +871,6 @@
             <column name="order_id" value="9"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="9"/>
             <column name="services" value="Антибактериальная обработка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
@@ -948,7 +879,6 @@
             <column name="order_id" value="15"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="10"/>
             <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
@@ -957,7 +887,6 @@
             <column name="order_id" value="16"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="11"/>
             <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
@@ -966,7 +895,6 @@
             <column name="order_id" value="16"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="12"/>
             <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
@@ -975,7 +903,6 @@
             <column name="order_id" value="8"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="13"/>
             <column name="services" value="Дезинфекция&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
@@ -984,7 +911,6 @@
             <column name="order_id" value="2"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="14"/>
             <column name="services" value="Антибактериальная обработка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
@@ -993,7 +919,6 @@
             <column name="order_id" value="19"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="15"/>
             <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
@@ -1002,7 +927,6 @@
             <column name="order_id" value="5"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="16"/>
             <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
@@ -1011,7 +935,6 @@
             <column name="order_id" value="5"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="17"/>
             <column name="services" value="Химчистка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
@@ -1020,7 +943,6 @@
             <column name="order_id" value="17"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="18"/>
             <column name="services" value="Антибактериальная обработка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
@@ -1029,7 +951,6 @@
             <column name="order_id" value="7"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="19"/>
             <column name="services" value="Дезинфекция&amp;Химчистка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
@@ -1038,7 +959,6 @@
             <column name="order_id" value="1"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="20"/>
             <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
@@ -1047,7 +967,6 @@
             <column name="order_id" value="9"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="21"/>
             <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
@@ -1056,7 +975,6 @@
             <column name="order_id" value="13"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="22"/>
             <column name="services" value="Химчистка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
@@ -1065,7 +983,6 @@
             <column name="order_id" value="11"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="23"/>
             <column name="services" value="Дезинфекция&amp;Химчистка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Урина/запах"/>
@@ -1074,7 +991,6 @@
             <column name="order_id" value="20"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="24"/>
             <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
@@ -1083,7 +999,6 @@
             <column name="order_id" value="12"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="25"/>
             <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
@@ -1092,7 +1007,6 @@
             <column name="order_id" value="4"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="26"/>
             <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
@@ -1101,7 +1015,6 @@
             <column name="order_id" value="4"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="27"/>
             <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Не знаем, но пятно есть&amp;Вино/варенье"/>
@@ -1110,7 +1023,6 @@
             <column name="order_id" value="2"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="28"/>
             <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
@@ -1119,7 +1031,6 @@
             <column name="order_id" value="20"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="29"/>
             <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
@@ -1128,7 +1039,6 @@
             <column name="order_id" value="7"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="30"/>
             <column name="services" value="Химчистка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
@@ -1137,7 +1047,6 @@
             <column name="order_id" value="3"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="31"/>
             <column name="services" value="Дезинфекция&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
@@ -1146,7 +1055,6 @@
             <column name="order_id" value="19"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="32"/>
             <column name="services" value="Химчистка&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
@@ -1155,7 +1063,6 @@
             <column name="order_id" value="4"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="33"/>
             <column name="services" value="Химчистка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
@@ -1164,7 +1071,6 @@
             <column name="order_id" value="14"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="34"/>
             <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Не знаем, но пятно есть"/>
@@ -1173,7 +1079,6 @@
             <column name="order_id" value="14"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="35"/>
             <column name="services" value="Антибактериальная обработка&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Вино/варенье&amp;Урина/запах"/>
@@ -1182,7 +1087,6 @@
             <column name="order_id" value="3"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="36"/>
             <column name="services" value="Химчистка&amp;Дезинфекция"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
@@ -1191,7 +1095,6 @@
             <column name="order_id" value="6"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="37"/>
             <column name="services" value="Дезинфекция&amp;Химчистка"/>
             <column name="product_type" value="Ковровая плитка"/>
             <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
@@ -1200,7 +1103,6 @@
             <column name="order_id" value="7"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="38"/>
             <column name="services" value="Дезинфекция&amp;Химчистка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Вино/варенье"/>
@@ -1209,7 +1111,6 @@
             <column name="order_id" value="1"/>
         </insert>
         <insert tableName="order_items">
-            <column name="id" value="39"/>
             <column name="services" value="Дезинфекция&amp;Антибактериальная обработка"/>
             <column name="product_type" value="Ковролин"/>
             <column name="contaminations" value="Урина/запах&amp;Не знаем, но пятно есть"/>
@@ -1220,235 +1121,196 @@
     </changeSet>
     <changeSet id="insert-assigned-employees" author="Daniil">
         <insert tableName="assigned_employees">
-            <column name="id" value="1"/>
             <column name="employee_id" value="10"/>
             <column name="order_id" value="16"/>
             <column name="comment" value="Головной славный команда."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="2"/>
             <column name="employee_id" value="18"/>
             <column name="order_id" value="10"/>
             <column name="comment" value="Райком вскакивать радость освобождение белье."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="3"/>
             <column name="employee_id" value="6"/>
             <column name="order_id" value="11"/>
             <column name="comment" value="Промолчать покинуть через отметить что горький премьера."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="4"/>
             <column name="employee_id" value="3"/>
             <column name="order_id" value="19"/>
             <column name="comment" value="Дальний спешить лиловый увеличиваться мальчишка потянуться порт."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="5"/>
             <column name="employee_id" value="18"/>
             <column name="order_id" value="4"/>
             <column name="comment" value="Угол заведение армейский засунуть страсть при анализ одиннадцать."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="6"/>
             <column name="employee_id" value="10"/>
             <column name="order_id" value="19"/>
             <column name="comment" value="Плавно школьный конференция."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="7"/>
             <column name="employee_id" value="13"/>
             <column name="order_id" value="6"/>
             <column name="comment" value="Господь близко зима зима бок холодно."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="8"/>
             <column name="employee_id" value="5"/>
             <column name="order_id" value="5"/>
             <column name="comment" value="Цвет увеличиваться около медицина."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="9"/>
             <column name="employee_id" value="11"/>
             <column name="order_id" value="8"/>
             <column name="comment" value="Сынок терапия конференция приятель применяться танцевать."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="10"/>
             <column name="employee_id" value="8"/>
             <column name="order_id" value="17"/>
             <column name="comment" value="Отдел сынок строительство академик район."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="11"/>
             <column name="employee_id" value="6"/>
             <column name="order_id" value="8"/>
             <column name="comment" value="Изображать обида растеряться наслаждение вперед эпоха."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="12"/>
             <column name="employee_id" value="12"/>
             <column name="order_id" value="10"/>
             <column name="comment" value="Порода через потрясти возмутиться бригада разнообразный."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="13"/>
             <column name="employee_id" value="2"/>
             <column name="order_id" value="14"/>
             <column name="comment" value="Полоска механический бок запустить ночь господь."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="14"/>
             <column name="employee_id" value="20"/>
             <column name="order_id" value="5"/>
             <column name="comment" value="Секунда слишком правление пересечь степь проход актриса."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="15"/>
             <column name="employee_id" value="13"/>
             <column name="order_id" value="1"/>
             <column name="comment" value="Сопровождаться блин идея анализ сверкающий рай."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="16"/>
             <column name="employee_id" value="3"/>
             <column name="order_id" value="3"/>
             <column name="comment" value="Нажать доставать витрина штаб."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="17"/>
             <column name="employee_id" value="14"/>
             <column name="order_id" value="5"/>
             <column name="comment" value="Художественный командир расстройство полностью призыв задрать."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="18"/>
             <column name="employee_id" value="18"/>
             <column name="order_id" value="10"/>
             <column name="comment" value="Табак сынок академик один."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="19"/>
             <column name="employee_id" value="5"/>
             <column name="order_id" value="14"/>
             <column name="comment" value="Более угол добиться парень подробность адвокат крутой."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="20"/>
             <column name="employee_id" value="14"/>
             <column name="order_id" value="19"/>
             <column name="comment" value="Бок инфекция фонарик освободить аж рис ручей бабочка."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="21"/>
             <column name="employee_id" value="12"/>
             <column name="order_id" value="10"/>
             <column name="comment" value="Ребятишки темнеть иной цепочка райком тесно."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="22"/>
             <column name="employee_id" value="8"/>
             <column name="order_id" value="3"/>
             <column name="comment" value="Ботинок зарплата мальчишка заплакать."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="23"/>
             <column name="employee_id" value="12"/>
             <column name="order_id" value="15"/>
             <column name="comment" value="Пропадать появление угодный наслаждение."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="24"/>
             <column name="employee_id" value="2"/>
             <column name="order_id" value="17"/>
             <column name="comment" value="Самостоятельно угроза набор очко падаль полевой."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="25"/>
             <column name="employee_id" value="14"/>
             <column name="order_id" value="13"/>
             <column name="comment" value="Руководитель голубчик оставить степь зарплата слишком."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="26"/>
             <column name="employee_id" value="14"/>
             <column name="order_id" value="1"/>
             <column name="comment" value="Приходить картинка зарплата домашний премьера самостоятельно ночь."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="27"/>
             <column name="employee_id" value="15"/>
             <column name="order_id" value="11"/>
             <column name="comment" value="Идея место кидать мгновение коммунизм коммунизм."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="28"/>
             <column name="employee_id" value="12"/>
             <column name="order_id" value="7"/>
             <column name="comment" value="Посидеть какой прощение выгнать багровый строительство."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="29"/>
             <column name="employee_id" value="16"/>
             <column name="order_id" value="10"/>
             <column name="comment" value="Конструкция кольцо потом товар зато научить."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="30"/>
             <column name="employee_id" value="6"/>
             <column name="order_id" value="3"/>
             <column name="comment" value="Мучительно наступать добиться."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="31"/>
             <column name="employee_id" value="9"/>
             <column name="order_id" value="4"/>
             <column name="comment" value="Природа недостаток волк научить костер жидкий хотеть вскинуть."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="32"/>
             <column name="employee_id" value="18"/>
             <column name="order_id" value="4"/>
             <column name="comment" value="Оборот доставать необычный экзамен ученый."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="33"/>
             <column name="employee_id" value="5"/>
             <column name="order_id" value="20"/>
             <column name="comment" value="Скользить пространство штаб князь трясти актриса хлеб."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="34"/>
             <column name="employee_id" value="13"/>
             <column name="order_id" value="15"/>
             <column name="comment" value="Счастье понятный витрина мрачно."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="35"/>
             <column name="employee_id" value="14"/>
             <column name="order_id" value="6"/>
             <column name="comment" value="Около цель кидать проход ученый виднеться."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="36"/>
             <column name="employee_id" value="6"/>
             <column name="order_id" value="14"/>
             <column name="comment" value="Разводить угроза видимо через успокоиться."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="37"/>
             <column name="employee_id" value="15"/>
             <column name="order_id" value="8"/>
             <column name="comment" value="Конференция выраженный около близко рота палец."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="38"/>
             <column name="employee_id" value="17"/>
             <column name="order_id" value="11"/>
             <column name="comment" value="Сынок провинция смеяться невыносимый."/>
         </insert>
         <insert tableName="assigned_employees">
-            <column name="id" value="39"/>
             <column name="employee_id" value="12"/>
             <column name="order_id" value="5"/>
             <column name="comment" value="Ночь разнообразный указанный эффект зима понятный равнодушный."/>
