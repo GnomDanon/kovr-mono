@@ -70,6 +70,26 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	void testGetEmployeeById_Success() throws Exception {
+		EmployeeDto employee = new EmployeeDto(1L, "70000000001");
+		when(employeeService.getEmployee(1L)).thenReturn(employee);
+
+		mockMvc.perform(get("/staff/{id}", 1L))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.id").value(1L))
+				.andExpect(jsonPath("$.phone").value("70000000001"));
+	}
+
+	@Test
+	void testGetClientById_ClientNotFound() throws Exception {
+		when(employeeService.getEmployee(1L)).thenThrow(new EmployeeDoesNotExistException(1L));
+
+		mockMvc.perform(get("/staff/{id}", 1L).accept(MediaType.APPLICATION_JSON_UTF8))
+				.andExpect(status().isNotFound())
+				.andExpect(content().string("Сотрудник с идентификатором 1 не найден"));
+	}
+
+	@Test
 	public void testCreateEmployee_Success() throws Exception {
 		EmployeeDto employeeDto = new EmployeeDto(1L, "70000000001");
 		when(employeeService.createEmployee(any(EmployeeDto.class))).thenReturn(employeeDto);
