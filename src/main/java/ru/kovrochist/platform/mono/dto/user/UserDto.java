@@ -2,12 +2,14 @@ package ru.kovrochist.platform.mono.dto.user;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
 
 @Data
 @Accessors(chain = true)
+@NoArgsConstructor
 public class UserDto {
 
 	@Schema(description = "Идентификатор")
@@ -39,4 +41,9 @@ public class UserDto {
 
 	@Schema(description = "Дата создания аккаунта")
 	private Date createdAt;
+
+	public UserDto(Long id, String phone) {
+		this.id = id;
+		this.phone = phone;
+	}
 }

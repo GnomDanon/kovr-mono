@@ -37,7 +37,7 @@ public class EmployeeFilter extends Filter {
 		}
 
 		this.status = validate(status) ? status : null;
-		this.onShift = onShift.equals(TRUE) ? Boolean.TRUE : onShift.equals(FALSE) ? Boolean.FALSE : null;
+		this.onShift = onShift == null ? null : onShift.equals(TRUE) ? Boolean.TRUE : onShift.equals(FALSE) ? Boolean.FALSE : null;
 		this.role = validate(roles) ? roles : null;
 	}
 }
