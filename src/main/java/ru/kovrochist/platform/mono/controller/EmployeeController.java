@@ -8,6 +8,7 @@ import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeAlreadyExistsException;
+import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
 import ru.kovrochist.platform.mono.filter.EmployeeFilter;
 import ru.kovrochist.platform.mono.service.EmployeeService;
 
@@ -23,6 +24,11 @@ public class EmployeeController implements EmployeeApi {
 	@Override
 	public ResponseEntity<List<EmployeeDto>> getEmployees() {
 		return ResponseEntity.ok(employeeService.getEmployees());
+	}
+
+	@Override
+	public ResponseEntity<EmployeeDto> getEmployeeById(Long id) throws EmployeeDoesNotExistException {
+		return ResponseEntity.ok(employeeService.getEmployee(id));
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeAlreadyExistsException;
+import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
 
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,10 @@ public interface EmployeeApi {
 	@Operation(summary = "Получение сотрудников")
 	@GetMapping
 	ResponseEntity<List<EmployeeDto>> getEmployees();
+
+	@Operation(summary = "Получение сотрудника")
+	@GetMapping("/{id}")
+	ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) throws EmployeeDoesNotExistException;
 
 	@Operation(summary = "Получение отфильтрованных сотрудников")
 	@GetMapping("/filter")

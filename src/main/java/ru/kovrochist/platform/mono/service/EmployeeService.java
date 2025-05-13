@@ -31,6 +31,11 @@ public class EmployeeService {
 		return employees.stream().map(EmployeeMapper::map).collect(Collectors.toList());
 	}
 
+	public EmployeeDto getEmployee(Long id) throws EmployeeDoesNotExistException {
+		Employees employee = getById(id);
+		return EmployeeMapper.map(employee);
+	}
+
 	public List<EmployeeDto> getEmployees(EmployeeFilter filter) {
 		List<Employees> employees = get(filter);
 		return employees.stream().map(EmployeeMapper::map).collect(Collectors.toList());
