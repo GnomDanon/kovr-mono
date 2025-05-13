@@ -120,7 +120,7 @@ public class MetadataController implements MetadataApi {
 
 	@Override
 	public ResponseEntity<List<String>> removeClientStatus(String status) {
-		return ResponseEntity.ok(metadataService.removeService(status));
+		return ResponseEntity.ok(metadataService.removeClientStatus(status));
 	}
 
 	@Override
