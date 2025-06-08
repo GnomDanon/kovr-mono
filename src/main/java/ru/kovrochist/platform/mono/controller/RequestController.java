@@ -7,7 +7,6 @@ import ru.kovrochist.platform.mono.api.RequestApi;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.request.RequestDto;
 import ru.kovrochist.platform.mono.exception.ResourceAccessException;
-import ru.kovrochist.platform.mono.security.access.AccessFilter;
 import ru.kovrochist.platform.mono.service.RequestService;
 
 @RestController
@@ -16,11 +15,8 @@ public class RequestController implements RequestApi {
 
 	private final RequestService requestService;
 
-	private final AccessFilter accessFilter;
-
 	@Override
 	public ResponseEntity<OrderDto> create(RequestDto request) throws ResourceAccessException {
-		accessFilter.client();
 		return ResponseEntity.ok(requestService.create(request));
 	}
 }

@@ -14,10 +14,6 @@ public class AccessFilter {
 
 	private final User USER;
 
-	public void client() throws ResourceAccessException {
-		check(USER.getRole().isClient());
-	}
-
 	public void employee() throws ResourceAccessException {
 		check(USER.getRole().isEmployee());
 	}
