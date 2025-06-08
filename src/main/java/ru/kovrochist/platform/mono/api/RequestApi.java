@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.request.RequestDto;
+import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 
 @RequestMapping(RequestApi.REQUEST_ENTRY_POINT)
 @Tag(name = "Заявка")
@@ -17,5 +18,5 @@ public interface RequestApi {
 
 	@Operation(summary = "Регистрация новой заявки")
 	@PostMapping
-	ResponseEntity<OrderDto> create(@RequestBody RequestDto request);
+	ResponseEntity<OrderDto> create(@RequestBody RequestDto request) throws ResourceAccessException;
 }

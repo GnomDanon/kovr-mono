@@ -29,4 +29,24 @@ public enum Role implements LabeledEnum {
 	public static Role byLabel(String label) throws DoesNotExistException{
 		return LabeledEnum.byLabel(Role.class, label, RoleDoesNotExistsException::new);
 	}
+
+	public boolean isEmployee() {
+		return this != GUEST && this != CLIENT;
+	}
+
+	public boolean isGuest() {
+		return this == GUEST;
+	}
+
+	public boolean isClient() {
+		return this == CLIENT;
+	}
+
+	public boolean isOperator() {
+		return this == OPERATOR;
+	}
+
+	public boolean isAdmin() {
+		return this == ADMIN;
+	}
 }

@@ -17,10 +17,15 @@ public class Advice {
 		return process(HttpStatus.FORBIDDEN, new Exception("Ошибка авторизации: " + exception.getMessage()));
 	}
 
+	@ExceptionHandler(ResourceAccessException.class)
+	@ResponseStatus(HttpStatus.FORBIDDEN)
+	public ResponseEntity<String> resourceAccessException(ResourceAccessException exception) {
+		return process(HttpStatus.FORBIDDEN, exception);
+	}
+
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseEntity<String> unknownException(Exception exception) {
-		exception.printStackTrace();
 		return process(HttpStatus.INTERNAL_SERVER_ERROR, exception);
 	}
 
@@ -43,6 +48,7 @@ public class Advice {
 	}
 
 	private ResponseEntity<String> process(HttpStatus status, Exception exception) {
+		exception.printStackTrace();
 		return ResponseEntity.status(status).body(exception.getMessage());
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
 
 import java.util.List;
@@ -22,21 +23,21 @@ public interface ClientApi {
 
 	@Operation(summary = "Получение клиентов")
 	@GetMapping
-	ResponseEntity<List<ClientDto>> getClients();
+	ResponseEntity<List<ClientDto>> getClients() throws ResourceAccessException;
 
 	@Operation(summary = "Получение клиента")
 	@GetMapping("/{id}")
-	ResponseEntity<ClientDto> getClientById(@PathVariable Long id) throws ClientDoesNotExistException;
+	ResponseEntity<ClientDto> getClientById(@PathVariable Long id) throws ClientDoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Получение отфильтрованных клиентов")
 	@GetMapping("/filter")
-	ResponseEntity<List<ClientDto>> fetchFilteredClients(@RequestParam Map<String, String> allParams);
+	ResponseEntity<List<ClientDto>> fetchFilteredClients(@RequestParam Map<String, String> allParams) throws ResourceAccessException;
 
 	@Operation(summary = "Получение отфильтрованных клиентов")
 	@GetMapping("/search")
-	ResponseEntity<List<ClientDto>> searchClients(@RequestParam String query);
+	ResponseEntity<List<ClientDto>> searchClients(@RequestParam String query) throws ResourceAccessException;
 
 	@Operation(summary = "Обновление профиля клиента")
 	@PatchMapping("/{clientId}")
-	ResponseEntity<ClientDto> updateClientInfo(@PathVariable Long clientId, @RequestBody ClientDto client) throws DoesNotExistException;
+	ResponseEntity<ClientDto> updateClientInfo(@PathVariable Long clientId, @RequestBody ClientDto client) throws DoesNotExistException, ResourceAccessException;
 }

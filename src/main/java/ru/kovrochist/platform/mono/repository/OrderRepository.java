@@ -10,12 +10,6 @@ import ru.kovrochist.platform.mono.type.OrderStatus;
 
 @Repository
 public interface OrderRepository extends CrudRepository<Orders, Long> {
-
-	@Query("select o from Orders o " +
-			"where concat(o.id, ' ', o.client.firstName, ' ', o.client.lastName, ' ', o.client.phone) " +
-			"like :filter ")
-	Iterable<Orders> find(@Param("filter") String filter);
-
 	Iterable<Orders> findByClientId(Long clientId);
 
 	@Query("select o from Orders o " +

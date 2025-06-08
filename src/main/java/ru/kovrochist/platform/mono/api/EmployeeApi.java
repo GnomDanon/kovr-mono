@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeAlreadyExistsException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
 
@@ -26,25 +27,25 @@ public interface EmployeeApi {
 
 	@Operation(summary = "Получение сотрудников")
 	@GetMapping
-	ResponseEntity<List<EmployeeDto>> getEmployees();
+	ResponseEntity<List<EmployeeDto>> getEmployees() throws ResourceAccessException;
 
 	@Operation(summary = "Получение сотрудника")
 	@GetMapping("/{id}")
-	ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) throws EmployeeDoesNotExistException;
+	ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) throws EmployeeDoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Получение отфильтрованных сотрудников")
 	@GetMapping("/filter")
-	ResponseEntity<List<EmployeeDto>> fetchFilteredEmployees(@RequestParam Map<String, String> allParams);
+	ResponseEntity<List<EmployeeDto>> fetchFilteredEmployees(@RequestParam Map<String, String> allParams) throws ResourceAccessException;
 
 	@Operation(summary = "Создание сотрудника")
 	@PostMapping
-	ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto user) throws DoesNotExistException, EmployeeAlreadyExistsException;
+	ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto user) throws DoesNotExistException, EmployeeAlreadyExistsException, ResourceAccessException;
 
 	@Operation(summary = "") //TODO: ???
 	@DeleteMapping("/{id}")
-	ResponseEntity<String> deactivateEmployee(@PathVariable Long id);
+	ResponseEntity<String> deactivateEmployee(@PathVariable Long id) throws ResourceAccessException;
 
 	@Operation(summary = "Обновление роли клиента")
 	@PatchMapping("/{id}/role")
-	ResponseEntity<EmployeeDto> updateEmployeeRole(@PathVariable Long id, @RequestBody RoleWrapper roleWrapper) throws DoesNotExistException;
+	ResponseEntity<EmployeeDto> updateEmployeeRole(@PathVariable Long id, @RequestBody RoleWrapper roleWrapper) throws DoesNotExistException, ResourceAccessException;
 }

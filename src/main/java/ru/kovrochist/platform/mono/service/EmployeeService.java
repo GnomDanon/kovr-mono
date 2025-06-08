@@ -52,7 +52,15 @@ public class EmployeeService {
 		return EmployeeMapper.map(employee);
 	}
 
-	public List<Employees> get() {
+	protected Employees getById(Long id) throws EmployeeDoesNotExistException {
+		return employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
+	}
+
+	protected Employees getByPhone(String phone) {
+		return employeeRepository.findByPhone(phone).orElse(null);
+	}
+
+	private List<Employees> get() {
 		List<Employees> result = new ArrayList<>();
 		Iterable<Employees> employees = employeeRepository.findAll();
 
@@ -63,18 +71,7 @@ public class EmployeeService {
 		return result;
 	}
 
-	public List<Employees> get(String filter) {
-		List<Employees> result = new ArrayList<>();
-		Iterable<Employees> employees = employeeRepository.find(filter);
-
-		for (Employees employee : employees) {
-			result.add(employee);
-		}
-
-		return result;
-	}
-
-	public List<Employees> get(EmployeeFilter filter) {
+	private List<Employees> get(EmployeeFilter filter) {
 		List<Employees> result = new ArrayList<>();
 		Iterable<Employees> employees = employeeRepository.find(filter.getSearch(), filter.getStatus(), filter.getOnShift(), filter.getRole());
 
@@ -85,15 +82,7 @@ public class EmployeeService {
 		return result;
 	}
 
-	public Employees getById(Long id) throws EmployeeDoesNotExistException {
-		return employeeRepository.findById(id).orElseThrow(() -> new EmployeeDoesNotExistException(id));
-	}
-
-	public Employees getByPhone(String phone) {
-		return employeeRepository.findByPhone(phone).orElse(null);
-	}
-
-	public Employees create(String firstName, String lastName, Date birthday, String phone, Role role, Gender gender) throws EmployeeAlreadyExistsException {
+	private Employees create(String firstName, String lastName, Date birthday, String phone, Role role, Gender gender) throws EmployeeAlreadyExistsException {
 		Employees employee = employeeRepository.findByPhone(phone).orElse(null);
 
 		if (employee != null) {
@@ -104,12 +93,12 @@ public class EmployeeService {
 		return employeeRepository.save(employee.setCreatedAt(new Date()));
 	}
 
-	public Employees update(Long id, String firstName, String lastName, Date birthday, String phone, String gender) throws DoesNotExistException {
+	protected Employees update(Long id, String firstName, String lastName, Date birthday, String phone, String gender) throws DoesNotExistException {
 		Employees employee = getById(id);
 		return update(employee, firstName, lastName, birthday, phone, employee.getRole().getLabel(), gender);
 	}
 
-	public Employees update(Employees employee, String firstName, String lastName, Date birthday, String phone, String roleValue, String genderLabel) throws DoesNotExistException {
+	private Employees update(Employees employee, String firstName, String lastName, Date birthday, String phone, String roleValue, String genderLabel) throws DoesNotExistException {
 		Role role = Role.byLabel(roleValue);
 		Gender gender = genderLabel == null ? null : Gender.byLabel(genderLabel);
 		Date employeeBirthday = employee.getBirthday();
@@ -118,11 +107,11 @@ public class EmployeeService {
 		return update(employee, firstName, lastName, birthday, phone, role, gender);
 	}
 
-	public Employees update(Employees employees, String firstName, String lastName, Date birthday, String phone, Role role, Gender gender) {
+	private Employees update(Employees employees, String firstName, String lastName, Date birthday, String phone, Role role, Gender gender) {
 		return employeeRepository.save(employees.setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setPhone(phone).setRole(role).setGender(gender));
 	}
 
-	public void setCode(Employees employee, String code) {
+	protected void setCode(Employees employee, String code) {
 		employeeRepository.save(employee.setCode(code));
 	}
 }

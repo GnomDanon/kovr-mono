@@ -159,7 +159,7 @@ public class MetadataService {
 		return getSources();
 	}
 
-	public <T, ID, E extends ResourceConflictException, R extends MetadataRepository<T> & JpaRepository<T, ID>> void create(String name, R repository, Function<String, E> exceptionSupplier, Function<String, T> metadataSupplier) throws E {
+	private <T, ID, E extends ResourceConflictException, R extends MetadataRepository<T> & JpaRepository<T, ID>> void create(String name, R repository, Function<String, E> exceptionSupplier, Function<String, T> metadataSupplier) throws E {
 		T metadata = repository.findByName(name).orElse(null);
 
 		if (metadata != null)
@@ -168,7 +168,7 @@ public class MetadataService {
 		repository.save(metadataSupplier.apply(name));
 	}
 
-	public <T extends Metadata, ID, R extends MetadataRepository<T> & JpaRepository<T, ID>> List<String> get(R repository) {
+	private <T extends Metadata, ID, R extends MetadataRepository<T> & JpaRepository<T, ID>> List<String> get(R repository) {
 		List<String> result = new ArrayList<>();
 		Iterable<T> meta = repository.findAll();
 
@@ -179,7 +179,7 @@ public class MetadataService {
 		return result;
 	}
 
-	public <T, ID, R extends MetadataRepository<T> & JpaRepository<T, ID>> void remove(String name, R repository) {
+	private <T, ID, R extends MetadataRepository<T> & JpaRepository<T, ID>> void remove(String name, R repository) {
 		T metadata = repository.findByName(name).orElse(null);
 
 		if (metadata == null)

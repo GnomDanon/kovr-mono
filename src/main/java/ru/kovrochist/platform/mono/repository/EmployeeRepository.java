@@ -11,11 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employees, Long> {
-
-	@Query("select e from Employees e " +
-			"where concat(e.phone, ' ', e.firstName, ' ', e.lastName) like %:filter% ")
-	Iterable<Employees> find(@Param("filter") String filter);
-
 	Optional<Employees> findByPhone(String phone);
 
 	@Query("select e from Employees e " +

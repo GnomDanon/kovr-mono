@@ -47,7 +47,15 @@ public class ClientService {
 		return ClientMapper.map(client);
 	}
 
-	public List<Clients> get() {
+	protected Clients getById(Long id) throws ClientDoesNotExistException {
+		return clientRepository.findById(id).orElseThrow(() -> new ClientDoesNotExistException(id));
+	}
+
+	protected Clients getByPhone(String phone) {
+		return clientRepository.findByPhone(phone).orElse(null);
+	}
+
+	private List<Clients> get() {
 		List<Clients> result = new ArrayList<>();
 		Iterable<Clients> clients = clientRepository.findAll();
 
@@ -58,7 +66,7 @@ public class ClientService {
 		return result;
 	}
 
-	public List<Clients> get(String filter) {
+	private List<Clients> get(String filter) {
 		List<Clients> result = new ArrayList<>();
 		Iterable<Clients> clients = clientRepository.find("%" + filter + "%");
 
@@ -69,7 +77,7 @@ public class ClientService {
 		return result;
 	}
 
-	public List<Clients> get(ClientFilter filter) {
+	private List<Clients> get(ClientFilter filter) {
 		List<Clients> result = new ArrayList<>();
 		Iterable<Clients> clients = clientRepository.find(filter.getSearch(), filter.getStatus(), filter.getDistrict());
 
@@ -80,20 +88,12 @@ public class ClientService {
 		return result;
 	}
 
-	public Clients getById(Long id) throws ClientDoesNotExistException {
-		return clientRepository.findById(id).orElseThrow(() -> new ClientDoesNotExistException(id));
-	}
-
-	public Clients getByPhone(String phone) {
-		return clientRepository.findByPhone(phone).orElse(null);
-	}
-
-	public Clients create(String phone, String code) {
+	protected Clients create(String phone, String code) {
 		Clients client = new Clients().setPhone(phone).setCode(code);
 		return clientRepository.save(client.setCreatedAt(new Date()));
 	}
 
-	public Clients create(String phone, String firstName, String lastName, String city, String address) {
+	protected Clients create(String phone, String firstName, String lastName, String city, String address) {
 		Clients client = new Clients()
 				.setPhone(phone)
 				.setFirstName(firstName)
@@ -104,17 +104,17 @@ public class ClientService {
 		return clientRepository.save(client.setCreatedAt(new Date()));
 	}
 
-	public Clients update(Long id, String phone, String firstName, String lastName, Date birthday, String city, String address, String gender) throws DoesNotExistException {
+	protected Clients update(Long id, String phone, String firstName, String lastName, Date birthday, String city, String address, String gender) throws DoesNotExistException {
 		Clients client = getById(id);
 		return update(client, phone, firstName, lastName, birthday, city, address, gender, client.getStatus());
 	}
 
-	public Clients update(Long id, String phone, String firstName, String lastName, Date birthday, String city, String address, String genderLabel, String status) throws DoesNotExistException {
+	private Clients update(Long id, String phone, String firstName, String lastName, Date birthday, String city, String address, String genderLabel, String status) throws DoesNotExistException {
 		Clients client = getById(id);
 		return update(client, phone, firstName, lastName, birthday, city, address, genderLabel, status);
 	}
 
-	public Clients update(Clients client, String phone, String firstName, String lastName, Date birthday, String city, String address, String genderLabel, String status) throws DoesNotExistException {
+	private Clients update(Clients client, String phone, String firstName, String lastName, Date birthday, String city, String address, String genderLabel, String status) throws DoesNotExistException {
 		Gender gender = genderLabel == null ? null : Gender.byLabel(genderLabel);
 		Date clientBirthday = client.getBirthday();
 		if (clientBirthday != null)
@@ -122,11 +122,11 @@ public class ClientService {
 		return update(client, phone, firstName, lastName, birthday, city, address, gender, status);
 	}
 
-	public Clients update(Clients client, String phone, String firstName, String lastName, Date birthday, String city, String address, Gender gender, String status) {
+	private Clients update(Clients client, String phone, String firstName, String lastName, Date birthday, String city, String address, Gender gender, String status) {
 		return clientRepository.save(client.setPhone(phone).setFirstName(firstName).setLastName(lastName).setBirthday(birthday).setCity(city).setAddress(address).setGender(gender).setStatus(status));
 	}
 
-	public void setCode(Clients client, String code) {
+	protected void setCode(Clients client, String code) {
 		clientRepository.save(client.setCode(code));
 	}
 }

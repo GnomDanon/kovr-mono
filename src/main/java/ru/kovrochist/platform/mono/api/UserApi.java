@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.kovrochist.platform.mono.dto.user.ProfileFormData;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
 
@@ -23,21 +24,21 @@ public interface UserApi {
 
 	@Operation(summary = "Получение профиля")
 	@GetMapping("/me")
-	ResponseEntity<UserDto> getProfile() throws EmployeeDoesNotExistException, ClientDoesNotExistException;
+	ResponseEntity<UserDto> getProfile() throws EmployeeDoesNotExistException, ClientDoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Обновление профиля")
 	@PatchMapping("/profile")
-	ResponseEntity<UserDto> updateProfile(@RequestBody ProfileFormData profile) throws DoesNotExistException;
+	ResponseEntity<UserDto> updateProfile(@RequestBody ProfileFormData profile) throws DoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Получение аватара")
 	@GetMapping("/avatar")
-	ResponseEntity<String> getAvatar();
+	ResponseEntity<String> getAvatar() throws ResourceAccessException;
 
 	@Operation(summary = "Загрузка аватара")
 	@PostMapping("/avatar")
-	ResponseEntity<String> uploadAvatar(@RequestParam("avatar") MultipartFile file);
+	ResponseEntity<String> uploadAvatar(@RequestParam("avatar") MultipartFile file) throws ResourceAccessException;
 
 	@Operation(summary = "Удаление аватара")
 	@DeleteMapping("/avatar")
-	ResponseEntity<String> deleteAvatar();
+	ResponseEntity<String> deleteAvatar() throws ResourceAccessException;
 }

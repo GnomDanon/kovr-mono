@@ -10,7 +10,7 @@ import ru.kovrochist.platform.mono.dto.auth.LoginDto;
 import ru.kovrochist.platform.mono.dto.auth.RefreshTokenDto;
 import ru.kovrochist.platform.mono.dto.auth.UserCredentialsDto;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
-import ru.kovrochist.platform.mono.security.user.UserService;
+import ru.kovrochist.platform.mono.service.UserService;
 import ru.kovrochist.platform.mono.service.AuthService;
 
 import javax.naming.AuthenticationException;

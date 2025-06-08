@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import ru.kovrochist.platform.mono.security.user.CommonUserDetails;
 import ru.kovrochist.platform.mono.security.user.User;
-import ru.kovrochist.platform.mono.security.user.UserService;
+import ru.kovrochist.platform.mono.service.UserService;
 
 import java.io.IOException;
 

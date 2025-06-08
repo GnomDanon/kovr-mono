@@ -1,4 +1,4 @@
-package ru.kovrochist.platform.mono.security.user;
+package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,8 +14,7 @@ import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
 import ru.kovrochist.platform.mono.mapper.client.ClientMapper;
 import ru.kovrochist.platform.mono.mapper.employee.EmployeeMapper;
-import ru.kovrochist.platform.mono.service.ClientService;
-import ru.kovrochist.platform.mono.service.EmployeeService;
+import ru.kovrochist.platform.mono.security.user.CommonUserDetails;
 import ru.kovrochist.platform.mono.type.Role;
 
 @Service
