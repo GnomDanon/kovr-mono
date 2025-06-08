@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,10 +30,14 @@ public class JwtFilter extends OncePerRequestFilter {
 
 	private final User USER;
 
+	private static final Logger LOGGER = LogManager.getLogger(JwtFilter.class);
+
 	@Override
 	protected void doFilterInternal(@NonNull HttpServletRequest request,
 									@NonNull HttpServletResponse response,
 									@NonNull FilterChain filterChain) throws ServletException, IOException {
+		LOGGER.info(String.format("Method: %s, Request: %s", request.getMethod(), request.getRequestURI()));
+
 		String token = getTokenFromRequest(request);
 		if (token != null && jwtService.validateJwtToken(token)) {
 			setCommonUserDetailsToSecurityContextHolder(token);

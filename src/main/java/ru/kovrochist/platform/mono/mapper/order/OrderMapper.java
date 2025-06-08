@@ -40,6 +40,26 @@ public class OrderMapper {
 				.setAssignees(mapEmployees(order.getEmployees()));
 	}
 
+	public static OrderDto mapInfo(Orders order) {
+		return new OrderDto()
+				.setId(order.getId())
+				.setOrderNumber(order.getId().toString())
+				.setStatus(order.getStatus().getLabel())
+				.setComment(order.getComment())
+				.setDeliveryType(order.getDeliveryType() == null ? null : order.getDeliveryType().getLabel())
+				.setCreatedAt(order.getCreatedAt())
+				.setPhone(order.getPhone())
+				.setCity(order.getCity())
+				.setAddress(order.getAddress())
+				.setDistrict(order.getDistrict())
+				.setDeliveryDays(order.getDeliveryDays() == null ? null : getDeliveryDays(order.getDeliveryDays()))
+				.setDeliveryTimeStart(order.getDeliveryTimeStart())
+				.setDeliveryTimeEnd(order.getDeliveryTimeEnd())
+				.setDiscount(order.getDiscount())
+				.setPrice(order.getPrice())
+				.setSources(order.getSources() == null ? null : order.getSources().split(StringUtil.SEPARATOR));
+	}
+
 	public static OrderItemDto[] mapItems(List<OrderItems> items) {
 		if (items == null)
 			return null;

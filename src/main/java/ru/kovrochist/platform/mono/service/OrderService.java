@@ -44,12 +44,12 @@ public class OrderService {
 
 	public List<OrderDto> fetchOrder() {
 		List<Orders> orders = get();
-		return orders.stream().map(OrderMapper::map).collect(Collectors.toList());
+		return orders.stream().map(OrderMapper::mapInfo).collect(Collectors.toList());
 	}
 
 	public List<OrderDto> getOrders(OrderFilter filter) {
 		List<Orders> orders = get(filter);
-		return orders.stream().map(OrderMapper::map).collect(Collectors.toList());
+		return orders.stream().map(OrderMapper::mapInfo).collect(Collectors.toList());
 	}
 
 	public OrderDto getOrderById(Long id) throws OrderDoesNotExistException {
@@ -58,12 +58,12 @@ public class OrderService {
 
 	public List<OrderDto> getEmployeeOrders(Long employeeId) {
 		List<Orders> orders = getByEmployeeId(employeeId);
-		return orders.stream().map(OrderMapper::map).collect(Collectors.toList());
+		return orders.stream().map(OrderMapper::mapInfo).collect(Collectors.toList());
 	}
 
 	public List<OrderDto> getClientOrders(Long clientId) {
 		List<Orders> orders = getByClientId(clientId);
-		return orders.stream().map(OrderMapper::map).collect(Collectors.toList());
+		return orders.stream().map(OrderMapper::mapInfo).collect(Collectors.toList());
 	}
 
 	public OrderDto updateOrderStatus(Long orderId, String status) throws DoesNotExistException {
