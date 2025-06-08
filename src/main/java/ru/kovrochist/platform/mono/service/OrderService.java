@@ -222,7 +222,7 @@ public class OrderService {
 
 	public Orders update(Long id, String status, String comment, String deliveryType, String phone, String city, String address, String district, String deliveryDays, Date deliveryTimeStart, Date deliveryTimeEnd, Double discount, Integer price, String sources) throws DoesNotExistException {
 		Orders order = getById(id);
-		return update(order.setStatus(OrderStatus.byLabel(status)).setComment(comment).setDeliveryType(DeliveryType.byLabel(deliveryType)).setPhone(phone).setCity(city).setAddress(address).setDistrict(district).setDeliveryDays(deliveryDays).setDeliveryTimeStart(deliveryTimeStart).setDeliveryTimeEnd(deliveryTimeEnd).setDiscount(discount).setPrice(price).setSources(sources));
+		return update(order.setStatus(OrderStatus.byLabel(status)).setComment(comment).setDeliveryType(deliveryType == null ? null : DeliveryType.byLabel(deliveryType)).setPhone(phone).setCity(city).setAddress(address).setDistrict(district).setDeliveryDays(deliveryDays).setDeliveryTimeStart(deliveryTimeStart).setDeliveryTimeEnd(deliveryTimeEnd).setDiscount(discount).setPrice(price).setSources(sources));
 	}
 
 	public Orders updateStatus(Long id, String statusLabel) throws DoesNotExistException {
