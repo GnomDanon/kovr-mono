@@ -44,6 +44,7 @@ public class OrderMapper {
 		return new OrderDto()
 				.setId(order.getId())
 				.setOrderNumber(order.getId().toString())
+				.setClient(ClientMapper.map(order.getClient()))
 				.setStatus(order.getStatus().getLabel())
 				.setComment(order.getComment())
 				.setDeliveryType(order.getDeliveryType() == null ? null : order.getDeliveryType().getLabel())
