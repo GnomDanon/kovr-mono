@@ -103,7 +103,9 @@ public class OrderService {
 	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException, ResourceAccessException {
 		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : OrderMapper.getDeliveryDays(updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount(), updateInfo.getPrice(), updateInfo.getSources() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getSources()));
 		accessFilter.employeeOrSelf(order);
-		assignEmployeeToOrder(order, USER.getId());
+		if (USER.getRole().isEmployee()) {
+			assignEmployeeToOrder(order, USER.getId());
+		}
 		List<OrderItems> items = itemService.update(order, updateInfo.getItems());
 		return OrderMapper.map(order.setItems(items));
 	}
