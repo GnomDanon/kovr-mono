@@ -3,6 +3,7 @@ package ru.kovrochist.platform.mono.dto.user;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import ru.kovrochist.platform.mono.util.validation.Phone;
 
 import java.util.Date;
 
@@ -18,6 +19,7 @@ public class ProfileFormData {
 	private String lastName;
 
 	@Schema(description = "Номер телефона")
+	@Phone
 	private String phone;
 
 	@Schema(description = "Дата рождения")

@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import ru.kovrochist.platform.mono.util.validation.Phone;
 
 import java.util.Date;
 
@@ -16,6 +17,7 @@ public class UserDto {
 	private Long id;
 
 	@Schema(description = "Номер телефона")
+	@Phone
 	private String phone;
 
 	@Schema(description = "Роль")

@@ -37,7 +37,7 @@ class RequestServiceTest {
 	private RequestService requestService;
 
 	private final Long testUserId = 1L;
-	private final String testPhone = "+79998887766";
+	private final String testPhone = "79998887766";
 	private final String testFirstName = "Иван";
 	private final String testLastName = "Иванов";
 	private final String testCity = "Москва";

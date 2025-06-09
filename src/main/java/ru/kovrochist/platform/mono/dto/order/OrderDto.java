@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
+import ru.kovrochist.platform.mono.util.validation.Phone;
 
 import java.util.Date;
 
@@ -42,6 +43,7 @@ public class OrderDto {
 	private Date createdAt;
 
 	@Schema(description = "Номер телефона")
+	@Phone
 	private String phone;
 
 	@Schema(description = "Город")

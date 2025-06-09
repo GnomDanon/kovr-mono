@@ -41,7 +41,7 @@ class UserServiceTest {
 	private UserService userService;
 
 	private final Long testId = 1L;
-	private final String testPhone = "+79998887766";
+	private final String testPhone = "79998887766";
 
 	private Clients testClient;
 	private Employees testEmployee;

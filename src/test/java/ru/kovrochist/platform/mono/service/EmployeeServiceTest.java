@@ -37,7 +37,7 @@ class EmployeeServiceTest {
 	private RoleWrapper testRoleWrapper;
 
 	private final Long testId = 1L;
-	private final String testPhone = "+79998887766";
+	private final String testPhone = "79998887766";
 	private final Date testBirthday = new Date();
 
 	@BeforeEach

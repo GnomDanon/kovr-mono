@@ -45,7 +45,7 @@ class OrderServiceTest {
 	private final Long testOrderId = 1L;
 	private final Long testEmployeeId = 2L;
 	private final Long testClientId = 3L;
-	private final String testPhone = "+79998887766";
+	private final String testPhone = "79998887766";
 	private Orders testOrder;
 	private OrderDto testOrderDto;
 
@@ -121,7 +121,7 @@ class OrderServiceTest {
 
 	@Test
 	@DisplayName("Получение заказов клиента")
-	void getClientOrders_ShouldReturnClientOrders() {
+	void getClientOrders_ShouldReturnClientOrders() throws ResourceAccessException {
 		when(orderRepository.findByClientId(testClientId))
 				.thenReturn(Collections.singletonList(testOrder));
 
@@ -160,7 +160,7 @@ class OrderServiceTest {
 
 	@Test
 	@DisplayName("Обновление заказа")
-	void update_ShouldUpdateOrder() throws DoesNotExistException {
+	void update_ShouldUpdateOrder() throws DoesNotExistException, ResourceAccessException {
 		when(orderRepository.findById(testOrderId)).thenReturn(Optional.of(testOrder));
 		when(orderRepository.save(any())).thenReturn(testOrder);
 		when(itemService.update(any(), any())).thenReturn(new ArrayList<>());

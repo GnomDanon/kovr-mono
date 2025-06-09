@@ -3,6 +3,7 @@ package ru.kovrochist.platform.mono.dto.request;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import ru.kovrochist.platform.mono.util.validation.Phone;
 
 @Data
 @Accessors(chain = true)
@@ -10,6 +11,7 @@ import lombok.experimental.Accessors;
 public class RequestDto {
 
 	@Schema(description = "Номер телефона")
+	@Phone
 	private String phone;
 
 	@Schema(description = "Имя")

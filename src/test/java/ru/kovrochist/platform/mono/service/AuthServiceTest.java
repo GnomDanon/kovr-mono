@@ -43,7 +43,7 @@ class AuthServiceTest {
 	@InjectMocks
 	private AuthService authService;
 
-	private final String testPhone = "+79999999999";
+	private final String testPhone = "79999999999";
 	private final String testCode = "7645";
 	private final String testEncodedCode = "7645";
 	private final String testToken = "test_token";
