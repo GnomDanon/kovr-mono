@@ -2,6 +2,7 @@ package ru.kovrochist.platform.mono.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -49,10 +50,10 @@ public class AuthControllerTest {
 	@Test
 	void shouldLogin() throws Exception {
 		LoginDto request = new LoginDto();
-		request.setTempPhone("+79000000000");
+		request.setTempPhone("79000000000");
 
 		LoginDto response = new LoginDto();
-		response.setTempPhone("+79000000000");
+		response.setTempPhone("79000000000");
 
 		when(authService.login(request)).thenReturn(response);
 
@@ -64,9 +65,10 @@ public class AuthControllerTest {
 	}
 
 	@Test
+	@DisplayName("Подтверждение кода")
 	void shouldConfirmCode() throws Exception {
 		UserCredentialsDto credentials = new UserCredentialsDto();
-		credentials.setTempPhone("+79000000000");
+		credentials.setTempPhone("79000000000");
 		credentials.setCode("1234");
 
 		JwtAuthenticationDto tokens = new JwtAuthenticationDto();
@@ -80,7 +82,7 @@ public class AuthControllerTest {
 		ConfirmResponse response = new ConfirmResponse().setTokens(tokens).setUser(user);
 
 		when(authService.confirm(credentials)).thenReturn(tokens);
-		when(userService.findUser("+79000000000")).thenReturn(user);
+		when(userService.findUser("79000000000")).thenReturn(user);
 
 		mockMvc.perform(post("/auth/confirm")
 						.contentType(MediaType.APPLICATION_JSON)
@@ -90,6 +92,7 @@ public class AuthControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление токена")
 	void shouldRefreshToken() throws Exception {
 		RefreshTokenDto refresh = new RefreshTokenDto();
 		refresh.setRefreshToken("old-token");

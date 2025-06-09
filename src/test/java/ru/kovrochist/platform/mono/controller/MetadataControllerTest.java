@@ -2,6 +2,7 @@ package ru.kovrochist.platform.mono.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -42,6 +43,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение услуг")
 	void shouldReturnServices() throws Exception {
 		List<String> services = List.of("Химчистка", "Вывоз");
 		when(metadataService.getServices()).thenReturn(services);
@@ -52,6 +54,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание услуги")
 	void shouldAddService() throws Exception {
 		TypeWrapper type = new TypeWrapper("Химчистка");
 		List<String> updated = List.of("Химчистка");
@@ -65,6 +68,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Удаление услуги")
 	void shouldDeleteService() throws Exception {
 		List<String> remaining = List.of("Химчистка");
 		when(metadataService.removeService("Вывоз")).thenReturn(remaining);
@@ -76,6 +80,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение городов")
 	void shouldReturnCities() throws Exception {
 		List<String> cities = List.of("Киров", "Москва");
 		when(metadataService.getCities()).thenReturn(cities);
@@ -86,6 +91,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание города")
 	void shouldAddCity() throws Exception {
 		TypeWrapper type = new TypeWrapper("Киров");
 		List<String> updated = List.of("Киров", "Москва");
@@ -99,6 +105,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Удаление города")
 	void shouldDeleteCity() throws Exception {
 		List<String> remaining = List.of("Москва");
 		when(metadataService.removeCity("Киров")).thenReturn(remaining);
@@ -110,6 +117,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение типов изделий")
 	void shouldReturnProductTypes() throws Exception {
 		List<String> types = List.of("Ковёр", "Дорожка");
 		when(metadataService.getProducts()).thenReturn(types);
@@ -120,6 +128,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание типа изделия")
 	void shouldAddProductType() throws Exception {
 		TypeWrapper type = new TypeWrapper("Ковёр");
 		List<String> updated = List.of("Ковёр");
@@ -133,6 +142,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Удаление типа изделия")
 	void shouldDeleteProductType() throws Exception {
 		List<String> remaining = List.of("Ковёр");
 		when(metadataService.removeProduct("Дорожка")).thenReturn(remaining);
@@ -144,6 +154,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение типов загрязнений")
 	void shouldReturnContaminationTypes() throws Exception {
 		List<String> types = List.of("Пятна", "Грязь");
 		when(metadataService.getContaminations()).thenReturn(types);
@@ -154,6 +165,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание типа загрязнения")
 	void shouldAddContaminationType() throws Exception {
 		TypeWrapper type = new TypeWrapper("Грязь");
 		List<String> updated = List.of("Грязь", "Пыль");
@@ -167,6 +179,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Ужаление типа загрязнения")
 	void shouldDeleteContaminationType() throws Exception {
 		List<String> remaining = List.of("Пыль");
 		when(metadataService.removeContamination("Грязь")).thenReturn(remaining);
@@ -178,6 +191,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение видов доставки")
 	void shouldReturnDeliveryOptions() throws Exception {
 		List<String> options = List.of("Самовывоз", "Курьер");
 		when(metadataService.getDeliveryTypes()).thenReturn(options);
@@ -188,6 +202,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание источника")
 	void shouldAddRequestSource() throws Exception {
 		TypeWrapper type = new TypeWrapper("Инстаграм");
 		List<String> updated = List.of("Инстаграм", "Сайт");
@@ -201,6 +216,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение источников")
 	void shouldReturnRequestSources() throws Exception {
 		List<String> sources = List.of("Сайт", "Инстаграм");
 		when(metadataService.getSources()).thenReturn(sources);
@@ -211,6 +227,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Удаление источника")
 	void shouldDeleteRequestSource() throws Exception {
 		List<String> remaining = List.of("Сайт");
 		when(metadataService.removeSource("Инстаграм")).thenReturn(remaining);
@@ -222,6 +239,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание статуса клиента")
 	void shouldAddClientStatus() throws Exception {
 		TypeWrapper type = new TypeWrapper("Постоянный");
 		List<String> updated = List.of("Постоянный", "Новый");
@@ -235,6 +253,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение статусов клиентов")
 	void shouldReturnClientStatuses() throws Exception {
 		List<String> statuses = List.of("Новый", "Постоянный");
 		when(metadataService.getClientStatuses()).thenReturn(statuses);
@@ -245,6 +264,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Удаление статуса клиента")
 	void shouldDeleteClientStatus() throws Exception {
 		List<String> remaining = List.of("Новый");
 		when(metadataService.removeClientStatus("Постоянный")).thenReturn(remaining);
@@ -256,6 +276,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание района")
 	void shouldAddDistrict() throws Exception {
 		TypeWrapper type = new TypeWrapper("Октябрьский");
 		List<String> updated = List.of("Октябрьский", "Ленинский");
@@ -269,6 +290,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение районов")
 	void shouldReturnDistricts() throws Exception {
 		List<String> districts = List.of("Ленинский", "Октябрьский");
 		when(metadataService.getDistricts()).thenReturn(districts);
@@ -279,6 +301,7 @@ public class MetadataControllerTest {
 	}
 
 	@Test
+	@DisplayName("Удаление района")
 	void shouldDeleteDistrict() throws Exception {
 		List<String> remaining = List.of("Ленинский");
 		when(metadataService.removeDistrict("Октябрьский")).thenReturn(remaining);

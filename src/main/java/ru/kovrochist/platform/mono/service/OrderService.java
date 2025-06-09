@@ -77,7 +77,7 @@ public class OrderService {
 	}
 
 	public OrderDto createOrder(OrderDto order) throws DoesNotExistException {
-		DeliveryType deliveryType = DeliveryType.byLabel(order.getDeliveryType());
+		DeliveryType deliveryType = order.getDeliveryType() == null ? null : DeliveryType.byLabel(order.getDeliveryType());
 		String deliveryDays = order.getDeliveryDays() == null ? null : OrderMapper.getDeliveryDays(order.getDeliveryDays());
 		String sources = order.getSources() == null ? null : String.join(StringUtil.SEPARATOR, order.getSources());
 		OrderStatus status = order.getStatus() == null ? OrderStatus.CREATED : OrderStatus.byLabel(order.getStatus());

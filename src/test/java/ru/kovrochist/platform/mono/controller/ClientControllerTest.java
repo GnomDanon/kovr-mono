@@ -1,6 +1,7 @@
 package ru.kovrochist.platform.mono.controller;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,9 +17,7 @@ import ru.kovrochist.platform.mono.filter.ClientFilter;
 import ru.kovrochist.platform.mono.service.ClientService;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.any;
@@ -45,6 +44,7 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение клиентов")
 	public void testFetchClients() throws Exception {
 		ClientDto client1 = new ClientDto(1L, "70000000001");
 		ClientDto client2 = new ClientDto(2L, "70000000002");
@@ -60,6 +60,7 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение клиентов из пустой таблицы")
 	void testGetClients_NoClients() throws Exception {
 		when(clientService.getClients()).thenReturn(Collections.emptyList());
 
@@ -69,6 +70,7 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение клиента по идентификатору")
 	void testGetClientById_Success() throws Exception {
 		ClientDto client = new ClientDto(1L, "70000000001");
 		when(clientService.getClient(1L)).thenReturn(client);
@@ -80,6 +82,8 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение клиента по несуществующему идентификатору")
+	@SuppressWarnings("deprecation")
 	void testGetClientById_ClientNotFound() throws Exception {
 		when(clientService.getClient(1L)).thenThrow(new ClientDoesNotExistException(1L));
 
@@ -89,10 +93,8 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение отфильтрованных клиентов")
 	void testFetchFilteredClients_Success() throws Exception {
-		Map<String, String> filters = new HashMap<>();
-		filters.put("search", "70000000001");
-
 		List<ClientDto> clients = List.of(new ClientDto(1L, "70000000001"));
 		when(clientService.getClients(any(ClientFilter.class))).thenReturn(clients);
 
@@ -103,6 +105,7 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение клиента по номеру")
 	void testSearchClients_Success() throws Exception {
 		String query = "70000000001";
 
@@ -116,6 +119,7 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение клиента с несуществующим номером")
 	void testSearchClients_EmptyResult() throws Exception {
 		String query = "NonExistentClient";
 
@@ -127,6 +131,7 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление информации о клиенте")
 	void testUpdateClientInfo_Success() throws Exception {
 		ClientDto clientDto = new ClientDto(1L, "70000000001");
 		when(clientService.update(1L, clientDto)).thenReturn(clientDto);
@@ -140,6 +145,8 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление информации о несуществующем клиенте")
+	@SuppressWarnings("deprecation")
 	void testUpdateClientInfo_ClientNotFound() throws Exception {
 		ClientDto clientDto = new ClientDto(1L, "70000000001");
 		when(clientService.update(1L, clientDto)).thenThrow(new ClientDoesNotExistException(1L));
@@ -153,6 +160,8 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@DisplayName("Выброс ошибки")
+	@SuppressWarnings("deprecation")
 	void testClientServiceThrowsException() throws Exception {
 		when(clientService.getClients()).thenThrow(new RuntimeException("Service failure"));
 

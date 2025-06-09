@@ -2,6 +2,7 @@ package ru.kovrochist.platform.mono.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -52,6 +53,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение заказов")
 	void shouldFetchOrders() throws Exception {
 		List<OrderDto> orders = List.of(new OrderDto(1L), new OrderDto(2L));
 		when(orderService.fetchOrder()).thenReturn(orders);
@@ -62,6 +64,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение отфильтрованных заказов")
 	void shouldFetchFilteredOrders() throws Exception {
 		List<OrderDto> orders = List.of(new OrderDto(1L));
 		when(orderService.getOrders(any(OrderFilter.class))).thenReturn(orders);
@@ -72,6 +75,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение заказа по идентификатору")
 	void shouldGetOrderById() throws Exception {
 		OrderDto order = new OrderDto(1L);
 		when(orderService.getOrderById(1L)).thenReturn(order);
@@ -82,6 +86,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение заказов сотрудника")
 	void shouldGetOrdersByEmployee() throws Exception {
 		List<OrderDto> orders = List.of(new OrderDto(1L));
 		when(orderService.getEmployeeOrders(1L)).thenReturn(orders);
@@ -92,6 +97,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение заказов клиента")
 	void shouldGetOrdersByClient() throws Exception {
 		List<OrderDto> orders = List.of(new OrderDto(1L));
 		when(orderService.getClientOrders(1L)).thenReturn(orders);
@@ -102,6 +108,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление статуса заказа")
 	void shouldUpdateOrderStatus() throws Exception {
 		StatusWrapper status = new StatusWrapper("В работе");
 		OrderDto updated = new OrderDto(1L);
@@ -115,6 +122,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание заказа")
 	void shouldCreateOrder() throws Exception {
 		OrderDto created = new OrderDto(1L);
 		when(orderService.createOrder(created)).thenReturn(created);
@@ -127,6 +135,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Удаление заказа")
 	void shouldDeleteOrder() throws Exception {
 		mockMvc.perform(delete("/orders/1"))
 				.andExpect(status().isOk())
@@ -134,6 +143,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление заказа")
 	void shouldUpdateOrder() throws Exception {
 		OrderDto updated = new OrderDto(1L);
 		when(orderService.update(any(OrderDto.class))).thenReturn(updated);
@@ -146,6 +156,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление услуг")
 	void shouldUpdateOrderItemServices() throws Exception {
 		UpdateOrderItemDto dto = new UpdateOrderItemDto();
 		OrderDto updated = new OrderDto();
@@ -159,6 +170,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Назначение сотрудника на заказ")
 	void shouldAssignEmployeeToOrder() throws Exception {
 		AssignDto assignDto = new AssignDto().setEmployeeId(1L);
 		OrderDto updated = new OrderDto();
@@ -172,6 +184,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Снятие сотрудника с заказа")
 	void shouldDeAssignEmployee() throws Exception {
 		mockMvc.perform(delete("/orders/1/assignees/2"))
 				.andExpect(status().isOk())
@@ -179,6 +192,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление комментария")
 	void shouldUpdateEmployeeComment() throws Exception {
 		UpdateCommentDto dto = new UpdateCommentDto().setEmployeeId(1L).setComment("Комментарий");
 		AssignedEmployeeDto updated = new AssignedEmployeeDto().setEmployeeId(1L).setComment("Комментарий");
@@ -192,6 +206,7 @@ public class OrderControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление информации о доставке")
 	void shouldRescheduleOrder() throws Exception {
 		Date now = new Date();
 		RescheduleDto dto = new RescheduleDto();

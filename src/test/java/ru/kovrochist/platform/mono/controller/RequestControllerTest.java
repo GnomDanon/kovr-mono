@@ -2,6 +2,7 @@ package ru.kovrochist.platform.mono.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -39,6 +40,7 @@ public class RequestControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание заявки")
 	void shouldCreateRequest() throws Exception {
 		RequestDto request = new RequestDto();
 		OrderDto response = new OrderDto(1L);

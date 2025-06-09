@@ -1,6 +1,7 @@
 package ru.kovrochist.platform.mono.controller;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +20,6 @@ import ru.kovrochist.platform.mono.service.EmployeeService;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.any;
@@ -47,6 +47,7 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение сотрудников")
 	public void testGetEmployees() throws Exception {
 		EmployeeDto employee1 = new EmployeeDto(1L, "70000000001");
 		EmployeeDto employee2 = new EmployeeDto(2L, "70000000002");
@@ -62,6 +63,7 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение сотрудников из пустой таблицы")
 	void testGetEmployees_NoEmployees() throws Exception {
 		when(employeeService.getEmployees()).thenReturn(Collections.emptyList());
 
@@ -71,6 +73,7 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение сотрудника по идентификатору")
 	void testGetEmployeeById_Success() throws Exception {
 		EmployeeDto employee = new EmployeeDto(1L, "70000000001");
 		when(employeeService.getEmployee(1L)).thenReturn(employee);
@@ -82,7 +85,9 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
-	void testGetClientById_ClientNotFound() throws Exception {
+	@DisplayName("Получение сотрудника по несуществующему номеру")
+	@SuppressWarnings("deprecation")
+	void testGetEmployeeById_EmployeeNotFound() throws Exception {
 		when(employeeService.getEmployee(1L)).thenThrow(new EmployeeDoesNotExistException(1L));
 
 		mockMvc.perform(get("/staff/{id}", 1L).accept(MediaType.APPLICATION_JSON_UTF8))
@@ -91,6 +96,7 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание сотрудника")
 	public void testCreateEmployee_Success() throws Exception {
 		EmployeeDto employeeDto = new EmployeeDto(1L, "70000000001");
 		when(employeeService.createEmployee(any(EmployeeDto.class))).thenReturn(employeeDto);
@@ -104,6 +110,8 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("Создание существующего сотрудника")
+	@SuppressWarnings("deprecation")
 	void testCreateEmployee_EmployeeAlreadyExists() throws Exception {
 		when(employeeService.createEmployee(any(EmployeeDto.class))).thenThrow(new EmployeeAlreadyExistsException("70000000001"));
 
@@ -116,6 +124,7 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление роли сотрудника")
 	public void testUpdateEmployeeRole_Success() throws Exception {
 		RoleWrapper roleWrapper = new RoleWrapper("ADMIN");
 		EmployeeDto employeeDto = new EmployeeDto(1L, "70000000001");
@@ -130,6 +139,8 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление роли у несуществующего сотрудника")
+	@SuppressWarnings("deprecation")
 	void testUpdateEmployeeRole_EmployeeNotFound() throws Exception {
 		RoleWrapper roleWrapper = new RoleWrapper("ADMIN");
 		when(employeeService.updateEmployeeRole(1L, roleWrapper)).thenThrow(new EmployeeDoesNotExistException(1L));
@@ -143,8 +154,8 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение отфильтрованных сотрудников")
 	void testFetchFilteredEmployees_Success() throws Exception {
-		EmployeeFilter filter = new EmployeeFilter(Map.of("search", "John"));
 		EmployeeDto employee = new EmployeeDto(1L, "70000000001");
 		when(employeeService.getEmployees(any(EmployeeFilter.class))).thenReturn(List.of(employee));
 

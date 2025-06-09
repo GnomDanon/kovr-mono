@@ -2,6 +2,7 @@ package ru.kovrochist.platform.mono.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -40,6 +41,7 @@ public class UserControllerTest {
 	}
 
 	@Test
+	@DisplayName("Получение профиля")
 	void shouldReturnUserProfile() throws Exception {
 		UserDto userDto = new UserDto();
 		userDto.setId(1L);
@@ -53,6 +55,7 @@ public class UserControllerTest {
 	}
 
 	@Test
+	@DisplayName("Обновление профиля")
 	void shouldUpdateUserProfile() throws Exception {
 		ProfileFormData profile = new ProfileFormData();
 		profile.setFirstName("Петр");

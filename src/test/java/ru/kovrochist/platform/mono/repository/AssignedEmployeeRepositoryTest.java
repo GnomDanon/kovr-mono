@@ -51,7 +51,7 @@ public class AssignedEmployeeRepositoryTest {
 	}
 
 	@Test
-	@DisplayName("Должен сохранять и находить назначенного сотрудника по id заказа и id сотрудника")
+	@DisplayName("Сохранение и получение назначенного сотрудника")
 	void shouldFindAssignedEmployeeByEmployeeIdAndOrderId() {
 		Optional<AssignedEmployees> result = repository.find(employee1, order1);
 
@@ -60,14 +60,14 @@ public class AssignedEmployeeRepositoryTest {
 	}
 
 	@Test
-	@DisplayName("Должен находить все назначения по id сотрудника")
+	@DisplayName("Получение назначенных заказов")
 	void shouldFindAllByEmployeeId() {
 		Iterable<AssignedEmployees> found = repository.findByEmployeeId(employee1);
 		assertThat(found).hasSize(2);
 	}
 
 	@Test
-	@DisplayName("Должен находить все назначения по id заказа")
+	@DisplayName("Получение назначенных сотрудников")
 	void shouldFindAllByOrderId() {
 		Iterable<AssignedEmployees> found = repository.findByOrderId(order2);
 		assertThat(found).hasSize(2);
