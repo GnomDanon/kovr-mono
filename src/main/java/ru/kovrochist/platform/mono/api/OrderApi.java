@@ -3,6 +3,7 @@ package ru.kovrochist.platform.mono.api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -33,57 +34,71 @@ public interface OrderApi {
 
 	@Operation(summary = "Получение заказов")
 	@GetMapping()
-	ResponseEntity<List<OrderDto>> fetchOrders() throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
+	ResponseEntity<List<OrderDto>> fetchOrders();
 
 	@Operation(summary = "Получение отфильтрованных заказов")
 	@GetMapping("/filter")
-	ResponseEntity<List<OrderDto>> fetchFilteredOrders(@RequestParam Map<String, String> allParams) throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
+	ResponseEntity<List<OrderDto>> fetchFilteredOrders(@RequestParam Map<String, String> allParams);
 
 	@Operation(summary = "Получение заказа по идентификатору")
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAnyRole('client', 'operator', 'courier', 'master', 'admin')")
 	ResponseEntity<OrderDto> getOrderById(@PathVariable Long id) throws OrderDoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Получение заказов сотрудника")
 	@GetMapping("/employee/{employeeId}")
-	ResponseEntity<List<OrderDto>> getEmployeeOrders(@PathVariable Long employeeId) throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
+	ResponseEntity<List<OrderDto>> getEmployeeOrders(@PathVariable Long employeeId);
 
 	@Operation(summary = "Получение заказов клиента")
 	@GetMapping("/client/{clientId}")
+	@PreAuthorize("hasAnyRole('client', 'operator', 'courier', 'master', 'admin')")
 	ResponseEntity<List<OrderDto>> getClientOrders(@PathVariable Long clientId) throws ResourceAccessException;
 
 	@Operation(summary = "Обновление статуса заказа")
 	@PatchMapping("/{orderId}/status")
+	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
 	ResponseEntity<OrderDto> updateOrderStatus(@PathVariable Long orderId, @RequestBody StatusWrapper status) throws DoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Создание заказа")
 	@PostMapping
-	ResponseEntity<OrderDto> createOrder(@RequestBody OrderDto order) throws DoesNotExistException, ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	ResponseEntity<OrderDto> createOrder(@RequestBody OrderDto order) throws DoesNotExistException;
 
 	@Operation(summary = "Удаление заказа")
 	@DeleteMapping("/{id}")
-	ResponseEntity<String> deleteOrder(@PathVariable Long id) throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	ResponseEntity<String> deleteOrder(@PathVariable Long id);
 
 	@Operation(summary = "Обновление заказа")
 	@PatchMapping
+	@PreAuthorize("hasAnyRole('client', 'operator', 'courier', 'master', 'admin')")
 	ResponseEntity<OrderDto> update(@RequestBody OrderDto orderDto) throws DoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Обновление услуги")
 	@PatchMapping("/{orderId}/services")
+	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
 	ResponseEntity<OrderDto> updateOrderItemServices(@PathVariable Long orderId, @RequestBody UpdateOrderItemDto updateDto) throws OrderItemDoesNotExistsException, OrderDoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Назначение сотрудника на заказ")
 	@PostMapping("/{orderId}/assignees")
-	ResponseEntity<OrderDto> assignEmployeeToOrder(@PathVariable Long orderId, @RequestBody AssignDto assignDto) throws EmployeeDoesNotExistException, OrderDoesNotExistException, ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
+	ResponseEntity<OrderDto> assignEmployeeToOrder(@PathVariable Long orderId, @RequestBody AssignDto assignDto) throws EmployeeDoesNotExistException, OrderDoesNotExistException;
 
 	@Operation(summary = "Снятие сотрудника с заказа")
 	@DeleteMapping("/{orderId}/assignees/{employeeId}")
-	ResponseEntity<String> deAssignEmployee(@PathVariable Long orderId, @PathVariable Long employeeId) throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
+	ResponseEntity<String> deAssignEmployee(@PathVariable Long orderId, @PathVariable Long employeeId);
 
-	@Operation(summary = "Обновление комментарий от сотрудника")
+	@Operation(summary = "Обновление комментария от сотрудника")
 	@PatchMapping("/{orderId}/employee-comment")
+	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
 	ResponseEntity<AssignedEmployeeDto> updateEmployeeComment(@PathVariable Long orderId, @RequestBody UpdateCommentDto updateDto) throws DoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Обновление планируемой даты доставки")
 	@PatchMapping("/{orderId}/schedule")
+	@PreAuthorize("hasAnyRole('client', 'operator', 'courier', 'master', 'admin')")
 	ResponseEntity<OrderDto> rescheduleOrder(@PathVariable Long orderId, @RequestBody RescheduleDto rescheduleDto) throws DoesNotExistException, ResourceAccessException;
 }

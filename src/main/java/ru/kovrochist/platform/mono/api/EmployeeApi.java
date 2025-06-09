@@ -3,7 +3,7 @@ package ru.kovrochist.platform.mono.api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.kovrochist.platform.mono.dto.employee.EmployeeDto;
 import ru.kovrochist.platform.mono.dto.user.RoleWrapper;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
-import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeAlreadyExistsException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
 
@@ -27,25 +26,26 @@ public interface EmployeeApi {
 
 	@Operation(summary = "Получение сотрудников")
 	@GetMapping
-	ResponseEntity<List<EmployeeDto>> getEmployees() throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	ResponseEntity<List<EmployeeDto>> getEmployees();
 
 	@Operation(summary = "Получение сотрудника")
 	@GetMapping("/{id}")
-	ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) throws EmployeeDoesNotExistException, ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
+	ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) throws EmployeeDoesNotExistException;
 
 	@Operation(summary = "Получение отфильтрованных сотрудников")
 	@GetMapping("/filter")
-	ResponseEntity<List<EmployeeDto>> fetchFilteredEmployees(@RequestParam Map<String, String> allParams) throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	ResponseEntity<List<EmployeeDto>> fetchFilteredEmployees(@RequestParam Map<String, String> allParams);
 
 	@Operation(summary = "Создание сотрудника")
 	@PostMapping
-	ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto user) throws DoesNotExistException, EmployeeAlreadyExistsException, ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto user) throws DoesNotExistException, EmployeeAlreadyExistsException;
 
-	@Operation(summary = "") //TODO: ???
-	@DeleteMapping("/{id}")
-	ResponseEntity<String> deactivateEmployee(@PathVariable Long id) throws ResourceAccessException;
-
-	@Operation(summary = "Обновление роли клиента")
+	@Operation(summary = "Обновление роли сотрудника")
 	@PatchMapping("/{id}/role")
-	ResponseEntity<EmployeeDto> updateEmployeeRole(@PathVariable Long id, @RequestBody RoleWrapper roleWrapper) throws DoesNotExistException, ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	ResponseEntity<EmployeeDto> updateEmployeeRole(@PathVariable Long id, @RequestBody RoleWrapper roleWrapper) throws DoesNotExistException;
 }

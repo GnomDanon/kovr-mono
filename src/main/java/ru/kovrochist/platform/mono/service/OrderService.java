@@ -2,6 +2,7 @@ package ru.kovrochist.platform.mono.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
@@ -56,8 +57,10 @@ public class OrderService {
 		return orders.stream().map(OrderMapper::mapInfo).collect(Collectors.toList());
 	}
 
-	public OrderDto getOrderById(Long id) throws OrderDoesNotExistException {
-		return OrderMapper.map(getById(id));
+	public OrderDto getOrderById(Long id) throws OrderDoesNotExistException, ResourceAccessException {
+		Orders order = getById(id);
+		accessFilter.employeeOrSelf(order);
+		return OrderMapper.map(order);
 	}
 
 	public List<OrderDto> getEmployeeOrders(Long employeeId) {
@@ -65,7 +68,8 @@ public class OrderService {
 		return orders.stream().map(OrderMapper::mapInfo).collect(Collectors.toList());
 	}
 
-	public List<OrderDto> getClientOrders(Long clientId) {
+	public List<OrderDto> getClientOrders(Long clientId) throws ResourceAccessException {
+		accessFilter.employeeOrSelf(clientId);
 		List<Orders> orders = getByClientId(clientId);
 		return orders.stream().map(OrderMapper::mapInfo).collect(Collectors.toList());
 	}
@@ -95,8 +99,10 @@ public class OrderService {
 		return OrderMapper.map(update(order));
 	}
 
-	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException {
+	@Transactional
+	public OrderDto update(OrderDto updateInfo) throws DoesNotExistException, ResourceAccessException {
 		Orders order = update(updateInfo.getId(), updateInfo.getStatus(), updateInfo.getComment(), updateInfo.getDeliveryType(), updateInfo.getPhone(), updateInfo.getCity(), updateInfo.getAddress(), updateInfo.getDistrict(), updateInfo.getDeliveryDays() == null ? null : OrderMapper.getDeliveryDays(updateInfo.getDeliveryDays()), updateInfo.getDeliveryTimeStart(), updateInfo.getDeliveryTimeEnd(), updateInfo.getDiscount(), updateInfo.getPrice(), updateInfo.getSources() == null ? null : String.join(StringUtil.SEPARATOR, updateInfo.getSources()));
+		accessFilter.employeeOrSelf(order);
 		assignEmployeeToOrder(order, USER.getId());
 		List<OrderItems> items = itemService.update(order, updateInfo.getItems());
 		return OrderMapper.map(order.setItems(items));
@@ -123,7 +129,6 @@ public class OrderService {
 	}
 
 	public OrderDto rescheduleOrder(Long orderId, String[] deliveryDays, Date deliveryTimeStart, Date deliveryTimeEnd) throws DoesNotExistException, ResourceAccessException {
-		accessFilter.operatorOrAdminOrAssignee(getById(orderId));
 		return OrderMapper.map(updateDelivery(orderId, OrderMapper.getDeliveryDays(deliveryDays), deliveryTimeStart, deliveryTimeEnd));
 	}
 
@@ -231,8 +236,9 @@ public class OrderService {
 		return update(order.setStatus(status));
 	}
 
-	private Orders updateDelivery(Long id, String deliveryDays, Date deliveryTimeStart, Date deliveryTimeEnt) throws OrderDoesNotExistException {
+	private Orders updateDelivery(Long id, String deliveryDays, Date deliveryTimeStart, Date deliveryTimeEnt) throws OrderDoesNotExistException, ResourceAccessException {
 		Orders order = getById(id);
+		accessFilter.employeeOrSelf(order);
 		return update(order.setDeliveryDays(deliveryDays).setDeliveryTimeStart(deliveryTimeStart).setDeliveryTimeEnd(deliveryTimeEnt));
 	}
 

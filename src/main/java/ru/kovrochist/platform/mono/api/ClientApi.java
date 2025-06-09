@@ -3,6 +3,7 @@ package ru.kovrochist.platform.mono.api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,21 +24,26 @@ public interface ClientApi {
 
 	@Operation(summary = "Получение клиентов")
 	@GetMapping
-	ResponseEntity<List<ClientDto>> getClients() throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	ResponseEntity<List<ClientDto>> getClients();
 
 	@Operation(summary = "Получение клиента")
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAnyRole('client', 'operator', 'courier', 'master', 'admin')")
 	ResponseEntity<ClientDto> getClientById(@PathVariable Long id) throws ClientDoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Получение отфильтрованных клиентов")
 	@GetMapping("/filter")
-	ResponseEntity<List<ClientDto>> fetchFilteredClients(@RequestParam Map<String, String> allParams) throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	ResponseEntity<List<ClientDto>> fetchFilteredClients(@RequestParam Map<String, String> allParams);
 
 	@Operation(summary = "Получение отфильтрованных клиентов")
 	@GetMapping("/search")
-	ResponseEntity<List<ClientDto>> searchClients(@RequestParam String query) throws ResourceAccessException;
+	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	ResponseEntity<List<ClientDto>> searchClients(@RequestParam String query);
 
 	@Operation(summary = "Обновление профиля клиента")
 	@PatchMapping("/{clientId}")
+	@PreAuthorize("hasAnyRole('client', 'operator', 'courier', 'master', 'admin')")
 	ResponseEntity<ClientDto> updateClientInfo(@PathVariable Long clientId, @RequestBody ClientDto client) throws DoesNotExistException, ResourceAccessException;
 }

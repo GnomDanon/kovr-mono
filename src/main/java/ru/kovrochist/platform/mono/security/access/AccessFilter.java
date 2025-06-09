@@ -3,6 +3,7 @@ package ru.kovrochist.platform.mono.security.access;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.kovrochist.platform.mono.entity.AssignedEmployees;
+import ru.kovrochist.platform.mono.entity.Clients;
 import ru.kovrochist.platform.mono.entity.Orders;
 import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 import ru.kovrochist.platform.mono.security.user.User;
@@ -14,22 +15,12 @@ public class AccessFilter {
 
 	private final User USER;
 
-	public void employee() throws ResourceAccessException {
-		check(USER.getRole().isEmployee());
+	public void employeeOrSelf(Clients client) throws ResourceAccessException {
+		employeeOrSelf(client.getId());
 	}
 
-	public void notGuest() throws ResourceAccessException {
-		check(!USER.getRole().isGuest());
-	}
-
-	public void operatorOrAdmin() throws ResourceAccessException {
-		Role role = USER.getRole();
-		check(role.isOperator() || role.isAdmin());
-	}
-
-	public void operatorOrAdminOrSelf(Long id) throws ResourceAccessException {
-		Role role = USER.getRole();
-		check(role.isOperator() || role.isAdmin() || USER.getId().equals(id));
+	public void employeeOrSelf(Orders order) throws ResourceAccessException {
+		employeeOrSelf(order.getClient().getId());
 	}
 
 	public void employeeOrSelf(Long id) throws ResourceAccessException {

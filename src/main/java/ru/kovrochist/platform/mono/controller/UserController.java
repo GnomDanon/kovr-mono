@@ -8,10 +8,8 @@ import ru.kovrochist.platform.mono.api.UserApi;
 import ru.kovrochist.platform.mono.dto.user.ProfileFormData;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
-import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
 import ru.kovrochist.platform.mono.exception.employee.EmployeeDoesNotExistException;
-import ru.kovrochist.platform.mono.security.access.AccessFilter;
 import ru.kovrochist.platform.mono.service.UserService;
 
 @RestController
@@ -20,35 +18,28 @@ public class UserController implements UserApi {
 
 	private final UserService userService;
 
-	private final AccessFilter accessFilter;
-
 	@Override
-	public ResponseEntity<UserDto> getProfile() throws EmployeeDoesNotExistException, ClientDoesNotExistException, ResourceAccessException {
-//		accessFilter.notGuest();
+	public ResponseEntity<UserDto> getProfile() throws EmployeeDoesNotExistException, ClientDoesNotExistException {
 		return ResponseEntity.ok(userService.getProfile());
 	}
 
 	@Override
-	public ResponseEntity<UserDto> updateProfile(ProfileFormData profile) throws DoesNotExistException, ResourceAccessException {
-//		accessFilter.notGuest();
+	public ResponseEntity<UserDto> updateProfile(ProfileFormData profile) throws DoesNotExistException {
 		return ResponseEntity.ok(userService.updateProfile(profile));
 	}
 
 	@Override
-	public ResponseEntity<String> getAvatar() throws ResourceAccessException {
-//		accessFilter.notGuest();
+	public ResponseEntity<String> getAvatar() {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<String> uploadAvatar(MultipartFile file) throws ResourceAccessException {
-//		accessFilter.notGuest();
+	public ResponseEntity<String> uploadAvatar(MultipartFile file)  {
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<String> deleteAvatar() throws ResourceAccessException {
-//		accessFilter.notGuest();
+	public ResponseEntity<String> deleteAvatar() {
 		return null;
 	}
 }

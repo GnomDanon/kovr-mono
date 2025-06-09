@@ -5,10 +5,12 @@ import org.springframework.stereotype.Service;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.entity.Clients;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
 import ru.kovrochist.platform.mono.filter.ClientFilter;
 import ru.kovrochist.platform.mono.mapper.client.ClientMapper;
 import ru.kovrochist.platform.mono.repository.ClientRepository;
+import ru.kovrochist.platform.mono.security.access.AccessFilter;
 import ru.kovrochist.platform.mono.type.Gender;
 
 import java.util.ArrayList;
@@ -22,13 +24,16 @@ public class ClientService {
 
 	private final ClientRepository clientRepository;
 
+	private final AccessFilter accessFilter;
+
 	public List<ClientDto> getClients() {
 		List<Clients> clients = get();
 		return clients.stream().map(ClientMapper::map).collect(Collectors.toList());
 	}
 
-	public ClientDto getClient(Long id) throws ClientDoesNotExistException {
+	public ClientDto getClient(Long id) throws ClientDoesNotExistException, ResourceAccessException {
 		Clients client = getById(id);
+		accessFilter.employeeOrSelf(client);
 		return ClientMapper.map(client);
 	}
 
@@ -42,7 +47,8 @@ public class ClientService {
 		return clients.stream().map(ClientMapper::map).collect(Collectors.toList());
 	}
 
-	public ClientDto update(Long id, ClientDto profile) throws DoesNotExistException {
+	public ClientDto update(Long id, ClientDto profile) throws DoesNotExistException, ResourceAccessException {
+		accessFilter.employeeOrSelf(id);
 		Clients client = update(id, profile.getPhone(), profile.getFirstName(), profile.getLastName(), profile.getBirthday(), profile.getCity(), profile.getAddress(), profile.getGender(), profile.getStatus());
 		return ClientMapper.map(client);
 	}

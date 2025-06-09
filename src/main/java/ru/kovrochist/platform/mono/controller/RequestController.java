@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.kovrochist.platform.mono.api.RequestApi;
 import ru.kovrochist.platform.mono.dto.order.OrderDto;
 import ru.kovrochist.platform.mono.dto.request.RequestDto;
-import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 import ru.kovrochist.platform.mono.service.RequestService;
 
 @RestController
@@ -16,7 +15,7 @@ public class RequestController implements RequestApi {
 	private final RequestService requestService;
 
 	@Override
-	public ResponseEntity<OrderDto> create(RequestDto request) throws ResourceAccessException {
+	public ResponseEntity<OrderDto> create(RequestDto request) {
 		return ResponseEntity.ok(requestService.create(request));
 	}
 }
