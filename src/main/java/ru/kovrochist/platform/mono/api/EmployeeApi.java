@@ -26,26 +26,26 @@ public interface EmployeeApi {
 
 	@Operation(summary = "Получение сотрудников")
 	@GetMapping
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<EmployeeDto>> getEmployees();
 
 	@Operation(summary = "Получение сотрудника")
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAnyRole('operator', 'courier', 'master', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'COURIER', 'MASTER', 'ADMIN')")
 	ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) throws EmployeeDoesNotExistException;
 
 	@Operation(summary = "Получение отфильтрованных сотрудников")
 	@GetMapping("/filter")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<EmployeeDto>> fetchFilteredEmployees(@RequestParam Map<String, String> allParams);
 
 	@Operation(summary = "Создание сотрудника")
 	@PostMapping
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto user) throws DoesNotExistException, EmployeeAlreadyExistsException;
 
 	@Operation(summary = "Обновление роли сотрудника")
 	@PatchMapping("/{id}/role")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<EmployeeDto> updateEmployeeRole(@PathVariable Long id, @RequestBody RoleWrapper roleWrapper) throws DoesNotExistException;
 }

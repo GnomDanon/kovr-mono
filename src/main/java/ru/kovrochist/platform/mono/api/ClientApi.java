@@ -24,26 +24,26 @@ public interface ClientApi {
 
 	@Operation(summary = "Получение клиентов")
 	@GetMapping
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<ClientDto>> getClients();
 
 	@Operation(summary = "Получение клиента")
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAnyRole('client', 'operator', 'courier', 'master', 'admin')")
+	@PreAuthorize("hasAnyRole('CLIENT', 'OPERATOR', 'COURIER', 'MASTER', 'ADMIN')")
 	ResponseEntity<ClientDto> getClientById(@PathVariable Long id) throws ClientDoesNotExistException, ResourceAccessException;
 
 	@Operation(summary = "Получение отфильтрованных клиентов")
 	@GetMapping("/filter")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<ClientDto>> fetchFilteredClients(@RequestParam Map<String, String> allParams);
 
 	@Operation(summary = "Получение отфильтрованных клиентов")
 	@GetMapping("/search")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<ClientDto>> searchClients(@RequestParam String query);
 
 	@Operation(summary = "Обновление профиля клиента")
 	@PatchMapping("/{clientId}")
-	@PreAuthorize("hasAnyRole('client', 'operator', 'courier', 'master', 'admin')")
+	@PreAuthorize("hasAnyRole('CLIENT', 'OPERATOR', 'COURIER', 'MASTER', 'ADMIN')")
 	ResponseEntity<ClientDto> updateClientInfo(@PathVariable Long clientId, @RequestBody ClientDto client) throws DoesNotExistException, ResourceAccessException;
 }

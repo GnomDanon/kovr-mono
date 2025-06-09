@@ -32,7 +32,7 @@ public interface MetadataApi {
 
 	@Operation(summary = "Загрузка услуги")
 	@PostMapping("/services")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> addService(@RequestBody TypeWrapper type) throws ServiceAlreadyExistsException;
 
 	@Operation(summary = "Получение услуг")
@@ -41,13 +41,13 @@ public interface MetadataApi {
 
 	@Operation(summary = "Удаление услуги")
 	@DeleteMapping("/services")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> removeService(@RequestParam String service);
 
 
 	@Operation(summary = "Загрузка города")
 	@PostMapping("/cities")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> addCity(@RequestBody TypeWrapper type) throws CityAlreadyExistsException;
 
 	@Operation(summary = "Получение городов")
@@ -56,13 +56,13 @@ public interface MetadataApi {
 
 	@Operation(summary = "Удаление города")
 	@DeleteMapping("/cities")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> removeCity(@RequestParam String city);
 
 
 	@Operation(summary = "Загрузка типа изделия")
 	@PostMapping("/product-types")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> addProductType(@RequestBody TypeWrapper type) throws ProductAlreadyExistsException;
 
 	@Operation(summary = "Получение типов изделий")
@@ -71,13 +71,13 @@ public interface MetadataApi {
 
 	@Operation(summary = "Удаление типа изделия")
 	@DeleteMapping("/product-types")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> removeProductType(@RequestParam String type);
 
 
 	@Operation(summary = "Загрузка типа загрязнение")
 	@PostMapping("/contamination-types")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> addContaminationType(@RequestBody TypeWrapper type) throws ContamintaionAlreadyExistsException;
 
 	@Operation(summary = "Получение типов загрязнения")
@@ -86,7 +86,7 @@ public interface MetadataApi {
 
 	@Operation(summary = "Удаление типа загрязнения")
 	@DeleteMapping("/contamination-types")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> removeContaminationType(@RequestParam String type);
 
 
@@ -97,7 +97,7 @@ public interface MetadataApi {
 
 	@Operation(summary = "Загрузка вида источника")
 	@PostMapping("/request-sources")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> addRequestSource(@RequestBody TypeWrapper type) throws SourceAlreadyExistsException;
 
 	@Operation(summary = "Получение видов источников")
@@ -106,13 +106,13 @@ public interface MetadataApi {
 
 	@Operation(summary = "Удаление вида источника")
 	@DeleteMapping("/request-sources")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> removeRequestSource(@RequestParam String source);
 
 
 	@Operation(summary = "Загрузка статуса клиента")
 	@PostMapping("/client-statuses")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> addClientStatus(@RequestBody TypeWrapper type) throws ClientStatusAlreadyExistsException;
 
 	@Operation(summary = "Получение статусов клиента")
@@ -121,13 +121,13 @@ public interface MetadataApi {
 
 	@Operation(summary = "Удаление статуса клиента")
 	@DeleteMapping("/client-statuses")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> removeClientStatus(@RequestParam String status);
 
 
 	@Operation(summary = "Загрузка района")
 	@PostMapping("/districts")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> addDistrict(@RequestBody TypeWrapper type) throws DistrictAlreadyExistsException;
 
 	@Operation(summary = "Получение районов")
@@ -136,6 +136,6 @@ public interface MetadataApi {
 
 	@Operation(summary = "Удаление района")
 	@DeleteMapping("/districts")
-	@PreAuthorize("hasAnyRole('operator', 'admin')")
+	@PreAuthorize("hasAnyRole('OPERATOR', 'ADMIN')")
 	ResponseEntity<List<String>> removeDistrict(@RequestParam String district);
 }

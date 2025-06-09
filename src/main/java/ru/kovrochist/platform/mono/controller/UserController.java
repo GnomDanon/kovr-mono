@@ -3,7 +3,6 @@ package ru.kovrochist.platform.mono.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import ru.kovrochist.platform.mono.api.UserApi;
 import ru.kovrochist.platform.mono.dto.user.ProfileFormData;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
@@ -26,20 +25,5 @@ public class UserController implements UserApi {
 	@Override
 	public ResponseEntity<UserDto> updateProfile(ProfileFormData profile) throws DoesNotExistException {
 		return ResponseEntity.ok(userService.updateProfile(profile));
-	}
-
-	@Override
-	public ResponseEntity<String> getAvatar() {
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<String> uploadAvatar(MultipartFile file)  {
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<String> deleteAvatar() {
-		return null;
 	}
 }
