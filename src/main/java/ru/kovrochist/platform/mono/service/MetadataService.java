@@ -89,6 +89,11 @@ public class MetadataService {
 		return get(clientStatusRepository);
 	}
 
+	public List<String> removeClientStatus(String name) {
+		remove(name, clientStatusRepository);
+		return getClientStatuses();
+	}
+
 	public List<String> createContamination(String name) throws ContamintaionAlreadyExistsException {
 		create(name, contaminationRepository, ContamintaionAlreadyExistsException::new, Contaminations::new);
 		return getContaminations();

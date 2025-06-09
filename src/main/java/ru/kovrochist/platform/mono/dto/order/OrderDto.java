@@ -1,7 +1,9 @@
 package ru.kovrochist.platform.mono.dto.order;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
@@ -9,6 +11,8 @@ import ru.kovrochist.platform.mono.dto.employee.AssignedEmployeeDto;
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
 @Schema(description = "Заказ")
 public class OrderDto {
@@ -69,4 +73,8 @@ public class OrderDto {
 
 	@Schema(description = "Назначенные сотрудники")
 	private AssignedEmployeeDto[] assignees;
+
+	public OrderDto(Long id) {
+		this.id = id;
+	}
 }

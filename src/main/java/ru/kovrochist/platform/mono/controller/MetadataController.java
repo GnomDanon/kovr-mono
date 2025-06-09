@@ -147,7 +147,7 @@ public class MetadataController implements MetadataApi {
 	@Override
 	public ResponseEntity<List<String>> removeClientStatus(String status) throws ResourceAccessException {
 		access();
-		return ResponseEntity.ok(metadataService.removeService(status));
+		return ResponseEntity.ok(metadataService.removeClientStatus(status));
 	}
 
 	@Override
