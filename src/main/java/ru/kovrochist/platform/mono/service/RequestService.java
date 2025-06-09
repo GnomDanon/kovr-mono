@@ -33,7 +33,8 @@ public class RequestService {
 				client = null;
 			}
 		} else {
-			client = clientService.create(phone, firstName, lastName, city, address);
+			client = clientService.getByPhone(phone);
+			client = client != null ? client : clientService.create(phone, firstName, lastName, city, address);
 		}
 		Orders order = orderService.create(client, phone, city, address, comment);
 		return OrderMapper.map(order);
