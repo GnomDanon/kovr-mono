@@ -12,8 +12,10 @@ import org.mockito.quality.Strictness;
 import ru.kovrochist.platform.mono.dto.client.ClientDto;
 import ru.kovrochist.platform.mono.entity.Clients;
 import ru.kovrochist.platform.mono.exception.DoesNotExistException;
+import ru.kovrochist.platform.mono.exception.ResourceAccessException;
 import ru.kovrochist.platform.mono.exception.client.ClientDoesNotExistException;
 import ru.kovrochist.platform.mono.repository.ClientRepository;
+import ru.kovrochist.platform.mono.security.access.AccessFilter;
 import ru.kovrochist.platform.mono.type.Gender;
 
 import java.util.*;
@@ -28,13 +30,17 @@ class ClientServiceTest {
 	@Mock
 	private ClientRepository clientRepository;
 
+	@Mock
+	@SuppressWarnings("unused")
+	private AccessFilter accessFilter;
+
 	@InjectMocks
 	private ClientService clientService;
 
 	private Clients testClient;
 	private ClientDto testClientDto;
 	private final Long testId = 1L;
-	private final String testPhone = "+79998887766";
+	private final String testPhone = "79998887766";
 	private final String testCode = "123456";
 	private final String testFirstName = "Иван";
 	private final String testLastName = "Иванов";
@@ -97,7 +103,7 @@ class ClientServiceTest {
 
 	@Test
 	@DisplayName("Получение клиента по идентификатору")
-	void getClient_WithExistingId_ShouldReturnClientDto() throws ClientDoesNotExistException {
+	void getClient_WithExistingId_ShouldReturnClientDto() throws ClientDoesNotExistException, ResourceAccessException {
 		when(clientRepository.findById(testId)).thenReturn(Optional.of(testClient));
 
 		ClientDto result = clientService.getClient(testId);
@@ -133,7 +139,7 @@ class ClientServiceTest {
 
 	@Test
 	@DisplayName("Обновление клиента")
-	void update_WithExistingId_ShouldReturnUpdatedClientDto() throws DoesNotExistException {
+	void update_WithExistingId_ShouldReturnUpdatedClientDto() throws DoesNotExistException, ResourceAccessException {
 		when(clientRepository.findById(testId)).thenReturn(Optional.of(testClient));
 		when(clientRepository.save(any(Clients.class))).thenReturn(testClient);
 
@@ -211,7 +217,7 @@ class ClientServiceTest {
 
 	@Test
 	@DisplayName("Обновление информации о дне рождения")
-	void update_WithNullBirthday_ShouldPreserveOriginalBirthday() throws DoesNotExistException {
+	void update_WithNullBirthday_ShouldPreserveOriginalBirthday() throws DoesNotExistException, ResourceAccessException {
 		Date originalBirthday = new Date();
 		Clients clientWithBirthday = new Clients()
 				.setId(testId)
