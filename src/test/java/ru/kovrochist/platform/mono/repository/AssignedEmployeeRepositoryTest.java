@@ -1,5 +1,6 @@
 package ru.kovrochist.platform.mono.repository;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@TestPropertySource(properties = "spring.jpa.hibernate.ddl-auto=none")
+@TestPropertySource(properties = "spring.jpa.hibernate.ddl-auto=update")
 public class AssignedEmployeeRepositoryTest {
 
 	@Autowired
@@ -26,52 +27,49 @@ public class AssignedEmployeeRepositoryTest {
 	@Autowired
 	private OrderRepository orderRepository;
 
+	private Long employee1;
+
+	private Long order1;
+	private Long order2;
+
+	@BeforeEach
+	void setup() {
+		Employees employee1 = employeeRepository.save(new Employees().setFirstName("Иван"));
+		Employees employee2 = employeeRepository.save(new Employees().setLastName("Петр"));
+
+		this.employee1 = employee1.getId();
+
+		Orders order1 = orderRepository.save(new Orders());
+		Orders order2 = orderRepository.save(new Orders());
+
+		this.order1 = order1.getId();
+		this.order2 = order2.getId();
+
+		repository.save(new AssignedEmployees().setEmployee(employee1).setOrder(order1).setComment("Первый"));
+		repository.save(new AssignedEmployees().setEmployee(employee1).setOrder(order2).setComment("Второй"));
+		repository.save(new AssignedEmployees().setEmployee(employee2).setOrder(order2).setComment("Третий"));
+	}
+
 	@Test
 	@DisplayName("Должен сохранять и находить назначенного сотрудника по id заказа и id сотрудника")
 	void shouldFindAssignedEmployeeByEmployeeIdAndOrderId() {
-		Employees employee = employeeRepository.save(new Employees().setFirstName("Иван"));
-		Orders order = orderRepository.save(new Orders());
-
-		AssignedEmployees assigned = new AssignedEmployees()
-				.setEmployee(employee)
-				.setOrder(order)
-				.setComment("Большой ковер");
-
-		repository.save(assigned);
-
-		Optional<AssignedEmployees> result = repository.find(employee.getId(), order.getId());
+		Optional<AssignedEmployees> result = repository.find(employee1, order1);
 
 		assertThat(result).isPresent();
-		assertThat(result.get().getComment()).isEqualTo("Большой ковер");
+		assertThat(result.get().getComment()).isEqualTo("Первый");
 	}
 
 	@Test
 	@DisplayName("Должен находить все назначения по id сотрудника")
 	void shouldFindAllByEmployeeId() {
-		Employees employee = employeeRepository.save(new Employees().setFirstName("Иван"));
-		Orders order1 = orderRepository.save(new Orders());
-		Orders order2 = orderRepository.save(new Orders());
-
-		repository.save(new AssignedEmployees().setEmployee(employee).setOrder(order1));
-		repository.save(new AssignedEmployees().setEmployee(employee).setOrder(order2));
-
-		Iterable<AssignedEmployees> found = repository.findByEmployeeId(employee.getId());
-
+		Iterable<AssignedEmployees> found = repository.findByEmployeeId(employee1);
 		assertThat(found).hasSize(2);
 	}
 
 	@Test
 	@DisplayName("Должен находить все назначения по id заказа")
 	void shouldFindAllByOrderId() {
-		Orders order = orderRepository.save(new Orders());
-		Employees employee1 = employeeRepository.save(new Employees().setFirstName("Елена"));
-		Employees employee2 = employeeRepository.save(new Employees().setFirstName("Антон"));
-
-		repository.save(new AssignedEmployees().setEmployee(employee1).setOrder(order));
-		repository.save(new AssignedEmployees().setEmployee(employee2).setOrder(order));
-
-		Iterable<AssignedEmployees> found = repository.findByOrderId(order.getId());
-
+		Iterable<AssignedEmployees> found = repository.findByOrderId(order2);
 		assertThat(found).hasSize(2);
 	}
 }

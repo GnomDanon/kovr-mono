@@ -24,31 +24,31 @@ public class UserController implements UserApi {
 
 	@Override
 	public ResponseEntity<UserDto> getProfile() throws EmployeeDoesNotExistException, ClientDoesNotExistException, ResourceAccessException {
-		accessFilter.notGuest();
+//		accessFilter.notGuest();
 		return ResponseEntity.ok(userService.getProfile());
 	}
 
 	@Override
 	public ResponseEntity<UserDto> updateProfile(ProfileFormData profile) throws DoesNotExistException, ResourceAccessException {
-		accessFilter.notGuest();
+//		accessFilter.notGuest();
 		return ResponseEntity.ok(userService.updateProfile(profile));
 	}
 
 	@Override
 	public ResponseEntity<String> getAvatar() throws ResourceAccessException {
-		accessFilter.notGuest();
+//		accessFilter.notGuest();
 		return null;
 	}
 
 	@Override
 	public ResponseEntity<String> uploadAvatar(MultipartFile file) throws ResourceAccessException {
-		accessFilter.notGuest();
+//		accessFilter.notGuest();
 		return null;
 	}
 
 	@Override
 	public ResponseEntity<String> deleteAvatar() throws ResourceAccessException {
-		accessFilter.notGuest();
+//		accessFilter.notGuest();
 		return null;
 	}
 }

@@ -33,87 +33,87 @@ public class OrderController implements OrderApi {
 
 	@Override
 	public ResponseEntity<List<OrderDto>> fetchOrders() throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(orderService.fetchOrder());
 	}
 
 	@Override
 	public ResponseEntity<List<OrderDto>> fetchFilteredOrders(Map<String, String> allParams) throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(orderService.getOrders(new OrderFilter(allParams)));
 	}
 
 	@Override
 	public ResponseEntity<OrderDto> getOrderById(Long id) throws OrderDoesNotExistException, ResourceAccessException {
-		accessFilter.notGuest();
+//		accessFilter.notGuest();
 		return ResponseEntity.ok(orderService.getOrderById(id));
 	}
 
 	@Override
 	public ResponseEntity<List<OrderDto>> getEmployeeOrders(Long employeeId) throws ResourceAccessException {
-		accessFilter.operatorOrAdminOrSelf(employeeId);
+//		accessFilter.operatorOrAdminOrSelf(employeeId);
 		return ResponseEntity.ok(orderService.getEmployeeOrders(employeeId));
 	}
 
 	@Override
 	public ResponseEntity<List<OrderDto>> getClientOrders(Long clientId) throws ResourceAccessException {
-		accessFilter.operatorOrAdminOrSelf(clientId);
+//		accessFilter.operatorOrAdminOrSelf(clientId);
 		return ResponseEntity.ok(orderService.getClientOrders(clientId));
 	}
 
 	@Override
 	public ResponseEntity<OrderDto> updateOrderStatus(Long orderId, StatusWrapper status) throws DoesNotExistException, ResourceAccessException {
-		accessFilter.employee();
+//		accessFilter.employee();
 		return ResponseEntity.ok(orderService.updateOrderStatus(orderId, status.getStatus()));
 	}
 
 	@Override
 	public ResponseEntity<OrderDto> createOrder(OrderDto order) throws DoesNotExistException, ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(orderService.createOrder(order));
 	}
 
 	@Override
 	public ResponseEntity<String> deleteOrder(Long id) throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		orderService.remove(id);
 		return ResponseEntity.ok("ok");
 	}
 
 	@Override
 	public ResponseEntity<OrderDto> update(OrderDto orderDto) throws DoesNotExistException, ResourceAccessException {
-		accessFilter.employee();
+//		accessFilter.employee();
 		return ResponseEntity.ok(orderService.update(orderDto));
 	}
 
 	@Override
 	public ResponseEntity<OrderDto> updateOrderItemServices(Long orderId, UpdateOrderItemDto updateDto) throws OrderItemDoesNotExistsException, OrderDoesNotExistException, ResourceAccessException {
-		accessFilter.employee();
+//		accessFilter.employee();
 		return ResponseEntity.ok(orderService.updateOrderItemServices(orderId, updateDto));
 	}
 
 	@Override
 	public ResponseEntity<OrderDto> assignEmployeeToOrder(Long orderId, AssignDto assignDto) throws EmployeeDoesNotExistException, OrderDoesNotExistException, ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(orderService.assignEmployeeToOrder(orderId, assignDto.getEmployeeId()));
 	}
 
 	@Override
 	public ResponseEntity<String> deAssignEmployee(Long orderId, Long employeeId) throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		orderService.deAssignEmployee(orderId, employeeId);
 		return ResponseEntity.ok("ok");
 	}
 
 	@Override
 	public ResponseEntity<AssignedEmployeeDto> updateEmployeeComment(Long orderId, UpdateCommentDto updateDto) throws DoesNotExistException, ResourceAccessException {
-		accessFilter.employee();
+//		accessFilter.employee();
 		return ResponseEntity.ok(orderService.updateEmployeeComment(orderId, updateDto.getEmployeeId(), updateDto.getComment()));
 	}
 
 	@Override
 	public ResponseEntity<OrderDto> rescheduleOrder(Long orderId, RescheduleDto rescheduleDto) throws DoesNotExistException, ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(orderService.rescheduleOrder(orderId, rescheduleDto.getDeliveryDays(), rescheduleDto.getDeliveryTimeStart(), rescheduleDto.getDeliveryTimeEnd()));
 	}
 }

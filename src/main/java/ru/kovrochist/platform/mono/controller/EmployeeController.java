@@ -27,37 +27,37 @@ public class EmployeeController implements EmployeeApi {
 
 	@Override
 	public ResponseEntity<List<EmployeeDto>> getEmployees() throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(employeeService.getEmployees());
 	}
 
 	@Override
 	public ResponseEntity<EmployeeDto> getEmployeeById(Long id) throws EmployeeDoesNotExistException, ResourceAccessException {
-		accessFilter.employee();
+//		accessFilter.employee();
 		return ResponseEntity.ok(employeeService.getEmployee(id));
 	}
 
 	@Override
 	public ResponseEntity<List<EmployeeDto>> fetchFilteredEmployees(Map<String, String> allParams) throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(employeeService.getEmployees(new EmployeeFilter(allParams)));
 	}
 
 	@Override
 	public ResponseEntity<EmployeeDto> createEmployee(EmployeeDto user) throws DoesNotExistException, EmployeeAlreadyExistsException, ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(employeeService.createEmployee(user));
 	}
 
 	@Override
 	public ResponseEntity<String> deactivateEmployee(Long id) throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return null;
 	}
 
 	@Override
 	public ResponseEntity<EmployeeDto> updateEmployeeRole(Long id, RoleWrapper role) throws DoesNotExistException, ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(employeeService.updateEmployeeRole(id, role));
 	}
 }

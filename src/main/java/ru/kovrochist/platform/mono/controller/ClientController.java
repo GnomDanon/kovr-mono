@@ -25,31 +25,31 @@ public class ClientController implements ClientApi {
 
 	@Override
 	public ResponseEntity<List<ClientDto>> getClients() throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(clientService.getClients());
 	}
 
 	@Override
 	public ResponseEntity<ClientDto> getClientById(Long id) throws ClientDoesNotExistException, ResourceAccessException {
-		accessFilter.employeeOrSelf(id);
+//		accessFilter.employeeOrSelf(id);
 		return ResponseEntity.ok(clientService.getClient(id));
 	}
 
 	@Override
 	public ResponseEntity<List<ClientDto>> fetchFilteredClients(Map<String, String> allParams) throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(clientService.getClients(new ClientFilter(allParams)));
 	}
 
 	@Override
 	public ResponseEntity<List<ClientDto>> searchClients(String query) throws ResourceAccessException {
-		accessFilter.operatorOrAdmin();
+//		accessFilter.operatorOrAdmin();
 		return ResponseEntity.ok(clientService.getClients(query));
 	}
 
 	@Override
 	public ResponseEntity<ClientDto> updateClientInfo(Long clientId, ClientDto client) throws DoesNotExistException, ResourceAccessException {
-		accessFilter.operatorOrAdminOrSelf(clientId);
+//		accessFilter.operatorOrAdminOrSelf(clientId);
 		return ResponseEntity.ok(clientService.update(clientId, client));
 	}
 }
