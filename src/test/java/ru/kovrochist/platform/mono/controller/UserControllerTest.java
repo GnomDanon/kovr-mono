@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import ru.kovrochist.platform.mono.dto.user.ProfileFormData;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.exception.Advice;
-import ru.kovrochist.platform.mono.security.user.UserService;
+import ru.kovrochist.platform.mono.service.UserService;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

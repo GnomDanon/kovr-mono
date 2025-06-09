@@ -17,8 +17,8 @@ import ru.kovrochist.platform.mono.dto.auth.RefreshTokenDto;
 import ru.kovrochist.platform.mono.dto.auth.UserCredentialsDto;
 import ru.kovrochist.platform.mono.dto.user.UserDto;
 import ru.kovrochist.platform.mono.exception.Advice;
-import ru.kovrochist.platform.mono.security.user.UserService;
 import ru.kovrochist.platform.mono.service.AuthService;
+import ru.kovrochist.platform.mono.service.UserService;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
